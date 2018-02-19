@@ -4,3 +4,9 @@ This Android app can be used by anyone trying to better understand themselves an
 
 User Stories https://docs.google.com/document/d/1FUiKtA9PfGCmtW7FfppvHqWVGytVusBiXJwB9g881yA/edit?usp=sharing
 User Stories Spreadsheet: https://docs.google.com/spreadsheets/d/1oHjuRUk8Om-E0hUXK3tGSBLkiIdWEsQ8wsEqcnHNdF8/edit?usp=sharing
+
+How to clone this repository:
+1) Create a new Android Studio project with ice cream sandwhich.
+2) cd into project directory
+3) run "git clone https://github.com/cis-upenn/350S18-21-LifeStats.git"
+4) done
