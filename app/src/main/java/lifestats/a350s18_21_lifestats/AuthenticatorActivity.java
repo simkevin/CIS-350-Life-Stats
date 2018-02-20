@@ -15,6 +15,8 @@ import com.amazonaws.mobile.auth.ui.SignInUI;
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobile.client.AWSStartupHandler;
 import com.amazonaws.mobile.client.AWSStartupResult;
+import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 
 public class AuthenticatorActivity extends Activity {
 
@@ -22,6 +24,8 @@ public class AuthenticatorActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authenticator);
+
+        AWSMobileClient.getInstance().initialize(this).execute();
 
         AWSMobileClient.getInstance().initialize(this, new AWSStartupHandler() {
             @Override
