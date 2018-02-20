@@ -23,6 +23,6 @@ public class MainActivity extends AppCompatActivity {
                         awsConfiguration(AWSMobileClient.getInstance().getConfiguration()).build();
         Intent signIn = new Intent(MainActivity.this, AuthenticatorActivity.class);
         MainActivity.this.startActivity(signIn);
-        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
     }
 }
