@@ -60,8 +60,5 @@ public class GoalsMain extends AppCompatActivity {
                 startActivity(pastScreen);
             }
         });
-
-
     }
-
 }

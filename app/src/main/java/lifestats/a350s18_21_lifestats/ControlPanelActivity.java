@@ -28,9 +28,13 @@ public class ControlPanelActivity extends AppCompatActivity {
         //startActivity(intent);
     }
 
+    /*
+     * This is the method called when the goals button is called. It opens the GoalsMain
+     * activity.
+     */
     public void openGoals(View view) {
-        //Intent intent = new Intent(this, GoalsActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, GoalsMain.class);
+        startActivity(intent);
     }
 
     public void openQuickView(View view) {
