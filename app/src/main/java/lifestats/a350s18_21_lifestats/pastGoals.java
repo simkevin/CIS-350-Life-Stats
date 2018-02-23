@@ -32,7 +32,6 @@ public class pastGoals extends AppCompatActivity {
 
 
         Button addGoal = (Button) findViewById(R.id.goalAdd);
-        Button removeGoal = (Button) findViewById(R.id.goalDelete);
 
 
         addGoal.setOnClickListener(new View.OnClickListener() {
