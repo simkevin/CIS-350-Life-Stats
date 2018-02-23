@@ -41,8 +41,5 @@ public class pastGoals extends AppCompatActivity {
             }
         });
 
-
-
-
     }
 }
