@@ -25,7 +25,7 @@ public class pastGoals extends AppCompatActivity {
         Intent thisIntent = getIntent();
         ArrayList<String> goalList = thisIntent.getStringArrayListExtra("goalList");
         ArrayList<String> ratingList = thisIntent.getStringArrayListExtra("ratingList");
-        ArrayAdapter thisAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1,  goalList);
+        final ArrayAdapter thisAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1,  goalList);
         archives.setAdapter(thisAdapter);
 
 
@@ -41,7 +41,14 @@ public class pastGoals extends AppCompatActivity {
             }
         });
 
-
+ archives.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String picked = archives.getItemAtPosition(i).toString();
+                thisAdapter.remove(picked);
+                thisAdapter.notifyDataSetChanged();
+            }
+        });
 
 
     }
