@@ -26,7 +26,7 @@
         android:onClick="openLifeStats"
         android:text="Life Stats"
         app:layout_constraintBottom_toTopOf="@+id/dataEntry_button"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/control_textView" />
@@ -38,7 +38,7 @@
         android:onClick="openDataEntry"
         android:text="Data Entry"
         app:layout_constraintBottom_toTopOf="@+id/dataAnalysis_button"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lifeStats_button" />
@@ -71,13 +71,25 @@
         android:id="@+id/quickView_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="openQuickView"
-        android:text="Quick-View"
+        android:onClick="openSummary"
+        android:text="Summary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/goals_button" />
+
+    <Button
+        android:id="@+id/sleepButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="openSleep"
+        android:text="Sleep"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quickView_button"/>
 
     <Button
         android:id="@+id/about_button"

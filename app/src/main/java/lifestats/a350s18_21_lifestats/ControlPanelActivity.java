@@ -37,9 +37,18 @@ public class ControlPanelActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openQuickView(View view) {
-        //Intent intent = new Intent(this, QuickViewActivity.class);
-        //startActivity(intent);
+    /*
+     *This is the method called when the summary button is pressed. It opnes the
+     * summary activity.
+     */
+    public void openSummary(View view) {
+        Intent intent = new Intent(this, Summary.class);
+        startActivity(intent);
+    }
+
+    public void openSleep(View view) {
+        Intent intent = new Intent(this, SleepScreen.class);
+        startActivity(intent);
     }
 
     /*
