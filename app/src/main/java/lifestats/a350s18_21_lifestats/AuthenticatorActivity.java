@@ -34,7 +34,7 @@ public class AuthenticatorActivity extends Activity {
                                 //.canCancel(true)
                                 .build();
                 SignInUI signinUI = (SignInUI) AWSMobileClient.getInstance().getClient(AuthenticatorActivity.this, SignInUI.class);
-                signinUI.login(AuthenticatorActivity.this, Summary.class).authUIConfiguration(config).execute();
+                signinUI.login(AuthenticatorActivity.this, ControlPanelActivity.class).authUIConfiguration(config).execute();
             }
         }).execute();
     }

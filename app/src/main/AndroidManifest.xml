@@ -30,6 +30,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Summary"></activity>
+        <activity android:name=".ControlPanelActivity"></activity>
+        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".GoalsMain"></activity>
+        <activity android:name=".pastGoals"></activity>
     </application>
 
 </manifest>
