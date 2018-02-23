@@ -8,18 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
-import com.amazonaws.mobile.client.AWSMobileClient;
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GoalsMain extends AppCompatActivity {
-
-
     private static HashMap <String, String> goalsToDifficulty = new HashMap<String, String>(); //This should be a database??
-    private DynamoDBMapper dynamoDBMapper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +25,6 @@ public class GoalsMain extends AppCompatActivity {
         final EditText goalText = (EditText) findViewById(R.id.goalText);
         final RatingBar difficultyBar = (RatingBar) findViewById(R.id.difficultyRating);
 
-        // This initializes the dynamo db mapper
-        AmazonDynamoDBClient dynamoDBClient = new AmazonDynamoDBClient(AWSMobileClient.getInstance().getCredentialsProvider());
-        this.dynamoDBMapper = DynamoDBMapper.builder()
-                .dynamoDBClient(dynamoDBClient)
-                .awsConfiguration(AWSMobileClient.getInstance().getConfiguration())
-                .build();
  
 
         submitButton.setOnClickListener(new View.OnClickListener() {
