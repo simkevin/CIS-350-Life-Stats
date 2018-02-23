@@ -37,4 +37,13 @@ public class ControlPanelActivity extends AppCompatActivity {
         //Intent intent = new Intent(this, QuickViewActivity.class);
         //startActivity(intent);
     }
+
+    /*
+     * This is the method called when the about button is called. It takes the user to the
+     * about page.
+     */
+    public void openAbout(View view) {
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
+    }
 }
