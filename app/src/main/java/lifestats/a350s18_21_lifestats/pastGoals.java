@@ -1,4 +1,4 @@
-package com.example.rgokhale.lifestatsapp;
+package lifestats.a350s18_21_lifestats;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 public class pastGoals extends AppCompatActivity {
@@ -20,7 +21,7 @@ public class pastGoals extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_past_goals);
 
-        ListView archives = findViewById(R.id.ArchiveList);
+        ListView archives = (ListView) findViewById(R.id.ArchiveList);
         Intent thisIntent = getIntent();
         ArrayList<String> goalList = thisIntent.getStringArrayListExtra("goalList");
         ArrayList<String> ratingList = thisIntent.getStringArrayListExtra("ratingList");
@@ -28,8 +29,8 @@ public class pastGoals extends AppCompatActivity {
         archives.setAdapter(thisAdapter);
 
 
-        Button addGoal = findViewById(R.id.goalAdd);
-        Button removeGoal = findViewById(R.id.goalDelete);
+        Button addGoal = (Button) findViewById(R.id.goalAdd);
+        Button removeGoal = (Button) findViewById(R.id.goalDelete);
 
 
         addGoal.setOnClickListener(new View.OnClickListener() {

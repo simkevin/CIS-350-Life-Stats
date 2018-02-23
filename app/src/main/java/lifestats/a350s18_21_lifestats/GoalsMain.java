@@ -1,6 +1,7 @@
-package com.example.rgokhale.lifestatsapp;
+package lifestats.a350s18_21_lifestats;
 
 import android.content.Intent;
+import android.media.Rating;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,10 +22,10 @@ public class GoalsMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goals_main);
 
-        Button submitButton = findViewById(R.id.goalButton);
-        final Button pastGoals = findViewById(R.id.pastGoals);
-        final EditText goalText = findViewById(R.id.goalText);
-        final RatingBar difficultyBar = findViewById(R.id.difficultyRating);
+        Button submitButton = (Button) findViewById(R.id.goalButton);
+        final Button pastGoals = (Button) findViewById(R.id.pastGoals);
+        final EditText goalText = (EditText) findViewById(R.id.goalText);
+        final RatingBar difficultyBar = (RatingBar) findViewById(R.id.difficultyRating);
  
 
         submitButton.setOnClickListener(new View.OnClickListener() {
