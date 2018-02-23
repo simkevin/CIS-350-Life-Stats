@@ -14,4 +14,28 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <!-- Strings related to Sleep Tracking -->
+    <string name="sleep_welcome_message">Sleep Tracking</string>
+    <string name="change_sleep_status">CHANGE SLEEP STATUS</string>
+    <string name="analyze_sleep_trends">Analyze Sleep Trends</string>
+
+    <string-array name="sleep_status_array">
+        <item>Awake</item>
+        <item>Asleep</item>
+    </string-array>
+
+    <!-- Strings related to Summary -->
+    <string name="summary_welcome_message">LifeStats Summaries</string>
+    <string name="choose_summary">Choose Summary Type</string>
+    <string name="happiness_average">Happiness: AVG</string>
+    <string name="productivity_average">Productivity: AVG</string>
+    <string name="stress_average">Stress: AVG</string>
+    <string name="sleep_average">Sleep: AVG</string>
+    <string-array name="summary_options_array">
+        <item>All-time</item>
+        <item>Year</item>
+        <item>Month</item>
+    </string-array>
+
 </resources>
