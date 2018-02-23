@@ -1,4 +1,4 @@
-package com.example.kevin.lifestats;
+package lifestats.a350s18_21_lifestats;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -14,27 +14,27 @@ public class ControlPanelActivity extends AppCompatActivity {
     }
 
     public void openLifeStats(View view) {
-        Intent intent = new Intent(this, LifeStatsActivity.class);
-        startActivity(intent);
+       // Intent intent = new Intent(this, LifeStatsActivity.class);
+       // startActivity(intent);
     }
 
     public void openDataEntry(View view) {
-        Intent intent = new Intent(this, DataEntryActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, DataEntryActivity.class);
+        //startActivity(intent);
     }
 
     public void openDataAnalysis(View view) {
-        Intent intent = new Intent(this, DataAnalysisActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, DataAnalysisActivity.class);
+        //startActivity(intent);
     }
 
     public void openGoals(View view) {
-        Intent intent = new Intent(this, GoalsActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, GoalsActivity.class);
+        //startActivity(intent);
     }
 
     public void openQuickView(View view) {
-        Intent intent = new Intent(this, QuickViewActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, QuickViewActivity.class);
+        //startActivity(intent);
     }
 }
