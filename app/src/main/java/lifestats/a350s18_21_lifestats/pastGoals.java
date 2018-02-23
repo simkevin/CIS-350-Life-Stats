@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,11 +23,11 @@ public class pastGoals extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_past_goals);
 
-        ListView archives = (ListView) findViewById(R.id.ArchiveList);
+        final ListView archives = (ListView) findViewById(R.id.ArchiveList);
         Intent thisIntent = getIntent();
         ArrayList<String> goalList = thisIntent.getStringArrayListExtra("goalList");
         ArrayList<String> ratingList = thisIntent.getStringArrayListExtra("ratingList");
-        ArrayAdapter thisAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1,  goalList);
+        final ArrayAdapter thisAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1,  goalList);
         archives.setAdapter(thisAdapter);
 
 
@@ -41,5 +43,14 @@ public class pastGoals extends AppCompatActivity {
             }
         });
 
+
+        archives.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String picked = archives.getItemAtPosition(i).toString();
+                thisAdapter.remove(picked);
+                thisAdapter.notifyDataSetChanged();
+            }
+        });
     }
 }
