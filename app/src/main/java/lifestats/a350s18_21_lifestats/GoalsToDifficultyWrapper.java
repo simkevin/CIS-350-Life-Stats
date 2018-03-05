@@ -18,7 +18,7 @@ public class GoalsToDifficultyWrapper {
     private HashMap<String,String> thisMapping;
     private GoalsToDifficultyDO goalsToDifficultyDO;
 
-    public void GoalsToDifficultWrapper() {
+    public GoalsToDifficultyWrapper (){
         thisMapping = new HashMap<String, String>();
         goalsToDifficultyDO = new GoalsToDifficultyDO();
         goalsToDifficultyDO.setUserId(((CognitoCredentialsProvider) AWSMobileClient.getInstance()
@@ -38,6 +38,12 @@ public class GoalsToDifficultyWrapper {
 
     public Set<Map.Entry<String,String>> entrySet() {
         return thisMapping.entrySet();
+    }
+
+    public Set<String> keySet() {return thisMapping.keySet();}
+
+    public String get(String s) {
+        return thisMapping.get(s);
     }
 
     private void updateDataBase() {

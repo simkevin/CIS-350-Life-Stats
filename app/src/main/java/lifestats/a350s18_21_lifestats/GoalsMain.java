@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GoalsMain extends AppCompatActivity {
-    private static HashMap <String, String> goalsToDifficulty = new HashMap<String, String>(); //This should be a database??
+    private static GoalsToDifficultyWrapper goalsToDifficulty =
+            new lifestats.a350s18_21_lifestats.GoalsToDifficultyWrapper();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,6 @@ public class GoalsMain extends AppCompatActivity {
 
                 goalText.setText("");
                 difficultyBar.setRating(0F);
-
             }
         });
 
