@@ -29,11 +29,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Summary"></activity>
-        <activity android:name=".ControlPanelActivity"></activity>
-        <activity android:name=".AboutActivity"></activity>
-        <activity android:name=".GoalsMain"></activity>
-        <activity android:name=".pastGoals"></activity>
+        <activity android:name=".Summary" />
+        <activity android:name=".ControlPanelActivity" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".GoalsMain" />
+        <activity android:name=".pastGoals" />
+        <activity
+            android:name=".QuantitativeDataEntry"
+            android:label="@string/title_activity_quantitative_data_entry"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Journal" />
+        <activity android:name=".MoneySpent"></activity>
     </application>
 
 </manifest>
