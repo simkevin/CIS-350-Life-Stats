@@ -30,6 +30,7 @@ public class ControlPanelActivity extends AppCompatActivity {
                 Regions.US_EAST_1
         );
 
+
         AWSMobileClient.getInstance().setCredentialsProvider(credentialsProvider);
         this.dynamoDBClient = new AmazonDynamoDBClient(AWSMobileClient.getInstance().getCredentialsProvider());
         this.dynamoDBMapper = DynamoDBMapper.builder()
