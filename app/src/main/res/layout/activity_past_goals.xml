@@ -4,45 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.rgokhale.lifestatsapp.pastGoals">
+    tools:context="lifestats.a350s18_21_lifestats.ControlPanelActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="241dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginTop="8dp"
+        android:text="Delete any goal with a click."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="304dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="4dp"
+        android:text="Goals Archive"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/ArchiveList"
-        android:layout_width="343dp"
-        android:layout_height="449dp"
+        android:layout_width="345dp"
+        android:layout_height="321dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.148" />
+        app:layout_constraintVertical_bias="0.678" />
 
     <Button
         android:id="@+id/goalAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="140dp"
         android:text="Add a Goal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ArchiveList"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.75" />
 
-    <Button
-        android:id="@+id/goalDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="70dp"
-        android:text="Delete a Goal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/goalAdd"
-        app:layout_constraintTop_toBottomOf="@+id/ArchiveList"
-        app:layout_constraintVertical_bias="0.0" />
+
 </android.support.constraint.ConstraintLayout>
