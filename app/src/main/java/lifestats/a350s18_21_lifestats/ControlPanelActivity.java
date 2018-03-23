@@ -28,6 +28,11 @@ public class ControlPanelActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void openJournal(View view) {
+        Intent intent = new Intent(this, Journal.class);
+        startActivity(intent);
+    }
+
     public void openDataAnalysis(View view) {
         //Intent intent = new Intent(this, DataAnalysisActivity.class);
         //startActivity(intent);
