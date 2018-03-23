@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class GoalsMain extends AppCompatActivity {
     private static GoalsToDifficultyWrapper goalsToDifficulty =
-            new lifestats.a350s18_21_lifestats.GoalsToDifficultyWrapper();
+            GoalsToDifficultyWrapper.getInstance();
 
 
     @Override

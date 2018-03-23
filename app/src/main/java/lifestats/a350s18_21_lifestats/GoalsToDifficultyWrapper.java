@@ -26,8 +26,16 @@ public class GoalsToDifficultyWrapper {
     private HashSet<String> newDBValues;
     private DynamoDBMapper dynamoDBMapper;
     private AmazonDynamoDBClient dynamoDBClient;
+    private static GoalsToDifficultyWrapper thisInstance;
 
-    public GoalsToDifficultyWrapper (){
+    public static GoalsToDifficultyWrapper getInstance() {
+        if (thisInstance == null) {
+            thisInstance = new GoalsToDifficultyWrapper();
+        }
+        return thisInstance;
+    }
+
+    private GoalsToDifficultyWrapper (){
         thisMapping = new HashMap<String, String>();
         this.dynamoDBClient = new AmazonDynamoDBClient(AWSMobileClient.getInstance().getCredentialsProvider());
         this.dynamoDBMapper = DynamoDBMapper.builder()
