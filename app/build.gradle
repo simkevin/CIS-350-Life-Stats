@@ -41,4 +41,7 @@ dependencies {
 
     // DynamoDB dependency
     compile 'com.amazonaws:aws-android-sdk-ddb-mapper:2.6.+'
+
+    // Caldroid
+    compile 'com.roomorama:caldroid:3.0.1'
 }

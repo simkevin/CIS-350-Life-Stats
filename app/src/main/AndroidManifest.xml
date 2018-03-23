@@ -77,6 +77,8 @@
             android:label="@string/title_activity_quantitative_data_entry"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Journal" />
+        <activity android:name=".RecordsActivity" />
+        <activity android:name=".DataAnalysisActivity"></activity>
         <activity android:name=".LifeStats" />
         <activity android:name=".GraphStats" />
         <activity android:name=".Notification"></activity>
