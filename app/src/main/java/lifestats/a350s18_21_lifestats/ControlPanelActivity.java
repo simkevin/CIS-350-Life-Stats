@@ -56,8 +56,7 @@ public class ControlPanelActivity extends AppCompatActivity {
      * about page.
      */
     public void openAbout(View view) {
-    //    Intent intent = new Intent(this, AboutActivity.class);
-        Intent intent = new Intent(this, Summary.class);
+        Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
 
