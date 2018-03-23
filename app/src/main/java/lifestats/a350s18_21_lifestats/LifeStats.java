@@ -14,7 +14,7 @@ public class LifeStats extends AppCompatActivity {
     }
 
     public void openGraphStats(View view) {
-        Intent intent = new Intent(this, Journal.class);
+        Intent intent = new Intent(this, GraphStats.class);
         startActivity(intent);
     }
 

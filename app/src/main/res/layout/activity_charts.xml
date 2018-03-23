@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:screenOrientation ="landscape"
-    tools:context="com.example.rgokhale.lifestatsapp.charts">
+    tools:context="lifestats.a350s18_21_lifestats.charts">
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graph"

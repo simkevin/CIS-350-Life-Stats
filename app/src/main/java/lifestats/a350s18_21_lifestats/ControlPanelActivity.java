@@ -14,8 +14,8 @@ public class ControlPanelActivity extends AppCompatActivity {
     }
 
     public void openLifeStats(View view) {
-       // Intent intent = new Intent(this, LifeStatsActivity.class);
-       // startActivity(intent);
+        Intent intent = new Intent(this, LifeStats.class);
+        startActivity(intent);
     }
 
     public void openDataEntry(View view) {
