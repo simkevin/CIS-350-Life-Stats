@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">LifeStatsApp</string>
+    <string name="title_activity_money_chart_chooser">moneyChartChooser</string>
+</resources>
