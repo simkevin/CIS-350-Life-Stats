@@ -12,19 +12,21 @@
         android:id="@+id/dayChart"
         android:layout_width="135dp"
         android:layout_height="58dp"
-        android:layout_marginEnd="108dp"
-        android:layout_marginTop="148dp"
         android:text="Day"
+        app:layout_constraintBottom_toTopOf="@+id/monthChart"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Question" />
 
     <Button
         android:id="@+id/monthChart"
         android:layout_width="127dp"
         android:layout_height="59dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="52dp"
         android:text="Month"
+        app:layout_constraintBottom_toTopOf="@+id/yearChart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dayChart" />
 
@@ -32,19 +34,21 @@
         android:id="@+id/yearChart"
         android:layout_width="125dp"
         android:layout_height="63dp"
-        android:layout_marginBottom="104dp"
-        android:layout_marginStart="140dp"
         android:text="Year"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/monthChart" />
 
     <TextView
         android:id="@+id/Question"
         android:layout_width="174dp"
         android:layout_height="51dp"
-        android:layout_marginEnd="96dp"
-        android:layout_marginTop="48dp"
         android:text="Which graph would you like to see?"
+        app:layout_constraintBottom_toTopOf="@+id/dayChart"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

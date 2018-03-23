@@ -47,10 +47,10 @@ public class RecordsActivity extends AppCompatActivity {
 
 
         // Setup caldroid fragment
-        // **** If you want normal CaldroidFragment, use below line ****
         caldroidFragment = new CaldroidFragment();
 
         // Setup arguments
+
 
         // If Activity is created after rotation
         if (savedInstanceState != null) {
@@ -98,7 +98,7 @@ public class RecordsActivity extends AppCompatActivity {
 
     /**
      * Save current states of the Caldroid here
-     */
+    */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
