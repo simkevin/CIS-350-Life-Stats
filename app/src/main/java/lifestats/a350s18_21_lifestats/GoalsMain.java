@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import java.util.Date;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,7 +37,8 @@ public class GoalsMain extends AppCompatActivity {
                 if (goalText.getText().toString().matches(".*\\w.*")) {
                     String goal = goalText.getText().toString();
                     String rate = String.valueOf(difficultyBar.getRating());
-                    goalsToDifficulty.put(goal, rate);
+                    String time = "" + (new Date().getTime());
+                    goalsToDifficulty.put(goal, rate + ":" + time + ":0");
                 }
 
                 goalText.setText("");
@@ -50,8 +52,9 @@ public class GoalsMain extends AppCompatActivity {
                 ArrayList<String>  values = new ArrayList<String>();
                 ArrayList<String>  ratings = new ArrayList<String>();
                 for (String s : goalsToDifficulty.keySet()) {
-                    values.add(s + ", \t\t\t\tDifficulty: " + goalsToDifficulty.get(s));
-                    ratings.add(goalsToDifficulty.get(s));
+                    String difficulty = goalsToDifficulty.get(s).split(":")[0];
+                    values.add(s + ", \t\t\t\tDifficulty: " + difficulty);
+                    ratings.add(difficulty);
                 }
                 Intent pastScreen = new Intent(GoalsMain.this, pastGoals.class);
                 pastScreen.putExtra("goalList", values);
@@ -68,7 +71,7 @@ public class GoalsMain extends AppCompatActivity {
                 ArrayList<String>  ratings = new ArrayList<String>();
                 for (String s : goalsToDifficulty.keySet()) {
                     goals.add(s);
-                    ratings.add(goalsToDifficulty.get(s));
+                    ratings.add(goalsToDifficulty.get(s).split(":")[0]);
                 }
                 chartScreen.putExtra("goalList", goals);
                 chartScreen.putExtra("ratingList", ratings);

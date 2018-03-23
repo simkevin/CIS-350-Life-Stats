@@ -42,6 +42,9 @@ public class GoalsToDifficultyWrapper {
                 .dynamoDBClient(dynamoDBClient)
                 .awsConfiguration(AWSMobileClient.getInstance().getConfiguration())
                 .build();
+        thisMapping.put("Eat Better", "3.0:1499817600000:1521807434000");
+        thisMapping.put("Make more money", "4.0:1499817600000:1521807434000");
+        thisMapping.put("Get more sleep", "1.0:1499817600000:1521807434000");
     }
 
     public String put(String key, String value) {
