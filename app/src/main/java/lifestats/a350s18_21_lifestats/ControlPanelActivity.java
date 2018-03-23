@@ -19,8 +19,13 @@ public class ControlPanelActivity extends AppCompatActivity {
     }
 
     public void openDataEntry(View view) {
-        //Intent intent = new Intent(this, DataEntryActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, QuantitativeDataEntry.class);
+        startActivity(intent);
+    }
+
+    public void openMoney(View view) {
+        Intent intent = new Intent(this, MoneySpent.class);
+        startActivity(intent);
     }
 
     public void openDataAnalysis(View view) {
