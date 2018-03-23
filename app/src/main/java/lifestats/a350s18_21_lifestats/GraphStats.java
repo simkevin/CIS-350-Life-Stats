@@ -25,6 +25,9 @@ public class GraphStats extends AppCompatActivity {
         setContentView(R.layout.activity_graph_stats);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         Intent thisIntent = getIntent();
+        String goalValues = thisIntent.getStringExtra("goalValue");
+        long startValue = Long.parseLong(goalValues.split(":")[1]);
+        long endValue = Long.parseLong(goalValues.split(":")[2]);
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
         DataPoint[] happiness = new DataPoint[HappinessWrapper.getInstance().size()];
@@ -84,5 +87,8 @@ public class GraphStats extends AppCompatActivity {
         graph.getLegendRenderer().setVisible(true);
         graph.getGridLabelRenderer().setLabelFormatter(new
                 DateAsXAxisLabelFormatter(this));
+        graph.getViewport().setMinX(startValue);
+        graph.getViewport().setMaxX(endValue);
+        graph.getViewport().setXAxisBoundsManual(true);
     }
 }
