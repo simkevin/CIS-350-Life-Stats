@@ -47,6 +47,7 @@ public class DataAnalysisActivity extends AppCompatActivity {
 
         GraphView tGraph = (GraphView) findViewById(R.id.trend_graph);
 
+        // need to write helper function that loads datapoints into array
         DataPoint[] dp1 = new DataPoint[happiness.size()];
         int i = 0;
         for (String key: happiness.keySet()) {
