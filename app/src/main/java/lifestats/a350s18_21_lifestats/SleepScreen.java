@@ -10,7 +10,22 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.LinkedList;
+
 public class SleepScreen extends AppCompatActivity {
+    // make SleepElement data type to put in LinkedList
+    private class SleepElement {
+        String date;
+        Boolean sleepStatus;
+        public SleepElement(String date, Boolean sleepStatus) {
+            this.date = date;
+            this.sleepStatus = sleepStatus;
+        }
+    }
+    LinkedList<SleepElement> sleepTrack = new LinkedList<SleepElement>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +43,41 @@ public class SleepScreen extends AppCompatActivity {
         sleepSpinner.setAdapter(adapter);
 
         sleepSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            // set a boolean for sleeping. false means awake, true means asleep
+            boolean sleeping = false;
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String sleepStr = (String) adapterView.getItemAtPosition(i);
-                if (sleepStr.equals("Awake")) {
-                    Toast.makeText(getApplicationContext(), "Sleep Status Set to Awake", Toast.LENGTH_SHORT).show();
-                } else if (sleepStr.equals("Asleep")) {
-                    Toast.makeText(getApplicationContext(), "Sleep Status Set to Asleep", Toast.LENGTH_SHORT).show();
+                // create and save date
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String date = sdf.format(Calendar.getInstance().getTime());
+
+                // if sleepTrack is not empty, obtain last sleep value
+                // if it is empty, then use initialized "awake" value
+                if (!sleepTrack.isEmpty()) {
+                    sleeping = sleepTrack.getLast().sleepStatus;
                 }
+
+                if (sleepStr.equals("Awake") && !sleepTrack.isEmpty()) {
+                    if(!sleeping) {
+                        Toast.makeText(getApplicationContext(), "Sleep Status already awake.", Toast.LENGTH_SHORT).show();
+                        return;
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Sleep Status Set to Awake at " + date, Toast.LENGTH_SHORT).show();
+                        sleeping = false;
+                    }
+                } else if (sleepStr.equals("Asleep")) {
+                    if (sleeping) {
+                        Toast.makeText(getApplicationContext(), "Sleep Status already sleeping.", Toast.LENGTH_SHORT).show();
+                        return;
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Sleep Status Set to Asleep at " + date, Toast.LENGTH_SHORT).show();
+                        sleeping = true;
+                    }
+                }
+                // save data in linkedlist
+                SleepElement se = new SleepElement(date, sleeping);
+                sleepTrack.add(se);
             }
 
             @Override

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.rgokhale.lifestatsapp.moneyChartChooser"
+    tools:showIn="@layout/activity_money_chart_chooser">
+
+    <Button
+        android:id="@+id/dayChart"
+        android:layout_width="135dp"
+        android:layout_height="58dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginTop="148dp"
+        android:text="Day"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/monthChart"
+        android:layout_width="127dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="52dp"
+        android:text="Month"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dayChart" />
+
+    <Button
+        android:id="@+id/yearChart"
+        android:layout_width="125dp"
+        android:layout_height="63dp"
+        android:layout_marginBottom="104dp"
+        android:layout_marginStart="140dp"
+        android:text="Year"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Question"
+        android:layout_width="174dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginTop="48dp"
+        android:text="Which graph would you like to see?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

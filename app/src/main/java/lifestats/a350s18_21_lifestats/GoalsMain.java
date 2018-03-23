@@ -1,7 +1,6 @@
 package lifestats.a350s18_21_lifestats;
 
 import android.content.Intent;
-import android.media.Rating;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,17 +15,18 @@ public class GoalsMain extends AppCompatActivity {
     private static GoalsToDifficultyWrapper goalsToDifficulty =
             new lifestats.a350s18_21_lifestats.GoalsToDifficultyWrapper();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goals_main);
 
-        Button submitButton = (Button) findViewById(R.id.goalButton);
-        final Button pastGoals = (Button) findViewById(R.id.pastGoals);
-        final EditText goalText = (EditText) findViewById(R.id.goalText);
-        final RatingBar difficultyBar = (RatingBar) findViewById(R.id.difficultyRating);
+        Button submitButton = findViewById(R.id.goalButton);
+        final Button pastGoals = findViewById(R.id.pastGoals);
+        final Button chartGenerator = findViewById(R.id.chartButton);
 
- 
+        final EditText goalText = findViewById(R.id.goalText);
+        final RatingBar difficultyBar = findViewById(R.id.difficultyRating);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,5 +59,24 @@ public class GoalsMain extends AppCompatActivity {
                 startActivity(pastScreen);
             }
         });
+
+        chartGenerator.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent chartScreen = new Intent(GoalsMain.this, charts.class);
+                ArrayList<String>  goals = new ArrayList<String>();
+                ArrayList<String>  ratings = new ArrayList<String>();
+                for (String s : goalsToDifficulty.keySet()) {
+                    goals.add(s);
+                    ratings.add(goalsToDifficulty.get(s));
+                }
+                chartScreen.putExtra("goalList", goals);
+                chartScreen.putExtra("ratingList", ratings);
+                startActivity(chartScreen);
+            }
+        });
+
+
     }
+
 }

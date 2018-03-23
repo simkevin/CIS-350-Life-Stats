@@ -41,13 +41,23 @@ public class ControlPanelActivity extends AppCompatActivity {
     }
 
     public void openLifeStats(View view) {
-       // Intent intent = new Intent(this, LifeStatsActivity.class);
-       // startActivity(intent);
+        Intent intent = new Intent(this, LifeStats.class);
+        startActivity(intent);
     }
 
     public void openDataEntry(View view) {
-        //Intent intent = new Intent(this, DataEntryActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, QuantitativeDataEntry.class);
+        startActivity(intent);
+    }
+
+    public void openMoney(View view) {
+        Intent intent = new Intent(this, MoneySpent.class);
+        startActivity(intent);
+    }
+
+    public void openJournal(View view) {
+        Intent intent = new Intent(this, Journal.class);
+        startActivity(intent);
     }
 
     public void openDataAnalysis(View view) {
@@ -86,4 +96,5 @@ public class ControlPanelActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
+
 }
