@@ -20,9 +20,9 @@ import java.util.HashMap;
 
 public class QuantitativeDataEntry extends AppCompatActivity {
 
-    private static HappinessWrapper storeHappiness = new HappinessWrapper();
-    private static ProductivityWrapper storeProductivity = new ProductivityWrapper();
-    private static StressWrapper storeStress = new StressWrapper();
+    private static HappinessWrapper storeHappiness = HappinessWrapper.getInstance();
+    private static ProductivityWrapper storeProductivity = ProductivityWrapper.getInstance();
+    private static StressWrapper storeStress = StressWrapper.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
