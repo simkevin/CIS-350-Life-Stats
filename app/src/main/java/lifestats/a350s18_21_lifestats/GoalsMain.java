@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GoalsMain extends AppCompatActivity {
-
-    private static HashMap <String, String> goalsToDifficulty = new HashMap<String, String>(); //This should be a database??
+    private static GoalsToDifficultyWrapper goalsToDifficulty =
+            new lifestats.a350s18_21_lifestats.GoalsToDifficultyWrapper();
 
 
     @Override
@@ -28,7 +28,6 @@ public class GoalsMain extends AppCompatActivity {
         final EditText goalText = findViewById(R.id.goalText);
         final RatingBar difficultyBar = findViewById(R.id.difficultyRating);
 
-
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,7 +41,6 @@ public class GoalsMain extends AppCompatActivity {
 
                 goalText.setText("");
                 difficultyBar.setRating(0F);
-
             }
         });
 
