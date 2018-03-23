@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">LifeStatsApp</string>
     <string name="title_activity_money_chart_chooser">moneyChartChooser</string>
+    <string name="title_activity_quantitative_data_entry">QuantitativeDataEntry</string>
+    <string name="happinessRanking">Happiness Ranking</string>
+    <string name="productivityRanking">Productivity Ranking</string>
+    <string name="stressRanking">Stress Ranking</string>
+    <string name="submit">Submit</string>
+    <string name="journalHelpText">Enter words to describe your day above!</string>
+    <string name="journal">Journal</string>
+    <string name="moneySpent">Money Spent</string>
+    <string name="defaultSpentToday">So far you have not spent any money today!</string>
+    <string name="enterCashSpent">Enter How Much You Have Spent (in USD)</string>
 </resources>

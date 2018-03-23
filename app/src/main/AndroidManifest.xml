@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     package="com.example.rgokhale.lifestatsapp">
+=======
+    package="lifestats.a350s18_21_lifestats">
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+>>>>>>> eb305674768804076756f5701cfd265d141e1719
 
     <application
         android:allowBackup="true"
@@ -9,16 +20,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".moneySpent"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden"
             >
+=======
+        <activity android:name=".MainActivity" />
+        <activity android:name=".AuthenticatorActivity">
+>>>>>>> eb305674768804076756f5701cfd265d141e1719
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".pastGoals"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden"
@@ -57,6 +74,24 @@
             >
 
         </activity>
+=======
+        <activity android:name=".SleepScreen">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Summary" />
+        <activity android:name=".ControlPanelActivity" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".GoalsMain" />
+        <activity android:name=".pastGoals" />
+        <activity
+            android:name=".QuantitativeDataEntry"
+            android:label="@string/title_activity_quantitative_data_entry"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Journal" />
+        <activity android:name=".MoneySpent"></activity>
+>>>>>>> eb305674768804076756f5701cfd265d141e1719
     </application>
 
 </manifest>
