@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/350S18-21-LifeStats.iml" filepath="$PROJECT_DIR$/350S18-21-LifeStats.iml" />
-      <module fileurl="file://C:\Users\steph\Desktop\CIS_350\350S18-21-LifeStats\LifeStatsApp.iml" filepath="C:\Users\steph\Desktop\CIS_350\350S18-21-LifeStats\LifeStatsApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
