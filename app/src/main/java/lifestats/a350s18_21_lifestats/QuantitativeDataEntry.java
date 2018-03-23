@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import java.io.StreamCorruptedException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,9 +20,9 @@ import java.util.HashMap;
 
 public class QuantitativeDataEntry extends AppCompatActivity {
 
-    private static HashMap<String, Float> storeHappiness = new HashMap<String, Float>();
-    private static HashMap<String, Float> storeProductivity = new HashMap<String, Float>();
-    private static HashMap<String, Float> storeStress = new HashMap<String, Float>();
+    private static HappinessWrapper storeHappiness = HappinessWrapper.getInstance();
+    private static ProductivityWrapper storeProductivity = ProductivityWrapper.getInstance();
+    private static StressWrapper storeStress = StressWrapper.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -36,6 +36,8 @@
             android:name=".charts"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape" />
+        <receiver
+            android:name=".AlarmReceiver"></receiver>
         <activity
             android:name=".GoalsMain"
             android:configChanges="orientation|keyboardHidden"
@@ -77,6 +79,9 @@
         <activity android:name=".Journal" />
         <activity android:name=".RecordsActivity" />
         <activity android:name=".DataAnalysisActivity"></activity>
+        <activity android:name=".LifeStats" />
+        <activity android:name=".GraphStats" />
+        <activity android:name=".Notification"></activity>
     </application>
 
 </manifest>
