@@ -4,15 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:screenOrientation ="landscape"
-    tools:context="lifestats.a350s18_21_lifestats.charts">
+    tools:context="lifestats.a350s18_21_lifestats.GraphStats">
 
     <com.jjoe64.graphview.GraphView
-        android:id="@+id/graph"
-        android:layout_width="589dp"
-        android:layout_height="248dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
+        android:id="@+id/graph" />
 
 </android.support.constraint.ConstraintLayout>

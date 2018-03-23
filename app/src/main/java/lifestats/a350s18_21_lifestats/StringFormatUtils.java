@@ -1,4 +1,4 @@
-package com.amazonaws.mobile.util;
+package lifestats.a350s18_21_lifestats;
 
 public final class StringFormatUtils {
 
