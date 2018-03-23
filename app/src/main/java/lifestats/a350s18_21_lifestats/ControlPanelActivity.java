@@ -33,9 +33,14 @@ public class ControlPanelActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void openRecords(View view) {
+        Intent intent = new Intent(this, RecordsActivity.class);
+        startActivity(intent);
+    }
+
     public void openDataAnalysis(View view) {
-        //Intent intent = new Intent(this, DataAnalysisActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, DataAnalysisActivity.class);
+        startActivity(intent);
     }
 
     /*

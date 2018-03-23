@@ -16,10 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MoneySpent"
-            android:screenOrientation="portrait"
+        <activity
+            android:name=".MoneySpent"
             android:configChanges="orientation|keyboardHidden"
-            />
+            android:screenOrientation="portrait" />
         <activity android:name=".MainActivity" />
         <activity android:name=".AuthenticatorActivity">
             <intent-filter>
@@ -28,44 +28,40 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".pastGoals"
-            android:screenOrientation="portrait"
+        <activity
+            android:name=".pastGoals"
             android:configChanges="orientation|keyboardHidden"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".charts"
-            android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden"
-            />
-        <activity android:name=".GoalsMain"
-            android:screenOrientation="portrait"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".GoalsMain"
             android:configChanges="orientation|keyboardHidden"
-            />
-        <activity android:name=".pastMoney"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pastMoney"
             android:configChanges="orientation|keyboardHidden"
-            />
-        <activity android:name=".MoneyChart"
-            android:screenOrientation="landscape"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MoneyChart"
             android:configChanges="orientation|keyboardHidden"
-            />
+            android:screenOrientation="landscape" />
         <activity
             android:name=".moneyChartChooser"
+            android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_money_chart_chooser"
-            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MonthMoneyChart"
             android:configChanges="orientation|keyboardHidden"
-            />
-        <activity android:name=".MonthMoneyChart"
-            android:screenOrientation="landscape"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".YearMoneyChart"
             android:configChanges="orientation|keyboardHidden"
-            />
-        <activity android:name=".YearMoneyChart"
-            android:screenOrientation="landscape"
-            android:configChanges="orientation|keyboardHidden"
-            >
-
-        </activity>
+            android:screenOrientation="landscape" />
         <activity android:name=".SleepScreen">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -79,6 +75,8 @@
             android:label="@string/title_activity_quantitative_data_entry"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Journal" />
+        <activity android:name=".RecordsActivity" />
+        <activity android:name=".DataAnalysisActivity"></activity>
     </application>
 
 </manifest>

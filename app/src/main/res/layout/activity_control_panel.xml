@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:onClick="openDataEntry"
         android:text="Daily Mood"
-        app:layout_constraintBottom_toTopOf="@+id/dataAnalysis_button"
+        app:layout_constraintBottom_toTopOf="@+id/records_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/journal_button" />
@@ -52,7 +52,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dataEntry_button" />
+        app:layout_constraintTop_toBottomOf="@+id/records_button" />
 
     <Button
         android:id="@+id/goals_button"
@@ -126,5 +126,16 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/money_button" />
+
+    <Button
+        android:id="@+id/records_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="openRecords"
+        android:text="Records"
+        app:layout_constraintBottom_toTopOf="@+id/dataAnalysis_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dataEntry_button" />
 
 </android.support.constraint.ConstraintLayout>
