@@ -51,8 +51,8 @@ public class charts extends AppCompatActivity {
 
         String [] goalsArray = new String [goalList.size()];
         for (int i = 0; i < goalList.size(); i++) {
-            //goalsArray[i] = goalList.get(i);
-            goalsArray[i] = Integer.toString(i + 1);
+            goalsArray[i] = goalList.get(i);
+            //goalsArray[i] = Integer.toString(i + 1);
         }
 
         //labels
