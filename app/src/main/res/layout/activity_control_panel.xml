@@ -40,7 +40,7 @@
         app:layout_constraintBottom_toTopOf="@+id/dataAnalysis_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/money_button" />
+        app:layout_constraintTop_toBottomOf="@+id/journal_button" />
 
     <Button
         android:id="@+id/dataAnalysis_button"
@@ -108,12 +108,23 @@
         android:id="@+id/money_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Money"
         android:onClick="openMoney"
-        app:layout_constraintBottom_toTopOf="@+id/dataEntry_button"
+        android:text="Money"
+        app:layout_constraintBottom_toTopOf="@+id/journal_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lifeStats_button" />
+
+    <Button
+        android:id="@+id/journal_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="openJournal"
+        android:text="Journal"
+        app:layout_constraintBottom_toTopOf="@+id/dataEntry_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/money_button" />
 
 </android.support.constraint.ConstraintLayout>
