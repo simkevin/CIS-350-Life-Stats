@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.rgokhale.lifestatsapp.GoalsMain">
+    tools:context="lifestats.a350s18_21_lifestats.MainActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -16,13 +16,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-        android:layout_marginBottom="400dp"
-        android:text="Please enter a new goal:"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+
 
 
     <TextView
@@ -48,8 +42,6 @@
         android:layout_marginTop="28dp"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="12dp"
-        android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 

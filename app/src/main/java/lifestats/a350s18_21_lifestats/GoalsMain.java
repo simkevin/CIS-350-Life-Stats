@@ -1,43 +1,33 @@
 package lifestats.a350s18_21_lifestats;
 
 import android.content.Intent;
-import android.media.Rating;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
-import com.amazonaws.mobile.client.AWSMobileClient;
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GoalsMain extends AppCompatActivity {
 
-
     private static HashMap <String, String> goalsToDifficulty = new HashMap<String, String>(); //This should be a database??
-    private DynamoDBMapper dynamoDBMapper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goals_main);
 
-        Button submitButton = (Button) findViewById(R.id.goalButton);
-        final Button pastGoals = (Button) findViewById(R.id.pastGoals);
-        final EditText goalText = (EditText) findViewById(R.id.goalText);
-        final RatingBar difficultyBar = (RatingBar) findViewById(R.id.difficultyRating);
+        Button submitButton = findViewById(R.id.goalButton);
+        final Button pastGoals = findViewById(R.id.pastGoals);
+        final Button chartGenerator = findViewById(R.id.chartButton);
 
-        // This initializes the dynamo db mapper
-        AmazonDynamoDBClient dynamoDBClient = new AmazonDynamoDBClient(AWSMobileClient.getInstance().getCredentialsProvider());
-        this.dynamoDBMapper = DynamoDBMapper.builder()
-                .dynamoDBClient(dynamoDBClient)
-                .awsConfiguration(AWSMobileClient.getInstance().getConfiguration())
-                .build();
- 
+        final EditText goalText = findViewById(R.id.goalText);
+        final RatingBar difficultyBar = findViewById(R.id.difficultyRating);
+
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,5 +61,24 @@ public class GoalsMain extends AppCompatActivity {
                 startActivity(pastScreen);
             }
         });
+
+        chartGenerator.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent chartScreen = new Intent(GoalsMain.this, charts.class);
+                ArrayList<String>  goals = new ArrayList<String>();
+                ArrayList<String>  ratings = new ArrayList<String>();
+                for (String s : goalsToDifficulty.keySet()) {
+                    goals.add(s);
+                    ratings.add(goalsToDifficulty.get(s));
+                }
+                chartScreen.putExtra("goalList", goals);
+                chartScreen.putExtra("ratingList", ratings);
+                startActivity(chartScreen);
+            }
+        });
+
+
     }
+
 }

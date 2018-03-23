@@ -11,4 +11,5 @@
     <string name="moneySpent">Money Spent</string>
     <string name="defaultSpentToday">So far you have not spent any money today!</string>
     <string name="enterCashSpent">Enter How Much You Have Spent (in USD)</string>
+    <string name="about">Welcome to Life Stats! \n This app will help you improve your life one goal at a time.</string>
 </resources>

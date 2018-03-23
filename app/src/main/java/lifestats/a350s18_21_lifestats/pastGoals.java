@@ -9,11 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Set;
 
 public class pastGoals extends AppCompatActivity {
@@ -23,15 +22,17 @@ public class pastGoals extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_past_goals);
 
-        final ListView archives = (ListView) findViewById(R.id.ArchiveList);
+        final ListView archives = findViewById(R.id.ArchiveList);
+
         Intent thisIntent = getIntent();
-        ArrayList<String> goalList = thisIntent.getStringArrayListExtra("goalList");
-        ArrayList<String> ratingList = thisIntent.getStringArrayListExtra("ratingList");
+        final ArrayList<String> goalList = thisIntent.getStringArrayListExtra("goalList");
+        final ArrayList<String> ratingList = thisIntent.getStringArrayListExtra("ratingList");
         final ArrayAdapter thisAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1,  goalList);
         archives.setAdapter(thisAdapter);
 
 
-        Button addGoal = (Button) findViewById(R.id.goalAdd);
+        final Button addGoal = findViewById(R.id.goalAdd);
+        //final Button removeGoal = findViewById(R.id.goalDelete);
 
 
         addGoal.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +44,7 @@ public class pastGoals extends AppCompatActivity {
         });
 
 
+
         archives.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -51,5 +53,7 @@ public class pastGoals extends AppCompatActivity {
                 thisAdapter.notifyDataSetChanged();
             }
         });
+
+
     }
 }
