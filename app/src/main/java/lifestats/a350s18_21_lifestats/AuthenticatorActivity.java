@@ -26,7 +26,7 @@ public class AuthenticatorActivity extends Activity {
             public void onComplete(final AWSStartupResult awsStartupResult) {
                 AuthUIConfiguration config =
                         new AuthUIConfiguration.Builder()
-                                .userPools(true)  // true? show the Email and Password UI
+                                .userPools(true) // true? show the Email and Password UI
                                 //.logoResId(R.drawable.mylogo) // Change the logo
                                 //.backgroundColor(Color.BLUE) // Change the backgroundColor
                                 //.isBackgroundColorFullScreen(true) // Full screen backgroundColor the backgroundColor full screenff
