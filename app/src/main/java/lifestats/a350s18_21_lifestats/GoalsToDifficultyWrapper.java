@@ -47,10 +47,19 @@ public class GoalsToDifficultyWrapper {
         thisMapping.put("Get more sleep", "1.0:1499817600000:1521807434000");
     }
 
+    private void initializeDatabase() {
+
+    }
+
     public String put(String key, String value) {
         thisMapping.put(key, value);
         updateDataBase();
         return value;
+    }
+
+    public void remove(String key) {
+        thisMapping.remove(key);
+        updateDataBase();
     }
 
     public void clear() {
@@ -67,6 +76,8 @@ public class GoalsToDifficultyWrapper {
     public String get(String s) {
         return thisMapping.get(s);
     }
+
+
 
     private void updateDataBase() {
         newDBValues = new HashSet<String>();
