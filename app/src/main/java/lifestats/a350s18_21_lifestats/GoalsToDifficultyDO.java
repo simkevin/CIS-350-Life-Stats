@@ -1,6 +1,4 @@
-package lifestats.a350s18_21_lifestats;
-
-import android.util.Log;
+package lifestats.a350s18_21_lifestats;;
 
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBAttribute;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBHashKey;
@@ -38,3 +36,4 @@ public class GoalsToDifficultyDO {
     }
 
 }
+
