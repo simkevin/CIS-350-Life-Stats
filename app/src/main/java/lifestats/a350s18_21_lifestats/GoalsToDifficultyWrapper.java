@@ -35,21 +35,16 @@ public class GoalsToDifficultyWrapper {
         return thisInstance;
     }
 
-    private GoalsToDifficultyWrapper (){
+    private GoalsToDifficultyWrapper () {
         thisMapping = new HashMap<String, String>();
         this.dynamoDBClient = new AmazonDynamoDBClient(AWSMobileClient.getInstance().getCredentialsProvider());
         this.dynamoDBMapper = DynamoDBMapper.builder()
                 .dynamoDBClient(dynamoDBClient)
                 .awsConfiguration(AWSMobileClient.getInstance().getConfiguration())
                 .build();
-        thisMapping.put("Eat Better", "3.0:1499817600000:1521807434000");
-        thisMapping.put("Make more money", "4.0:1499817600000:1521807434000");
-        thisMapping.put("Get more sleep", "1.0:1499817600000:1521807434000");
+        getDataBase();
     }
 
-    private void initializeDatabase() {
-
-    }
 
     public String put(String key, String value) {
         thisMapping.put(key, value);
@@ -77,11 +72,34 @@ public class GoalsToDifficultyWrapper {
         return thisMapping.get(s);
     }
 
+    private void getDataBase() {
+        final GoalsToDifficultyDO goalsToDifficultyDO = new GoalsToDifficultyDO();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                Set<String> entries = goalsToDifficultyDO.getGoalsToDifficulty();
+                if (entries != null) {
+                    for (String entry : entries) {
+                        String[] keyValue = entry.split(":");
+                        thisMapping.put(keyValue[0], keyValue[1]);
+                    }
+                }
+            }
+        }).start();
+    }
 
 
     private void updateDataBase() {
+
+        // If there are no entries to put into the database, then we return.
+        if (thisMapping.isEmpty()){
+            return;
+        }
         newDBValues = new HashSet<String>();
         final GoalsToDifficultyDO goalsToDifficultyDO = new GoalsToDifficultyDO();
+
 
         for (Map.Entry<String, String> entry : thisMapping.entrySet()) {
             String key = entry.getKey();
@@ -89,7 +107,7 @@ public class GoalsToDifficultyWrapper {
             String toAdd = key + ":" + value;
             newDBValues.add(toAdd);
         }
-        Log.d("In GoalsDO", "In GoalsDO and I am TACOOOOOOO");
+
 
         new Thread(new Runnable() {
             @Override
