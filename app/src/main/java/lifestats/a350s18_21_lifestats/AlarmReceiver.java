@@ -10,6 +10,9 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.app.NotificationManager;
 import android.app.NotificationChannel;
 import android.app.AlarmManager;
+import java.util.Calendar;
+import android.app.PendingIntent;
+
 
 
 /**
@@ -17,38 +20,27 @@ import android.app.AlarmManager;
  */
 
 public class AlarmReceiver extends BroadcastReceiver {
+    private AlarmManager alarmMgr;
+    private PendingIntent alarmIntent;
 
     @TargetApi(26)
     @Override
     public void onReceive(Context context, Intent intent) {
-
-            // Create the NotificationChannel, but only on API 26+ because
-            // the NotificationChannel class is new and not in the support library
-            CharSequence name = NotificationChannel.DEFAULT_CHANNEL_ID;
-            String description = "Default";
-            int importance = NotificationManagerCompat.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel(NotificationChannel.DEFAULT_CHANNEL_ID,
-                    name,  NotificationManager.IMPORTANCE_DEFAULT);
-            channel.setDescription(description);
-            // Register the channel with the system
-        NotificationManager notificationManager =
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.createNotificationChannel(channel);
-
-
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context,
-                NotificationChannel.DEFAULT_CHANNEL_ID)
-                .setContentTitle("Log Goals")
-                .setContentText("Remember to log your goals before going to bed.")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        setAlarm(context);
     }
 
-    private void setRecurringAlarm(Context context) {
+    private void setAlarm(Context context) {
+        alarmMgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
 
-        //AlarmManager alarms = AlarmManager.set(int type, long triggerAtMillis, PendingIntent operation)
-        //alarms.setInexactRepeating(AlarmManager.RTC_WAKEUP,
-         //       updateTime.getTimeInMillis(),
-         //       AlarmManager.INTERVAL_DAY, recurringDownload);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(2018, 4, 1, 3, 10, 0);
+
+        alarmMgr.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, alarmIntent);
+
     }
 
 }
