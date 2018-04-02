@@ -48,4 +48,8 @@ public class StressWrapper {
     public Float get(String s) {
         return thisMapping.get(s);
     }
+
+    public boolean containsKey(String key) {
+        return thisMapping.containsKey(key);
+    }
 }

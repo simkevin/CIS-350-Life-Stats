@@ -21,7 +21,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".AuthenticatorActivity">
+        <activity android:name=".ControlPanelActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -70,7 +70,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Summary" />
-        <activity android:name=".ControlPanelActivity" />
         <activity android:name=".AboutActivity" />
         <activity
             android:name=".QuantitativeDataEntry"

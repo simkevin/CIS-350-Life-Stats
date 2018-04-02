@@ -20,9 +20,9 @@ import java.util.HashMap;
 
 public class RecordsActivity extends AppCompatActivity {
 
-    private HashMap<String, Float> happinessData;
-    private HashMap<String, Float> productivityData;
-    private HashMap<String, Float> stressData;
+    private HappinessWrapper happinessData;
+    private ProductivityWrapper productivityData;
+    private StressWrapper stressData;
 
     private CaldroidFragment caldroidFragment;
     private final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -32,25 +32,14 @@ public class RecordsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_records);
 
-        // dummy data
-        happinessData = new HashMap<>();
-        productivityData = new HashMap<>();
-        stressData = new HashMap<>();
-
-        happinessData.put("2018-03-11 00:00:00", (float) 5.0);
-        productivityData.put("2018-03-11 00:00:00", (float) 2.0);
-        stressData.put("2018-03-11 00:00:00", (float) 1.0);
-
-        happinessData.put("2018-03-20 00:00:00", (float) 2.0);
-        productivityData.put("2018-03-20 00:00:00", (float) 4.0);
-        stressData.put("2018-03-20 00:00:00", (float) 5.0);
-
+        happinessData = HappinessWrapper.getInstance();
+        productivityData = ProductivityWrapper.getInstance();
+        stressData = StressWrapper.getInstance();
 
         // Setup caldroid fragment
         caldroidFragment = new CaldroidFragment();
 
         // Setup arguments
-
 
         // If Activity is created after rotation
         if (savedInstanceState != null) {

@@ -49,4 +49,8 @@ public class HappinessWrapper {
         return thisMapping.get(s);
     }
 
+    public boolean containsKey(String key) {
+        return thisMapping.containsKey(key);
+    }
+
 }
