@@ -88,12 +88,17 @@ public class StressWrapper {
                 StressDO stressDO = dynamoDBMapper.load(
                         StressDO.class,
                         provider.getIdentityId());
-                Set<String> entries = stressDO.getStress();
+                // If this user table hasn't been made yet, we need to create it
+                if (stressDO == null) {
+                    updateDataBase();
+                } else {
+                    Set<String> entries = stressDO.getStress();
 
-                if (entries != null) {
-                    for (String entry : entries) {
-                        String[] keyValue = entry.split(":");
-                        thisMapping.put(keyValue[0], Float.parseFloat(keyValue[1]));
+                    if (entries != null) {
+                        for (String entry : entries) {
+                            String[] keyValue = entry.split(":");
+                            thisMapping.put(keyValue[0], Float.parseFloat(keyValue[1]));
+                        }
                     }
                 }
             }

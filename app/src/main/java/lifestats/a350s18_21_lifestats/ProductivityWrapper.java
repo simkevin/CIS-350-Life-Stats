@@ -88,12 +88,17 @@ public class ProductivityWrapper {
                 ProductivityDO productivityDO = dynamoDBMapper.load(
                         ProductivityDO.class,
                         provider.getIdentityId());
-                Set<String> entries = productivityDO.getProductivity();
+                // If this user table hasn't been made yet, we need to create it
+                if (productivityDO == null) {
+                    updateDataBase();
+                } else {
+                    Set<String> entries = productivityDO.getProductivity();
 
-                if (entries != null) {
-                    for (String entry : entries) {
-                        String[] keyValue = entry.split(":");
-                        thisMapping.put(keyValue[0], Float.parseFloat(keyValue[1]));
+                    if (entries != null) {
+                        for (String entry : entries) {
+                            String[] keyValue = entry.split(":");
+                            thisMapping.put(keyValue[0], Float.parseFloat(keyValue[1]));
+                        }
                     }
                 }
             }
