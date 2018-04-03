@@ -81,6 +81,7 @@
         <activity android:name=".LifeStats" />
         <activity android:name=".GraphStats" />
         <activity android:name=".Notification"></activity>
+        <activity android:name=".ControlPanelActivity"></activity>
 
 
         <!-- ... -->
