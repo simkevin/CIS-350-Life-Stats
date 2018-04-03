@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -27,11 +28,22 @@ public class MoneySpent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_money_spent);
 
+        TextView dailySpending = findViewById(R.id.amountSpent);
         Button submitButton = findViewById(R.id.moneyButton);
         Button latestSpending = findViewById(R.id.latestSpending);
         Button moneyGraph = findViewById(R.id.moneyGraph);
         final EditText moneyText = findViewById(R.id.moneyText);
-        
+
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        Date date = new Date();
+        String currDate = dateFormat.format(date);
+        if (moneyPerDay.get(currDate) == null) {
+            dailySpending.setText("Amount spent today: $" + 0.00);
+        }
+        else {
+            dailySpending.setText("Amount spent today: $" + moneyPerDay.get(currDate));
+        }
+
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
