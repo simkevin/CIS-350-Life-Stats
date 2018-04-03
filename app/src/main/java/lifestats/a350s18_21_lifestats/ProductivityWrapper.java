@@ -1,24 +1,26 @@
 package lifestats.a350s18_21_lifestats;
+import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.mobile.client.AWSMobileClient;
+import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
 
 /**
  * Created by steph on 3/23/2018.
  */
 
 public class ProductivityWrapper {
-
     private HashMap<String,Float> thisMapping;
+    private HashSet<String> newDBValues;
+    private DynamoDBMapper dynamoDBMapper;
+    private AmazonDynamoDBClient dynamoDBClient;
     private static ProductivityWrapper thisInstance;
 
-    private ProductivityWrapper (){
-        thisMapping = new HashMap<String, Float>();
-        thisMapping.put("2017-02-13 00:00:00", (float) 3.0);
-        thisMapping.put("2017-07-13 00:00:00", (float) 2.0);
-        thisMapping.put("2018-01-24 00:00:00", (float) 2.5);
-    }
 
     public static ProductivityWrapper getInstance() {
         if (thisInstance == null) {
@@ -27,20 +29,43 @@ public class ProductivityWrapper {
         return thisInstance;
     }
 
-    public Float put(String key, Float value) {
+    private ProductivityWrapper () {
+        thisMapping = new HashMap<String, Float>();
+        this.dynamoDBClient = new AmazonDynamoDBClient(AWSMobileClient.getInstance().getCredentialsProvider());
+        this.dynamoDBMapper = DynamoDBMapper.builder()
+                .dynamoDBClient(dynamoDBClient)
+                .awsConfiguration(AWSMobileClient.getInstance().getConfiguration())
+                .build();
+        getDataBase();
+    }
+
+
+
+    public void put(String key, Float value) {
         thisMapping.put(key, value);
-        return value;
+        updateDataBase();
     }
 
     public int size() {
         return thisMapping.size();
     }
 
-    public void clear() {
-        thisMapping.clear();
+
+    public void remove(String key) {
+        thisMapping.remove(key);
+        updateDataBase();
     }
 
-    public Set<Map.Entry<String, Float>> entrySet() {
+    public void clear() {
+        thisMapping.clear();
+        updateDataBase();
+    }
+
+    public boolean containsKey(String key) {
+        return thisMapping.containsKey(key);
+    }
+
+    public Set<Map.Entry<String,Float>> entrySet() {
         return thisMapping.entrySet();
     }
 
@@ -50,7 +75,63 @@ public class ProductivityWrapper {
         return thisMapping.get(s);
     }
 
-    public boolean containsKey(String key) {
-        return thisMapping.containsKey(key);
+
+    private void getDataBase() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                // We set the userID, as it is the key
+                CognitoCachingCredentialsProvider provider =
+                        (CognitoCachingCredentialsProvider) AWSMobileClient.getInstance().getCredentialsProvider();
+                ProductivityDO productivityDO = dynamoDBMapper.load(
+                        ProductivityDO.class,
+                        provider.getIdentityId());
+                Set<String> entries = productivityDO.getProductivity();
+
+                if (entries != null) {
+                    for (String entry : entries) {
+                        String[] keyValue = entry.split(":");
+                        thisMapping.put(keyValue[0], Float.parseFloat(keyValue[1]));
+                    }
+                }
+            }
+        }).start();
     }
+
+
+    private void updateDataBase() {
+
+        // If there are no entries to put into the database, then we return.
+        if (thisMapping.isEmpty()){
+            return;
+        }
+        newDBValues = new HashSet<String>();
+        final ProductivityDO productivityDO = new ProductivityDO();
+
+
+        for (Map.Entry<String, Float> entry : thisMapping.entrySet()) {
+            String key = entry.getKey();
+            String value = Float.toString(entry.getValue());
+            String toAdd = key + ":" + value;
+            newDBValues.add(toAdd);
+        }
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // We set the usserID, as it is the key
+                CognitoCachingCredentialsProvider provider =
+                        (CognitoCachingCredentialsProvider) AWSMobileClient.getInstance().getCredentialsProvider();
+                productivityDO.setUserId(provider.getIdentityId());
+                productivityDO.setProductivity(newDBValues);
+                dynamoDBMapper.save(productivityDO);
+            }
+        }).start();
+
+
+    }
+
 }
