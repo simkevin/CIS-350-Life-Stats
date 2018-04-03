@@ -31,13 +31,7 @@ public class MoneySpent extends AppCompatActivity {
         Button latestSpending = findViewById(R.id.latestSpending);
         Button moneyGraph = findViewById(R.id.moneyGraph);
         final EditText moneyText = findViewById(R.id.moneyText);
-
-
-        moneyPerDay.put("01/31/1997", 2.50);
-        moneyPerDay.put("01/31/1998", 3.50);
-        moneyPerDay.put("11/13/2000", 9.50);
-        moneyPerDay.put("08/22/1998", 7.50);
-        moneyPerDay.put("08/31/1998", 32.50);
+        
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
