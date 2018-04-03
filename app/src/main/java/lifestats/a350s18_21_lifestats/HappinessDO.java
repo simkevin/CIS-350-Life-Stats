@@ -1,4 +1,4 @@
-package com.amazonaws.models.nosql;
+package lifestats.a350s18_21_lifestats;
 
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBAttribute;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBHashKey;

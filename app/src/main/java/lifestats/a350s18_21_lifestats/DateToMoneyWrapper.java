@@ -88,12 +88,16 @@ public class DateToMoneyWrapper {
                 DateToMoneyDO goalsToDifficultyDO = dynamoDBMapper.load(
                         DateToMoneyDO.class,
                         provider.getIdentityId());
-                Set<String> entries = goalsToDifficultyDO.getDateToMoney();
+                if (goalsToDifficultyDO == null) {
+                    updateDataBase();
+                } else {
+                    Set<String> entries = goalsToDifficultyDO.getDateToMoney();
 
-                if (entries != null) {
-                    for (String entry : entries) {
-                        String[] keyValue = entry.split(":");
-                        thisMapping.put(keyValue[0], Double.parseDouble(keyValue[1]));
+                    if (entries != null) {
+                        for (String entry : entries) {
+                            String[] keyValue = entry.split(":");
+                            thisMapping.put(keyValue[0], Double.parseDouble(keyValue[1]));
+                        }
                     }
                 }
             }

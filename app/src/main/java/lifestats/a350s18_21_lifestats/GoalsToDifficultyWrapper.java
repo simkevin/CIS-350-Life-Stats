@@ -83,14 +83,15 @@ public class GoalsToDifficultyWrapper {
                 GoalsToDifficultyDO goalsToDifficultyDO = dynamoDBMapper.load(
                         GoalsToDifficultyDO.class,
                         provider.getIdentityId());
-                Set<String> entries = goalsToDifficultyDO.getGoalsToDifficulty();
-                if (entries == null) {
-                    Log.d("It's null!", "Goals are null!");
-                }
-                if (entries != null) {
-                    for (String entry : entries) {
-                        String[] keyValue = entry.split(":");
-                        thisMapping.put(keyValue[0], keyValue[1]);
+                if (goalsToDifficultyDO == null){
+                    updateDataBase();
+                } else {
+                    Set<String> entries = goalsToDifficultyDO.getGoalsToDifficulty();
+                    if (entries != null) {
+                        for (String entry : entries) {
+                            String[] keyValue = entry.split(":");
+                            thisMapping.put(keyValue[0], keyValue[1]);
+                        }
                     }
                 }
             }
