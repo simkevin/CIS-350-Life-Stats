@@ -46,6 +46,10 @@ public class DateToMoneyWrapper {
         updateDataBase();
     }
 
+    public void put(String key, String value) {
+        thisMapping.put(key, Double.parseDouble(value));
+    }
+
     public void remove(String key) {
         thisMapping.remove(key);
         updateDataBase();
@@ -54,6 +58,10 @@ public class DateToMoneyWrapper {
     public void clear() {
         thisMapping.clear();
         updateDataBase();
+    }
+
+    public boolean containsKey(String key) {
+        return thisMapping.containsKey(key);
     }
 
     public Set<Map.Entry<String,Double>> entrySet() {
@@ -65,6 +73,8 @@ public class DateToMoneyWrapper {
     public Double get(String s) {
         return thisMapping.get(s);
     }
+
+    public String getString(String s) {return Double.toString(get(s));}
 
     private void getDataBase() {
 

@@ -19,7 +19,7 @@ import java.util.HashMap;
  
 public class MoneySpent extends AppCompatActivity {
 
-    private static HashMap<String, Double> moneyPerDay = new HashMap<String, Double>(); //This should be a database??
+    private DateToMoneyWrapper moneyPerDay = DateToMoneyWrapper.getInstance();
     //key = date, value = moneySpent
 
     @Override
