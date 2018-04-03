@@ -17,9 +17,9 @@ import java.util.HashMap;
 
 public class DataAnalysisActivity extends AppCompatActivity {
 
-    private HashMap<String, Float> happiness;
-    private HashMap<String, Float> productivity;
-    private HashMap<String, Float> stress;
+    private HappinessWrapper happinessData;
+    private ProductivityWrapper productivityData;
+    private StressWrapper stressData;
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -28,32 +28,19 @@ public class DataAnalysisActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_analysis);
 
-        happiness = new HashMap<>();
-        productivity = new HashMap<>();
-        stress = new HashMap<>();
-
-        happiness.put("2018-03-10 00:00:00", (float) 3.0);
-        happiness.put("2018-03-11 00:00:00", (float) 5.0);
-        happiness.put("2018-03-20 00:00:00", (float) 2.0);
-
-        productivity.put("2018-03-10 00:00:00", (float) 3.0);
-        productivity.put("2018-03-11 00:00:00", (float) 2.0);
-        productivity.put("2018-03-20 00:00:00", (float) 4.0);
-
-        stress.put("2018-03-10 00:00:00", (float) 3.0);
-        stress.put("2018-03-11 00:00:00", (float) 1.0);
-        stress.put("2018-03-20 00:00:00", (float) 5.0);
-
+        happinessData = HappinessWrapper.getInstance();
+        productivityData = ProductivityWrapper.getInstance();
+        stressData = StressWrapper.getInstance();
 
         GraphView tGraph = (GraphView) findViewById(R.id.trend_graph);
 
         // need to write helper function that loads datapoints into array
-        DataPoint[] dp1 = new DataPoint[happiness.size()];
+        DataPoint[] dp1 = new DataPoint[happinessData.size()];
         int i = 0;
-        for (String key: happiness.keySet()) {
+        for (String key: happinessData.keySet()) {
             try {
                 dp1[i] = new DataPoint(dateFormat.parse(key).getTime(),
-                        (double) happiness.get(key));
+                        (double) happinessData.get(key));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -66,12 +53,12 @@ public class DataAnalysisActivity extends AppCompatActivity {
         happyPoints.setColor(Color.RED);
         happyGraph.setTitle("Happiness");
 
-        DataPoint[] dp2 = new DataPoint[productivity.size()];
+        DataPoint[] dp2 = new DataPoint[productivityData.size()];
         int j = 0;
-        for (String key: productivity.keySet()) {
+        for (String key: productivityData.keySet()) {
             try {
                 dp2[j] = new DataPoint(dateFormat.parse(key).getTime(),
-                        (double) productivity.get(key));
+                        (double) productivityData.get(key));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -84,12 +71,12 @@ public class DataAnalysisActivity extends AppCompatActivity {
         productivePoints.setColor(Color.BLUE);
         productiveGraph.setTitle("Productivity");
 
-        DataPoint[] dp3 = new DataPoint[stress.size()];
+        DataPoint[] dp3 = new DataPoint[stressData.size()];
         int k = 0;
-        for (String key: stress.keySet()) {
+        for (String key: stressData.keySet()) {
             try {
                 dp3[k] = new DataPoint(dateFormat.parse(key).getTime(),
-                        (double) stress.get(key));
+                        (double) stressData.get(key));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
