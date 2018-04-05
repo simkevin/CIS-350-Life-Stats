@@ -20,7 +20,6 @@
             android:name=".MoneySpent"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".AuthenticatorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

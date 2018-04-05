@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.amazonaws.auth.CognitoCredentialsProvider;
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
@@ -14,6 +13,7 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import java.util.Map;
 import java.util.HashMap;
 import com.facebook.AccessToken;
+import com.facebook.login.LoginManager;
 
 
 public class ControlPanelActivity extends AppCompatActivity {
@@ -59,10 +59,10 @@ public class ControlPanelActivity extends AppCompatActivity {
     }
 
     public void logout(View view) {
-        //this.credentialsProvider.clear();
+        LoginManager.getInstance().logOut();
         //AWSMobileClient.getInstance().getCredentialsProvider().
-        //Intent intent = new Intent(this, ControlPanelActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, AuthenticatorActivity.class);
+        startActivity(intent);
     }
 
     public void openLifeStats(View view) {
