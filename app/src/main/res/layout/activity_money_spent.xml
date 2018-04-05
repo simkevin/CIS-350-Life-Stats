@@ -81,18 +81,43 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amountSpent" />
+        app:layout_constraintTop_toBottomOf="@+id/remainingBudget" />
 
     <TextView
         android:id="@+id/amountSpent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Amount spent today: "
-        app:layout_constraintBottom_toTopOf="@+id/enterCashSpent"
+        app:layout_constraintBottom_toTopOf="@+id/remainingBudget"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/moneySpentTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/remainingBudget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weekly budget left: "
+        app:layout_constraintBottom_toTopOf="@+id/enterCashSpent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amountSpent" />
+
+    <Button
+        android:id="@+id/budgetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="openSetBudget"
+        android:text="Set Budget"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

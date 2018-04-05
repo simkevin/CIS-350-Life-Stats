@@ -25,10 +25,12 @@ public class MoneySpent extends AppCompatActivity {
         setContentView(R.layout.activity_money_spent);
 
         TextView dailySpending = findViewById(R.id.amountSpent);
+        TextView remainingBudget = findViewById(R.id.remainingBudget);
         Button submitButton = findViewById(R.id.moneyButton);
         Button latestSpending = findViewById(R.id.latestSpending);
         Button moneyGraph = findViewById(R.id.moneyGraph);
         final EditText moneyText = findViewById(R.id.moneyText);
+
 
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         Date date = new Date();
@@ -108,5 +110,10 @@ public class MoneySpent extends AppCompatActivity {
         });
 
 
+    }
+
+    public void openSetBudget(View view) {
+        Intent intent = new Intent(this, BudgetActivity.class);
+        startActivity(intent);
     }
 }
