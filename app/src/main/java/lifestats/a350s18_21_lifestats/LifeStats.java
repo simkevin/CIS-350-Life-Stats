@@ -39,7 +39,7 @@ public class LifeStats extends AppCompatActivity {
         spinnerStatTwo = (Spinner) findViewById(R.id.spinnerStatTwo);
         ArrayAdapter<CharSequence> statsOne = ArrayAdapter.createFromResource(this,
                 R.array.stat_names, android.R.layout.simple_spinner_item);
-        statsOne.setDropDownViewResource(android.R.layouct.simple_spinner_dropdown_item);
+        statsOne.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         ArrayAdapter<CharSequence> statsTwo = ArrayAdapter.createFromResource(this,
                 R.array.stat_names, android.R.layout.simple_spinner_item);
@@ -56,6 +56,15 @@ public class LifeStats extends AppCompatActivity {
 
         Intent intent = new Intent(this, GraphStats.class);
         intent.putExtra("goalValue", goalAssociatedValues);
+        startActivity(intent);
+    }
+
+    public void openCorrelateGraph(View view) {
+        String firstStat = spinnerStatOne.getSelectedItem().toString();
+        String secondStat = spinnerStatTwo.getSelectedItem().toString();
+        Intent intent = new Intent(this, CorrelateGraph.class);
+        intent.putExtra("statOne", firstStat);
+        intent.putExtra("statTwo", secondStat);
         startActivity(intent);
     }
 
