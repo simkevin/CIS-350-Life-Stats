@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Date;
 
 
 /**
@@ -46,8 +47,7 @@ public class GoalsToDifficultyWrapper {
 
 
     public String put(String key, String value) {
-        thisMapping.put(key, value);
-        updateDataBase();
+        thisMapping.put(key, value + ":" + (new Date()).getTime() + ":" + 0);
         return value;
     }
 
@@ -83,10 +83,14 @@ public class GoalsToDifficultyWrapper {
                 GoalsToDifficultyDO goalsToDifficultyDO = dynamoDBMapper.load(
                         GoalsToDifficultyDO.class,
                         provider.getIdentityId());
+                Log.d("Your ID", provider.getIdentityId());
+
                 if (goalsToDifficultyDO == null){
+                    Log.d("Its null", "Its null");
                     updateDataBase();
                 } else {
                     Set<String> entries = goalsToDifficultyDO.getGoalsToDifficulty();
+                    Log.d("the entries", entries.toString());
                     if (entries != null) {
                         for (String entry : entries) {
                             String[] keyValue = entry.split(":");

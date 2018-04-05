@@ -53,6 +53,7 @@ public class ControlPanelActivity extends AppCompatActivity {
                 .dynamoDBClient(dynamoDBClient)
                 .awsConfiguration(AWSMobileClient.getInstance().getConfiguration())
                 .build();
+        initializeDataBase();
         setContentView(R.layout.activity_control_panel);
     }
 
@@ -118,4 +119,15 @@ public class ControlPanelActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /*
+     * This method calls the single constructors which fetches the data from the database
+     * premptively so that it is ready to use.
+     */
+    private static void initializeDataBase() {
+        GoalsToDifficultyWrapper.getInstance();
+        DateToMoneyWrapper.getInstance();
+        HappinessWrapper.getInstance();
+        StressWrapper.getInstance();
+        ProductivityWrapper.getInstance();
+    }
 }
