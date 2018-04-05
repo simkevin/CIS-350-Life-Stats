@@ -7,24 +7,27 @@
     tools:context="lifestats.a350s18_21_lifestats.ControlPanelActivity">
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="241dp"
-        android:layout_height="26dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginTop="8dp"
+        android:id="@+id/instruction_textView"
+        android:layout_width="174dp"
+        android:layout_height="31dp"
         android:text="Delete any goal with a click."
+        app:layout_constraintBottom_toTopOf="@+id/ArchiveList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goalsHeader_textView" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="304dp"
+        android:id="@+id/goalsHeader_textView"
+        android:layout_width="255dp"
         android:layout_height="55dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:text="Goals Archive"
         android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/instruction_textView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -36,21 +39,21 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/goalAdd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instruction_textView"
         app:layout_constraintVertical_bias="0.614" />
 
     <Button
         android:id="@+id/goalAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="128dp"
+        android:layout_marginBottom="8dp"
         android:text="Add a Goal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ArchiveList"
+        tools:layout_editor_absoluteX="128dp" />
 
 </android.support.constraint.ConstraintLayout>

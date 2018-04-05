@@ -1,20 +1,15 @@
 package lifestats.a350s18_21_lifestats;
 
 import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class moneyChartChooser extends AppCompatActivity {
+public class MoneyChartChooser extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +34,7 @@ public class moneyChartChooser extends AppCompatActivity {
         day.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent graphScreen = new Intent(moneyChartChooser.this, MoneyChart.class);
+                Intent graphScreen = new Intent(MoneyChartChooser.this, MoneyChart.class);
                 /*dateList.add("1/12/1996");
                 dateList.add("1/22/1993");
                 dateList.add("3/22/1999");
@@ -100,7 +95,7 @@ public class moneyChartChooser extends AppCompatActivity {
                 }*/
 
 
-                Intent graphScreen = new Intent(moneyChartChooser.this, MonthMoneyChart.class);
+                Intent graphScreen = new Intent(MoneyChartChooser.this, MonthMoneyChart.class);
                 graphScreen.putExtra("monthList", monthList);
                 graphScreen.putExtra("monthAmountList", monthAmountList);
                 graphScreen.putExtra("dateList", dateList);
@@ -156,7 +151,7 @@ public class moneyChartChooser extends AppCompatActivity {
 
 
 
-                Intent graphScreen = new Intent(moneyChartChooser.this, YearMoneyChart.class);
+                Intent graphScreen = new Intent(MoneyChartChooser.this, YearMoneyChart.class);
                 graphScreen.putExtra("yearList", yearList);
                 graphScreen.putExtra("yearAmountList", yearAmountList);
                 graphScreen.putExtra("dateList", dateList);

@@ -7,17 +7,18 @@
     tools:context="lifestats.a350s18_21_lifestats.LifeStats">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/graphStats_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="361dp"
         android:layout_marginEnd="158dp"
         android:layout_marginStart="138dp"
         android:layout_marginTop="102dp"
-        android:text="Graph Stats"
         android:onClick="openGraphStats"
+        android:text="Graph Stats"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

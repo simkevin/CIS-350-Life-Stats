@@ -8,7 +8,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class pastMoney extends AppCompatActivity {
+public class PastMoney extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

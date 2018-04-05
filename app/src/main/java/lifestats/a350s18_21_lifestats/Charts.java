@@ -17,7 +17,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
 
-public class charts extends AppCompatActivity {
+public class Charts extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

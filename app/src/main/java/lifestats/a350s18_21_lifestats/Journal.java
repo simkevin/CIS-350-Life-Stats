@@ -21,9 +21,7 @@ public class Journal extends AppCompatActivity {
         setContentView(R.layout.activity_journal);
 
         final EditText journalEntry = (EditText) findViewById(R.id.journalEntry);
-        TextView journalHelpText = (TextView) findViewById(R.id.journalHelpText);
         Button submitButton = (Button) findViewById(R.id.submit);
-        TextView journalTextView = (TextView) findViewById(R.id.journalTextView);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override

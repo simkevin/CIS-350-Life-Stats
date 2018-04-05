@@ -28,11 +28,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".pastGoals"
+            android:name=".PastGoals"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".charts"
+            android:name=".Charts"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape" />
         <receiver
@@ -42,7 +42,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".pastMoney"
+            android:name=".PastMoney"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
@@ -50,7 +50,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".moneyChartChooser"
+            android:name=".MoneyChartChooser"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_money_chart_chooser"
             android:screenOrientation="portrait"

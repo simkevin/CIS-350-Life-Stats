@@ -13,7 +13,6 @@ import com.jjoe64.graphview.series.PointsGraphSeries;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
 
 public class DataAnalysisActivity extends AppCompatActivity {
 

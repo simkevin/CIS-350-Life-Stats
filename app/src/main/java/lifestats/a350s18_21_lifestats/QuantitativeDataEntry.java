@@ -1,21 +1,14 @@
 package lifestats.a350s18_21_lifestats;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
-import java.io.StreamCorruptedException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 
 
 public class QuantitativeDataEntry extends AppCompatActivity {

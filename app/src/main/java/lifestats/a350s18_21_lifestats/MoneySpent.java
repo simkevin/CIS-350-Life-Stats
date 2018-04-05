@@ -6,18 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
- 
+
 public class MoneySpent extends AppCompatActivity {
 
     private DateToMoneyWrapper moneyPerDay = DateToMoneyWrapper.getInstance();
@@ -86,7 +82,7 @@ public class MoneySpent extends AppCompatActivity {
                     days.add(s + ": \t\t\t\t$" + moneyPerDay.get(s));
                     money.add(moneyPerDay.get(s));
                 }
-                Intent latestScreen = new Intent(MoneySpent.this, pastMoney.class);
+                Intent latestScreen = new Intent(MoneySpent.this, PastMoney.class);
                 latestScreen.putExtra("dateList", days);
                 latestScreen.putExtra("moneyList", money);
                 startActivity(latestScreen);
@@ -104,7 +100,7 @@ public class MoneySpent extends AppCompatActivity {
                     days.add(s);
                     money.add(Double.toString(moneyPerDay.get(s)));
                 }
-                Intent graphScreen = new Intent(MoneySpent.this, moneyChartChooser.class);
+                Intent graphScreen = new Intent(MoneySpent.this, MoneyChartChooser.class);
                 graphScreen.putExtra("dateList", days);
                 graphScreen.putExtra("moneyList", money);
                 startActivity(graphScreen);

@@ -10,7 +10,6 @@ import android.widget.RatingBar;
 import java.util.Date;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class GoalsMain extends AppCompatActivity {
     private static GoalsToDifficultyWrapper goalsToDifficulty =
@@ -56,7 +55,7 @@ public class GoalsMain extends AppCompatActivity {
                     values.add(s + ", \t\t\t\tDifficulty: " + difficulty);
                     ratings.add(difficulty);
                 }
-                Intent pastScreen = new Intent(GoalsMain.this, pastGoals.class);
+                Intent pastScreen = new Intent(GoalsMain.this, PastGoals.class);
                 pastScreen.putExtra("goalList", values);
                 pastScreen.putExtra("ratingList", ratings);
                 startActivity(pastScreen);
@@ -66,7 +65,7 @@ public class GoalsMain extends AppCompatActivity {
         chartGenerator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent chartScreen = new Intent(GoalsMain.this, charts.class);
+                Intent chartScreen = new Intent(GoalsMain.this, Charts.class);
                 ArrayList<String>  goals = new ArrayList<String>();
                 ArrayList<String>  ratings = new ArrayList<String>();
                 for (String s : goalsToDifficulty.keySet()) {

@@ -5,7 +5,6 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -14,7 +13,6 @@ import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 public class GraphStats extends AppCompatActivity {
