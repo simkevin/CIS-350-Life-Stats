@@ -21,6 +21,7 @@ public class MoneySpent extends AppCompatActivity {
     private DateToMoneyWrapper moneyPerDay = DateToMoneyWrapper.getInstance();
     //key = date, value = moneySpent
     private double weeklyExpenses;
+    private BudgetWrapper budgetWrapper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +46,16 @@ public class MoneySpent extends AppCompatActivity {
             dailySpending.setText("Amount spent today: $" + moneyPerDay.get(currDate));
         }
 
+        budgetWrapper = BudgetWrapper.getInstance();
         weeklyExpenses = calculateWeeklyTotal();
-        double remainder = Budget.getBudget() - weeklyExpenses;
-        remainingBudget.setText("Weekly budget left: $" + remainder);
+        double remainder;
+        if (!budgetWrapper.containsKey("budget")) {
+            remainingBudget.setText("Weekly budget left: $" + 0.00);
+        }
+        else {
+            remainder = budgetWrapper.get("budget") - weeklyExpenses;
+            remainingBudget.setText("Weekly budget left: $" + remainder);
+        }
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override

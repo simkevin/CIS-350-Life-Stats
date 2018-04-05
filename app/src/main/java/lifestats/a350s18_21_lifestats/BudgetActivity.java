@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 public class BudgetActivity extends AppCompatActivity {
 
-    private double budget;
+    private BudgetWrapper budget;
     private EditText budgetText;
 
     @Override
@@ -16,13 +16,15 @@ public class BudgetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget);
 
+        budget = BudgetWrapper.getInstance();
         budgetText = findViewById(R.id.budgetEntry);
     }
 
     public void setBudget(View view) {
         String input = budgetText.getText().toString();
-        budget = Double.parseDouble(input);
-        Budget.setBudget(budget);
+        Double value = Double.parseDouble(input);
+        budget.put("budget", value);
+
         Intent intent = new Intent(this, MoneySpent.class);
         startActivity(intent);
     }
