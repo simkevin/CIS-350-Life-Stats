@@ -8,6 +8,7 @@ import com.amazonaws.mobile.auth.ui.SignInUI;
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobile.client.AWSStartupHandler;
 import com.amazonaws.mobile.client.AWSStartupResult;
+import com.amazonaws.mobile.auth.facebook.FacebookButton;
 
 import com.amazonaws.mobile.auth.ui.AuthUIConfiguration;
 
@@ -26,7 +27,8 @@ public class AuthenticatorActivity extends Activity {
             public void onComplete(final AWSStartupResult awsStartupResult) {
                 AuthUIConfiguration config =
                         new AuthUIConfiguration.Builder()
-                                .userPools(true)  // true? show the Email and Password UI
+                                //.userPools(true) // true? show the Email and Password UI
+                                .signInButton(FacebookButton.class)
                                 //.logoResId(R.drawable.mylogo) // Change the logo
                                 //.backgroundColor(Color.BLUE) // Change the backgroundColor
                                 //.isBackgroundColorFullScreen(true) // Full screen backgroundColor the backgroundColor full screenff

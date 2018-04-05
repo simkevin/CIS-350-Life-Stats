@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 import java.util.Set;
+import android.util.Log;
 
 public class LifeStats extends AppCompatActivity {
     private Spinner spinner;
@@ -22,6 +23,7 @@ public class LifeStats extends AppCompatActivity {
         int i = 0;
         for(String str : goals) {
             goalStrings[i] = str;
+            Log.d("Goal", str);
             i++;
         }
 
