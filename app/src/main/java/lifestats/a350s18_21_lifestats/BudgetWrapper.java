@@ -14,23 +14,23 @@ import java.util.Set;
  * Created by steph on 3/23/2018.
  */
 
-public class ProductivityWrapper {
-    private HashMap<String,Float> thisMapping;
+public class BudgetWrapper {
+    private HashMap<String,Double> thisMapping;
     private HashSet<String> newDBValues;
     private DynamoDBMapper dynamoDBMapper;
     private AmazonDynamoDBClient dynamoDBClient;
-    private static ProductivityWrapper thisInstance;
+    private static BudgetWrapper thisInstance;
 
 
-    public static ProductivityWrapper getInstance() {
+    public static BudgetWrapper getInstance() {
         if (thisInstance == null) {
-            thisInstance = new ProductivityWrapper();
+            thisInstance = new BudgetWrapper();
         }
         return thisInstance;
     }
 
-    private ProductivityWrapper () {
-        thisMapping = new HashMap<String, Float>();
+    private BudgetWrapper () {
+        thisMapping = new HashMap<String, Double>();
         this.dynamoDBClient = new AmazonDynamoDBClient(AWSMobileClient.getInstance().getCredentialsProvider());
         this.dynamoDBMapper = DynamoDBMapper.builder()
                 .dynamoDBClient(dynamoDBClient)
@@ -41,7 +41,7 @@ public class ProductivityWrapper {
 
 
 
-    public void put(String key, Float value) {
+    public void put(String key, Double value) {
         thisMapping.put(key, value);
         updateDataBase();
     }
@@ -65,13 +65,13 @@ public class ProductivityWrapper {
         return thisMapping.containsKey(key);
     }
 
-    public Set<Map.Entry<String,Float>> entrySet() {
+    public Set<Map.Entry<String,Double>> entrySet() {
         return thisMapping.entrySet();
     }
 
     public Set<String> keySet() {return thisMapping.keySet();}
 
-    public Float get(String s) {
+    public Double get(String s) {
         return thisMapping.get(s);
     }
 
@@ -85,19 +85,20 @@ public class ProductivityWrapper {
                 // We set the userID, as it is the key
                 CognitoCachingCredentialsProvider provider =
                         (CognitoCachingCredentialsProvider) AWSMobileClient.getInstance().getCredentialsProvider();
-                ProductivityDO productivityDO = dynamoDBMapper.load(
-                        ProductivityDO.class,
+                BudgetDO budgetDO = dynamoDBMapper.load(
+                        BudgetDO.class,
                         provider.getIdentityId());
+
                 // If this user table hasn't been made yet, we need to create it
-                if (productivityDO == null) {
+                if (budgetDO == null) {
                     updateDataBase();
                 } else {
-                    Set<String> entries = productivityDO.getProductivity();
+                    Set<String> entries = budgetDO.getWeekToBudget();
 
                     if (entries != null) {
                         for (String entry : entries) {
                             String[] keyValue = entry.split("&");
-                            thisMapping.put(keyValue[0], Float.parseFloat(keyValue[1]));
+                            thisMapping.put(keyValue[0], Double.parseDouble(keyValue[1]));
                         }
                     }
                 }
@@ -113,12 +114,12 @@ public class ProductivityWrapper {
             return;
         }
         newDBValues = new HashSet<String>();
-        final ProductivityDO productivityDO = new ProductivityDO();
+        final BudgetDO budgetDO = new BudgetDO();
 
 
-        for (Map.Entry<String, Float> entry : thisMapping.entrySet()) {
+        for (Map.Entry<String, Double> entry : thisMapping.entrySet()) {
             String key = entry.getKey();
-            String value = Float.toString(entry.getValue());
+            String value = Double.toString(entry.getValue());
             String toAdd = key + "&" + value;
             newDBValues.add(toAdd);
         }
@@ -127,12 +128,12 @@ public class ProductivityWrapper {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                // We set the usserID, as it is the key
+                // We set the userID, as it is the key
                 CognitoCachingCredentialsProvider provider =
                         (CognitoCachingCredentialsProvider) AWSMobileClient.getInstance().getCredentialsProvider();
-                productivityDO.setUserId(provider.getIdentityId());
-                productivityDO.setProductivity(newDBValues);
-                dynamoDBMapper.save(productivityDO);
+                budgetDO.setUserId(provider.getIdentityId());
+                budgetDO.setWeekToBudget(newDBValues);
+                dynamoDBMapper.save(budgetDO);
             }
         }).start();
 

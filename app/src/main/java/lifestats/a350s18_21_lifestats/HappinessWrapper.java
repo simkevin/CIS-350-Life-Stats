@@ -97,7 +97,7 @@ public class HappinessWrapper {
 
                     if (entries != null) {
                         for (String entry : entries) {
-                            String[] keyValue = entry.split(":");
+                            String[] keyValue = entry.split("&");
                             thisMapping.put(keyValue[0], Float.parseFloat(keyValue[1]));
                         }
                     }
@@ -120,7 +120,7 @@ public class HappinessWrapper {
         for (Map.Entry<String, Float> entry : thisMapping.entrySet()) {
             String key = entry.getKey();
             String value = Float.toString(entry.getValue());
-            String toAdd = key + ":" + value;
+            String toAdd = key + "&" + value;
             newDBValues.add(toAdd);
         }
 

@@ -14,6 +14,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import java.util.Map;
+import java.util.Date;
+import android.util.Log;
 
 public class GraphStats extends AppCompatActivity {
 
@@ -24,8 +26,14 @@ public class GraphStats extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         Intent thisIntent = getIntent();
         String goalValues = thisIntent.getStringExtra("goalValue");
-        long startValue = Long.parseLong(goalValues.split(":")[1]);
-        long endValue = Long.parseLong(goalValues.split(":")[2]);
+        long startValue = Long.parseLong(goalValues.split("&")[1]);
+        long endValue;
+        if (goalValues.split("&").equals("0")) {
+            endValue = (new Date()).getTime();
+        } else {
+            endValue = Long.parseLong(goalValues.split("&")[2]);
+        }
+
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
         DataPoint[] happiness = new DataPoint[HappinessWrapper.getInstance().size()];
@@ -40,6 +48,10 @@ public class GraphStats extends AppCompatActivity {
             }
             i++;
         }
+
+
+
+
         LineGraphSeries<DataPoint> happinessLine = new LineGraphSeries<>(happiness);
         happinessLine.setColor(Color.YELLOW);
         happinessLine.setTitle("Happiness");
@@ -78,6 +90,7 @@ public class GraphStats extends AppCompatActivity {
         LineGraphSeries<DataPoint> stressLine = new LineGraphSeries<>(stress);
         stressLine.setColor(Color.RED);
         stressLine.setTitle("Stress");
+
 
         graph.addSeries(happinessLine);
         graph.addSeries(productivityLine);

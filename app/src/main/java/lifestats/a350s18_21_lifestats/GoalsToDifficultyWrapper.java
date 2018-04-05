@@ -46,12 +46,16 @@ public class GoalsToDifficultyWrapper {
 
 
     public String put(String key, String value) {
-        thisMapping.put(key, value + ":" + (new Date()).getTime() + ":" + 0);
+        thisMapping.put(key, value + "&" + (new Date()).getTime() + "&" + 0);
+        updateDataBase();
         return value;
     }
 
     public void remove(String key) {
-        thisMapping.remove(key);
+        String value = thisMapping.get(key);
+        String newValue = value.split("&")[0] + "&" + value.split("&")[1] + "&" +
+                (new Date()).getTime();
+        thisMapping.put(key, newValue);
         updateDataBase();
     }
 
@@ -68,6 +72,14 @@ public class GoalsToDifficultyWrapper {
 
     public String get(String s) {
         return thisMapping.get(s);
+    }
+
+    public String getStart(String s) {
+        return thisMapping.get(s).split("&")[1];
+    }
+
+    public String getEnd(String s) {
+        return thisMapping.get(s).split("&")[2];
     }
 
     private void getDataBase() {
