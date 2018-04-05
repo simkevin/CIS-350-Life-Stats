@@ -12,6 +12,7 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 
+
 public class ControlPanelActivity extends AppCompatActivity {
 
     private DynamoDBMapper dynamoDBMapper;
@@ -30,7 +31,6 @@ public class ControlPanelActivity extends AppCompatActivity {
                 Regions.US_EAST_1
         );
 
-
         AWSMobileClient.getInstance().setCredentialsProvider(credentialsProvider);
         this.dynamoDBClient = new AmazonDynamoDBClient(AWSMobileClient.getInstance().getCredentialsProvider());
         this.dynamoDBMapper = DynamoDBMapper.builder()
@@ -38,6 +38,14 @@ public class ControlPanelActivity extends AppCompatActivity {
                 .awsConfiguration(AWSMobileClient.getInstance().getConfiguration())
                 .build();
         setContentView(R.layout.activity_control_panel);
+
+    }
+
+    public void logout(View view) {
+        //this.credentialsProvider.clear();
+        //AWSMobileClient.getInstance().getCredentialsProvider().
+        //Intent intent = new Intent(this, ControlPanelActivity.class);
+        //startActivity(intent);
     }
 
     public void openLifeStats(View view) {

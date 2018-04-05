@@ -26,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
         //dbMapper = DynamoDBMapper.builder()
         //        .dynamoDBClient(dynamoDBClient).
         //                awsConfiguration(AWSMobileClient.getInstance().getConfiguration()).build();
+        /*
         credentials = (CognitoCredentialsProvider) AWSMobileClient.getInstance().getCredentialsProvider();
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);*/
     }
 
     public void logout(View v) {
