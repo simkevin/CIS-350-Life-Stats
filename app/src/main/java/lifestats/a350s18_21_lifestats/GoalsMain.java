@@ -37,8 +37,7 @@ public class GoalsMain extends AppCompatActivity {
                 if (goalText.getText().toString().matches(".*\\w.*")) {
                     String goal = goalText.getText().toString();
                     String rate = String.valueOf(difficultyBar.getRating());
-                    String time = "" + (new Date().getTime());
-                    goalsToDifficulty.put(goal, rate + ":" + time + ":0");
+                    goalsToDifficulty.put(goal, rate);
                 }
 
                 goalText.setText("");
@@ -52,9 +51,11 @@ public class GoalsMain extends AppCompatActivity {
                 ArrayList<String>  values = new ArrayList<String>();
                 ArrayList<String>  ratings = new ArrayList<String>();
                 for (String s : goalsToDifficulty.keySet()) {
-                    String difficulty = goalsToDifficulty.get(s).split(":")[0];
-                    values.add(s + ", \t\t\t\tDifficulty: " + difficulty);
-                    ratings.add(difficulty);
+                    String difficulty = goalsToDifficulty.get(s).split("&")[0];
+                    if (goalsToDifficulty.get(s).split("&")[2].equals("0")) {
+                        values.add(s + ", \t\t\t\tDifficulty: " + difficulty);
+                        ratings.add(difficulty);
+                    }
                 }
                 Intent pastScreen = new Intent(GoalsMain.this, pastGoals.class);
                 pastScreen.putExtra("goalList", values);
@@ -70,8 +71,10 @@ public class GoalsMain extends AppCompatActivity {
                 ArrayList<String>  goals = new ArrayList<String>();
                 ArrayList<String>  ratings = new ArrayList<String>();
                 for (String s : goalsToDifficulty.keySet()) {
-                    goals.add(s);
-                    ratings.add(goalsToDifficulty.get(s).split(":")[0]);
+                    if (goalsToDifficulty.get(s).split("&")[2].equals("0")) {
+                        goals.add(s);
+                        ratings.add(goalsToDifficulty.get(s).split("&")[0]);
+                    }
                 }
                 chartScreen.putExtra("goalList", goals);
                 chartScreen.putExtra("ratingList", ratings);

@@ -16,6 +16,8 @@ import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Date;
+import android.util.Log;
 
 public class GraphStats extends AppCompatActivity {
 
@@ -26,13 +28,21 @@ public class GraphStats extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         Intent thisIntent = getIntent();
         String goalValues = thisIntent.getStringExtra("goalValue");
-        long startValue = Long.parseLong(goalValues.split(":")[1]);
-        long endValue = Long.parseLong(goalValues.split(":")[2]);
+        long startValue = Long.parseLong(goalValues.split("&")[1]);
+        long endValue;
+        if (goalValues.split("&").equals("0")) {
+            endValue = (new Date()).getTime();
+        } else {
+            endValue = Long.parseLong(goalValues.split("&")[2]);
+        }
+
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
         DataPoint[] happiness = new DataPoint[HappinessWrapper.getInstance().size()];
         int i = 0;
         for(Map.Entry<String, Float> entry : HappinessWrapper.getInstance().entrySet()) {
+            Log.d("Time happiness", entry.getKey());
+            Log.d("Amount happiness", "" + entry.getValue());
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             try {
                 happiness[i] = new DataPoint(dateFormat.parse(entry.getKey()).
@@ -42,6 +52,10 @@ public class GraphStats extends AppCompatActivity {
             }
             i++;
         }
+
+
+
+
         LineGraphSeries<DataPoint> happinessLine = new LineGraphSeries<>(happiness);
         happinessLine.setColor(Color.YELLOW);
         happinessLine.setTitle("Happiness");
@@ -81,14 +95,17 @@ public class GraphStats extends AppCompatActivity {
         stressLine.setColor(Color.RED);
         stressLine.setTitle("Stress");
 
+        Log.d("Happiness Line", happinessLine.toString());
+
         graph.addSeries(happinessLine);
         graph.addSeries(productivityLine);
         graph.addSeries(stressLine);
         graph.getLegendRenderer().setVisible(true);
         graph.getGridLabelRenderer().setLabelFormatter(new
                 DateAsXAxisLabelFormatter(this));
-        graph.getViewport().setMinX(startValue);
-        graph.getViewport().setMaxX(endValue);
-        graph.getViewport().setXAxisBoundsManual(true);
+        //graph.getViewport().setMinX(startValue);
+        //graph.getViewport().setMaxX(endValue);
+        //graph.getViewport().setXAxisBoundsManual(true);
+
     }
 }

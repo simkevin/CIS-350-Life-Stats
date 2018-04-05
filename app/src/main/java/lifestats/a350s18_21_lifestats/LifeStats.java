@@ -23,7 +23,6 @@ public class LifeStats extends AppCompatActivity {
         int i = 0;
         for(String str : goals) {
             goalStrings[i] = str;
-            Log.d("Goal", str);
             i++;
         }
 
