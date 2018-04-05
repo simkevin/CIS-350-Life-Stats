@@ -27,10 +27,10 @@
     <!-- Strings related to Summary -->
     <string name="summary_welcome_message">LifeStats Summaries</string>
     <string name="choose_summary">Choose Summary Type</string>
-    <string name="happiness_average">Happiness: AVG</string>
-    <string name="productivity_average">Productivity: AVG</string>
-    <string name="stress_average">Stress: AVG</string>
-    <string name="sleep_average">Sleep: AVG</string>
+    <string name="happiness_average">Happiness Average: </string>
+    <string name="productivity_average">Productivity Average: </string>
+    <string name="stress_average">Stress Average: </string>
+    <string name="sleep_average">Sleep Average: </string>
     <string-array name="summary_options_array">
         <item>All-time</item>
         <item>Year</item>

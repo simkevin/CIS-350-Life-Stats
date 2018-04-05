@@ -11,6 +11,9 @@ import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
+import java.util.Map;
+import java.util.HashMap;
+import com.facebook.AccessToken;
 
 public class ControlPanelActivity extends AppCompatActivity {
 
@@ -22,13 +25,26 @@ public class ControlPanelActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // This initializes the dynamo db mapper
 
-       this.credentialsProvider = new CognitoCachingCredentialsProvider(
+        // this creates the cognito credential provider
+        this.credentialsProvider = new CognitoCachingCredentialsProvider(
                 getApplicationContext(),
                 "us-east-1:2ab9a7af-b70a-491b-8f1f-a773f3cf6557",
                 Regions.US_EAST_1
         );
+
+        Map<String, String> logins = new HashMap<String, String>();
+        logins.put("graph.facebook.com", AccessToken.getCurrentAccessToken().getToken());
+        credentialsProvider.setLogins(logins);
+
+
+        // Async thread to get the credentials from amazon
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                credentialsProvider.refresh();
+            }
+        }).start();
 
 
         AWSMobileClient.getInstance().setCredentialsProvider(credentialsProvider);
@@ -37,6 +53,7 @@ public class ControlPanelActivity extends AppCompatActivity {
                 .dynamoDBClient(dynamoDBClient)
                 .awsConfiguration(AWSMobileClient.getInstance().getConfiguration())
                 .build();
+        initializeDataBase();
         setContentView(R.layout.activity_control_panel);
     }
 
@@ -102,4 +119,15 @@ public class ControlPanelActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /*
+     * This method calls the single constructors which fetches the data from the database
+     * premptively so that it is ready to use.
+     */
+    private static void initializeDataBase() {
+        GoalsToDifficultyWrapper.getInstance();
+        DateToMoneyWrapper.getInstance();
+        HappinessWrapper.getInstance();
+        StressWrapper.getInstance();
+        ProductivityWrapper.getInstance();
+    }
 }

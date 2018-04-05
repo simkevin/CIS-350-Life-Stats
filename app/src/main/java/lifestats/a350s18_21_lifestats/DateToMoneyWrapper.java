@@ -1,4 +1,7 @@
 package lifestats.a350s18_21_lifestats;
+
+import android.util.Log;
+
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
@@ -9,28 +12,26 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-
 /**
- * Created by steph on 3/23/2018.
+ * Created by stephen on 4/1/18.
  */
 
-public class StressWrapper {
-    private HashMap<String,Float> thisMapping;
+public class DateToMoneyWrapper {
+    private HashMap<String,Double> thisMapping;
     private HashSet<String> newDBValues;
     private DynamoDBMapper dynamoDBMapper;
     private AmazonDynamoDBClient dynamoDBClient;
-    private static StressWrapper thisInstance;
+    private static DateToMoneyWrapper thisInstance;
 
-
-    public static StressWrapper getInstance() {
+    public static DateToMoneyWrapper getInstance() {
         if (thisInstance == null) {
-            thisInstance = new StressWrapper();
+            thisInstance = new DateToMoneyWrapper();
         }
         return thisInstance;
     }
 
-    private StressWrapper () {
-        thisMapping = new HashMap<String, Float>();
+    private DateToMoneyWrapper () {
+        thisMapping = new HashMap<String, Double>();
         this.dynamoDBClient = new AmazonDynamoDBClient(AWSMobileClient.getInstance().getCredentialsProvider());
         this.dynamoDBMapper = DynamoDBMapper.builder()
                 .dynamoDBClient(dynamoDBClient)
@@ -40,16 +41,14 @@ public class StressWrapper {
     }
 
 
-
-    public void put(String key, Float value) {
+    public void put(String key, Double value) {
         thisMapping.put(key, value);
         updateDataBase();
     }
 
-    public int size() {
-        return thisMapping.size();
+    public void put(String key, String value) {
+        thisMapping.put(key, Double.parseDouble(value));
     }
-
 
     public void remove(String key) {
         thisMapping.remove(key);
@@ -65,16 +64,17 @@ public class StressWrapper {
         return thisMapping.containsKey(key);
     }
 
-    public Set<Map.Entry<String,Float>> entrySet() {
+    public Set<Map.Entry<String,Double>> entrySet() {
         return thisMapping.entrySet();
     }
 
     public Set<String> keySet() {return thisMapping.keySet();}
 
-    public Float get(String s) {
+    public Double get(String s) {
         return thisMapping.get(s);
     }
 
+    public String getString(String s) {return Double.toString(get(s));}
 
     private void getDataBase() {
 
@@ -85,19 +85,18 @@ public class StressWrapper {
                 // We set the userID, as it is the key
                 CognitoCachingCredentialsProvider provider =
                         (CognitoCachingCredentialsProvider) AWSMobileClient.getInstance().getCredentialsProvider();
-                StressDO stressDO = dynamoDBMapper.load(
-                        StressDO.class,
+                DateToMoneyDO goalsToDifficultyDO = dynamoDBMapper.load(
+                        DateToMoneyDO.class,
                         provider.getIdentityId());
-                // If this user table hasn't been made yet, we need to create it
-                if (stressDO == null) {
+                if (goalsToDifficultyDO == null) {
                     updateDataBase();
                 } else {
-                    Set<String> entries = stressDO.getStress();
+                    Set<String> entries = goalsToDifficultyDO.getDateToMoney();
 
                     if (entries != null) {
                         for (String entry : entries) {
                             String[] keyValue = entry.split(":");
-                            thisMapping.put(keyValue[0], Float.parseFloat(keyValue[1]));
+                            thisMapping.put(keyValue[0], Double.parseDouble(keyValue[1]));
                         }
                     }
                 }
@@ -113,12 +112,12 @@ public class StressWrapper {
             return;
         }
         newDBValues = new HashSet<String>();
-        final StressDO stressDO = new StressDO();
+        final DateToMoneyDO dateToMoneyDO = new DateToMoneyDO();
 
 
-        for (Map.Entry<String, Float> entry : thisMapping.entrySet()) {
+        for (Map.Entry<String, Double> entry : thisMapping.entrySet()) {
             String key = entry.getKey();
-            String value = Float.toString(entry.getValue());
+            String value = Double.toString(entry.getValue());
             String toAdd = key + ":" + value;
             newDBValues.add(toAdd);
         }
@@ -130,13 +129,14 @@ public class StressWrapper {
                 // We set the userID, as it is the key
                 CognitoCachingCredentialsProvider provider =
                         (CognitoCachingCredentialsProvider) AWSMobileClient.getInstance().getCredentialsProvider();
-                stressDO.setUserId(provider.getIdentityId());
-                stressDO.setStress(newDBValues);
-                dynamoDBMapper.save(stressDO);
+                dateToMoneyDO.setUserId(provider.getIdentityId());
+                dateToMoneyDO.setDateToMoney(newDBValues);
+                dynamoDBMapper.save(dateToMoneyDO);
             }
         }).start();
 
 
     }
+
 
 }

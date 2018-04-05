@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +30,9 @@ public class pastGoals extends AppCompatActivity {
         final ArrayList<String> ratingList = thisIntent.getStringArrayListExtra("ratingList");
         final ArrayAdapter thisAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1,  goalList);
         archives.setAdapter(thisAdapter);
+
+        // Database singleton wrapper
+        final GoalsToDifficultyWrapper goalsDataBase = GoalsToDifficultyWrapper.getInstance();
 
 
         final Button addGoal = findViewById(R.id.goalAdd);
@@ -50,6 +54,7 @@ public class pastGoals extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String picked = archives.getItemAtPosition(i).toString();
                 thisAdapter.remove(picked);
+                goalsDataBase.remove(picked.split(",")[0]);
                 thisAdapter.notifyDataSetChanged();
             }
         });

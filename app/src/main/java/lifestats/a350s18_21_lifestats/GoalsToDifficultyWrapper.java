@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Date;
 
 
 /**
@@ -22,7 +23,6 @@ import java.util.HashSet;
 public class GoalsToDifficultyWrapper {
 
     private HashMap<String,String> thisMapping;
-    private GoalsToDifficultyDO goalsToDifficultyDO;
     private HashSet<String> newDBValues;
     private DynamoDBMapper dynamoDBMapper;
     private AmazonDynamoDBClient dynamoDBClient;
@@ -35,22 +35,25 @@ public class GoalsToDifficultyWrapper {
         return thisInstance;
     }
 
-    private GoalsToDifficultyWrapper (){
+    private GoalsToDifficultyWrapper () {
         thisMapping = new HashMap<String, String>();
         this.dynamoDBClient = new AmazonDynamoDBClient(AWSMobileClient.getInstance().getCredentialsProvider());
         this.dynamoDBMapper = DynamoDBMapper.builder()
                 .dynamoDBClient(dynamoDBClient)
                 .awsConfiguration(AWSMobileClient.getInstance().getConfiguration())
                 .build();
-        thisMapping.put("Eat Better", "3.0:1499817600000:1521807434000");
-        thisMapping.put("Make more money", "4.0:1499817600000:1521807434000");
-        thisMapping.put("Get more sleep", "1.0:1499817600000:1521807434000");
+        getDataBase();
     }
 
+
     public String put(String key, String value) {
-        thisMapping.put(key, value);
-        updateDataBase();
+        thisMapping.put(key, value + ":" + (new Date()).getTime() + ":" + 0);
         return value;
+    }
+
+    public void remove(String key) {
+        thisMapping.remove(key);
+        updateDataBase();
     }
 
     public void clear() {
@@ -68,9 +71,47 @@ public class GoalsToDifficultyWrapper {
         return thisMapping.get(s);
     }
 
+    private void getDataBase() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                // We set the userID, as it is the key
+                CognitoCachingCredentialsProvider provider =
+                        (CognitoCachingCredentialsProvider) AWSMobileClient.getInstance().getCredentialsProvider();
+                GoalsToDifficultyDO goalsToDifficultyDO = dynamoDBMapper.load(
+                        GoalsToDifficultyDO.class,
+                        provider.getIdentityId());
+                Log.d("Your ID", provider.getIdentityId());
+
+                if (goalsToDifficultyDO == null){
+                    Log.d("Its null", "Its null");
+                    updateDataBase();
+                } else {
+                    Set<String> entries = goalsToDifficultyDO.getGoalsToDifficulty();
+                    Log.d("the entries", entries.toString());
+                    if (entries != null) {
+                        for (String entry : entries) {
+                            String[] keyValue = entry.split(":");
+                            thisMapping.put(keyValue[0], keyValue[1]);
+                        }
+                    }
+                }
+            }
+        }).start();
+    }
+
+
     private void updateDataBase() {
+
+        // If there are no entries to put into the database, then we return.
+        if (thisMapping.isEmpty()){
+            return;
+        }
         newDBValues = new HashSet<String>();
         final GoalsToDifficultyDO goalsToDifficultyDO = new GoalsToDifficultyDO();
+
 
         for (Map.Entry<String, String> entry : thisMapping.entrySet()) {
             String key = entry.getKey();
@@ -78,7 +119,7 @@ public class GoalsToDifficultyWrapper {
             String toAdd = key + ":" + value;
             newDBValues.add(toAdd);
         }
-        Log.d("In GoalsDO", "In GoalsDO and I am TACOOOOOOO");
+
 
         new Thread(new Runnable() {
             @Override
@@ -86,7 +127,6 @@ public class GoalsToDifficultyWrapper {
                 // We set the userID, as it is the key
                 CognitoCachingCredentialsProvider provider =
                         (CognitoCachingCredentialsProvider) AWSMobileClient.getInstance().getCredentialsProvider();
-                Log.d("Here is credential", provider.getIdentityId());
                 goalsToDifficultyDO.setUserId(provider.getIdentityId());
                 goalsToDifficultyDO.setGoalsToDifficulty(newDBValues);
                 dynamoDBMapper.save(goalsToDifficultyDO);
