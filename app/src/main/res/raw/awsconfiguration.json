@@ -12,14 +12,6 @@
   "IdentityManager": {
     "Default": {}
   },
-  "CognitoUserPool": {
-    "Default": {
-      "PoolId": "us-east-1_TupPc5gXN",
-      "AppClientId": "3aq1v1cudb35uqhjvqa9kva3o5",
-      "AppClientSecret": "kjfv1s8o1ktv54kru6flka8pejc0igu7e9e9up5oo3857c9ip40",
-      "Region": "us-east-1"
-    }
-  },
   "DynamoDBObjectMapper": {
     "Default": {
       "Region": "us-east-1"
@@ -35,5 +27,9 @@
     "Default": {
       "Region": "us-east-1"
     }
+  },
+  "FacebookSignIn": {
+    "AppId": "162707317775518",
+    "Permissions": "public_profile"
   }
 }

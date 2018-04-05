@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -19,7 +20,7 @@ import java.util.HashMap;
  
 public class MoneySpent extends AppCompatActivity {
 
-    private static HashMap<String, Double> moneyPerDay = new HashMap<String, Double>(); //This should be a database??
+    private DateToMoneyWrapper moneyPerDay = DateToMoneyWrapper.getInstance();
     //key = date, value = moneySpent
 
     @Override
@@ -27,17 +28,22 @@ public class MoneySpent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_money_spent);
 
+        TextView dailySpending = findViewById(R.id.amountSpent);
         Button submitButton = findViewById(R.id.moneyButton);
         Button latestSpending = findViewById(R.id.latestSpending);
         Button moneyGraph = findViewById(R.id.moneyGraph);
         final EditText moneyText = findViewById(R.id.moneyText);
 
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        Date date = new Date();
+        String currDate = dateFormat.format(date);
+        if (moneyPerDay.get(currDate) == null) {
+            dailySpending.setText("Amount spent today: $" + 0.00);
+        }
+        else {
+            dailySpending.setText("Amount spent today: $" + moneyPerDay.get(currDate));
+        }
 
-        moneyPerDay.put("01/31/1997", 2.50);
-        moneyPerDay.put("01/31/1998", 3.50);
-        moneyPerDay.put("11/13/2000", 9.50);
-        moneyPerDay.put("08/22/1998", 7.50);
-        moneyPerDay.put("08/31/1998", 32.50);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override

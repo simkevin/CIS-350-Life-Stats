@@ -1,4 +1,4 @@
-package lifestats.a350s18_21_lifestats;;
+package lifestats.a350s18_21_lifestats;
 
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBAttribute;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBHashKey;
@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-@DynamoDBTable(tableName = "lifestats-mobilehub-2078005233-goalsToDifficulty")
+@DynamoDBTable(tableName = "lifestats-mobilehub-2078005233-productivity")
 
-public class GoalsToDifficultyDO {
+public class ProductivityDO {
     private String _userId;
-    private Set<String> _goalsToDifficulty;
+    private Set<String> _productivity;
 
     @DynamoDBHashKey(attributeName = "userId")
     @DynamoDBAttribute(attributeName = "userId")
@@ -26,14 +26,13 @@ public class GoalsToDifficultyDO {
     public void setUserId(final String _userId) {
         this._userId = _userId;
     }
-    @DynamoDBAttribute(attributeName = "goalsToDifficulty")
-    public Set<String> getGoalsToDifficulty() {
-        return _goalsToDifficulty;
+    @DynamoDBAttribute(attributeName = "productivity")
+    public Set<String> getProductivity() {
+        return _productivity;
     }
 
-    public void setGoalsToDifficulty(final Set<String> _goalsToDifficulty) {
-        this._goalsToDifficulty = _goalsToDifficulty;
+    public void setProductivity(final Set<String> _productivity) {
+        this._productivity = _productivity;
     }
 
 }
-
