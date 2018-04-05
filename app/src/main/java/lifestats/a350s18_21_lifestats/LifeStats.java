@@ -11,6 +11,8 @@ import android.util.Log;
 
 public class LifeStats extends AppCompatActivity {
     private Spinner spinner;
+    private Spinner spinnerStatOne;
+    private Spinner spinnerStatTwo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +28,26 @@ public class LifeStats extends AppCompatActivity {
             i++;
         }
 
+        // We make and populate the goal spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item, goalStrings);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+
+        spinnerStatOne = (Spinner) findViewById(R.id.spinnerStatOne);
+        spinnerStatTwo = (Spinner) findViewById(R.id.spinnerStatTwo);
+        ArrayAdapter<CharSequence> statsOne = ArrayAdapter.createFromResource(this,
+                R.array.stat_names, android.R.layout.simple_spinner_item);
+        statsOne.setDropDownViewResource(android.R.layouct.simple_spinner_dropdown_item);
+
+        ArrayAdapter<CharSequence> statsTwo = ArrayAdapter.createFromResource(this,
+                R.array.stat_names, android.R.layout.simple_spinner_item);
+        statsTwo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerStatOne.setAdapter(statsOne);
+        spinnerStatTwo.setAdapter(statsTwo);
+
     }
 
     public void openGraphStats(View view) {
