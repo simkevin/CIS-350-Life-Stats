@@ -41,8 +41,6 @@ public class GraphStats extends AppCompatActivity {
         DataPoint[] happiness = new DataPoint[HappinessWrapper.getInstance().size()];
         int i = 0;
         for(Map.Entry<String, Float> entry : HappinessWrapper.getInstance().entrySet()) {
-            Log.d("Time happiness", entry.getKey());
-            Log.d("Amount happiness", "" + entry.getValue());
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             try {
                 happiness[i] = new DataPoint(dateFormat.parse(entry.getKey()).
@@ -95,7 +93,6 @@ public class GraphStats extends AppCompatActivity {
         stressLine.setColor(Color.RED);
         stressLine.setTitle("Stress");
 
-        Log.d("Happiness Line", happinessLine.toString());
 
         graph.addSeries(happinessLine);
         graph.addSeries(productivityLine);
@@ -103,9 +100,8 @@ public class GraphStats extends AppCompatActivity {
         graph.getLegendRenderer().setVisible(true);
         graph.getGridLabelRenderer().setLabelFormatter(new
                 DateAsXAxisLabelFormatter(this));
-        //graph.getViewport().setMinX(startValue);
-        //graph.getViewport().setMaxX(endValue);
-        //graph.getViewport().setXAxisBoundsManual(true);
-
+        graph.getViewport().setMinX(startValue);
+        graph.getViewport().setMaxX(endValue);
+        graph.getViewport().setXAxisBoundsManual(true);
     }
 }
