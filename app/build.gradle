@@ -44,7 +44,7 @@ dependencies {
     // Sign in UI Library
     compile 'com.android.support:appcompat-v7:26.+'
     compile('com.amazonaws:aws-android-sdk-auth-ui:2.6.+@aar') { transitive = true; }
-    compile('com.amazonaws:aws-android-sdk-auth-facebook:2.6+@aar') {transitive = true;}
+    compile('com.amazonaws:aws-android-sdk-auth-facebook:2.6+@aar') { transitive = true; }
 
     // DynamoDB dependency
     compile 'com.amazonaws:aws-android-sdk-ddb-mapper:2.6.+'
