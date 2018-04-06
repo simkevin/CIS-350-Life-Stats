@@ -2,6 +2,7 @@ package lifestats.a350s18_21_lifestats;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -30,18 +31,18 @@ public class CorrelateGraph extends AppCompatActivity {
         String statOne = thisIntent.getStringExtra("statOne");
         String statTwo = thisIntent.getStringExtra("statTwo");
         LineGraphSeries statOneLine = statLine(statOne);
-        LineGraphSeries statTwoLine = statLine(statTwo);
+        //LineGraphSeries statTwoLine = statLine(statTwo);
         GraphView graph = (GraphView) findViewById(R.id.graph);
 
 
         graph.addSeries(statOneLine);
-        graph.addSeries(statTwoLine);
+        //graph.addSeries(statTwoLine);
         graph.getLegendRenderer().setVisible(true);
         graph.getGridLabelRenderer().setLabelFormatter(new
                 DateAsXAxisLabelFormatter(this));
-        double correlation = getCorrelation(statOne, statTwo);
-        TextView correlateText = (TextView)findViewById(R.id.textViewCorrelation);
-        correlateText.setText("Sample Covariance: " + correlation);
+        //double correlation = getCorrelation(statOne, statTwo);
+        //TextView correlateText = (TextView)findViewById(R.id.textViewCorrelation);
+        //correlateText.setText("Sample Covariance: " + correlation);
     }
 
     private double getCorrelation(String statOneName, String statTwoName) {
@@ -49,6 +50,7 @@ public class CorrelateGraph extends AppCompatActivity {
         moodStats.add("Happiness");
         moodStats.add("Stress");
         moodStats.add("Productivity");
+
 
         /*
          *In this case, as they are recorded in pairs, we can do a proper statistical
@@ -131,7 +133,10 @@ public class CorrelateGraph extends AppCompatActivity {
             return GraphStats.getProductivity();
         } else if (stat.equals("Stress")) {
             return GraphStats.getStress();
-        } else {
+        } else if (stat.equals("Exercise")) {
+            return GraphStats.getExercise();
+        }
+        else {
             throw new IllegalArgumentException("Invalid stat argument. " + stat + " is not a"
             + " valid stat.");
         }

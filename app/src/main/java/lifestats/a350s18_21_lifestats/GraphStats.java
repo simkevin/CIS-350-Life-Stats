@@ -112,4 +112,27 @@ public class GraphStats extends AppCompatActivity {
         stressLine.setTitle("Stress");
         return stressLine;
     }
+
+    public static LineGraphSeries<DataPoint> getExercise() {
+        DataPoint[] exercise = new DataPoint[ExerciseWrapper.getInstance().size()];
+        int incrementer = 0;
+        for (Map.Entry<String, String> entry : ExerciseWrapper.getInstance().entrySet()) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            try {
+                double hoursExercise = Double.parseDouble(entry.getValue().split("&")[1]) +
+                        (Double.parseDouble(entry.getValue().split("&")[2]) / 60.0);
+                exercise[incrementer] = new DataPoint(dateFormat.parse(entry.getKey()).
+                        getTime(), hoursExercise);
+
+            } catch (ParseException e) {
+                System.exit(1);
+            }
+            incrementer++;
+        }
+
+        LineGraphSeries<DataPoint> exerciseLine = new LineGraphSeries<>(exercise);
+        exerciseLine.setColor(Color.DKGRAY);
+        exerciseLine.setTitle("Exercise");
+        return exerciseLine;
+    }
 }
