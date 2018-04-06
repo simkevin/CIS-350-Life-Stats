@@ -112,7 +112,9 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".CorrelateGraph"></activity>
+        <activity android:name=".CorrelateGraph" />
+        <activity android:name=".Exercise" />
+        <activity android:name=".ExerciseTimeSelector"></activity>
     </application>
 
 </manifest>
