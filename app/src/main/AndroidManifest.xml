@@ -20,6 +20,7 @@
             android:name=".MoneySpent"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".AuthenticatorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,11 +29,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PastGoals"
+            android:name=".pastGoals"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Charts"
+            android:name=".charts"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape" />
 
@@ -43,7 +44,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PastMoney"
+            android:name=".pastMoney"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
@@ -51,7 +52,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".MoneyChartChooser"
+            android:name=".moneyChartChooser"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_money_chart_chooser"
             android:screenOrientation="portrait"
@@ -111,11 +112,10 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".BudgetActivity"></activity>
-
-        <activity android:name=".CorrelateGraph" />
-        <activity android:name=".Exercise" />
-        <activity android:name=".ExerciseTimeSelector"></activity>
+        <activity android:name=".NutritionActivity" />
+        <activity android:name=".pastNutrition" />
+        <activity android:name=".quoteDay" />
+        <activity android:name=".pastQuotes"></activity>
     </application>
 
 </manifest>

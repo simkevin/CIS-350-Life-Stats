@@ -139,23 +139,24 @@
         app:layout_constraintTop_toBottomOf="@+id/dataEntry_button" />
 
     <Button
-        android:id="@+id/logout_button"
+        android:id="@+id/nutrition_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
-        android:onClick="logout"
-        android:text="Logout"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="48dp" />
+        android:layout_marginBottom="334dp"
+        android:layout_marginStart="30dp"
+        android:onClick="openNutrition"
+        android:text="Nutrition"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-        android:id="@+id/exercise_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="openExercise"
-        android:layout_marginBottom="4dp"
-        android:layout_marginStart="16dp"
-        android:text="Exercise"
+    <Button
+        android:id="@+id/quoteButton"
+        android:layout_width="127dp"
+        android:layout_height="91dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginStart="12dp"
+        android:onClick="openQuote"
+        android:text="Quote of the Day"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
