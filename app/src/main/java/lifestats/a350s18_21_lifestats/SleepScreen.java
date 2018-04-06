@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.LinkedList;
 
+// this activity handles sleep
 public class SleepScreen extends AppCompatActivity {
     // make SleepElement data type to put in LinkedList
     private class SleepElement {
@@ -73,8 +74,8 @@ public class SleepScreen extends AppCompatActivity {
                     }
                 }
                 // save data in linkedlist
-                SleepElement se = new SleepElement(date, sleeping);
-                sleepTrack.add(se);
+                SleepElement element = new SleepElement(date, sleeping);
+                sleepTrack.add(element);
             }
 
             @Override

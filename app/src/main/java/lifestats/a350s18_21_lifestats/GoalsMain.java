@@ -11,6 +11,7 @@ import java.util.Date;
 
 import java.util.ArrayList;
 
+// this class is the screen from where goals are managed
 public class GoalsMain extends AppCompatActivity {
     private static GoalsToDifficultyWrapper goalsToDifficulty =
             GoalsToDifficultyWrapper.getInstance();

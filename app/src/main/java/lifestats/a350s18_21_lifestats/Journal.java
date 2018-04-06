@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
+// this class manages the journal
 public class Journal extends AppCompatActivity {
     HashMap<String, String> journalStore = new HashMap<String, String>();
 

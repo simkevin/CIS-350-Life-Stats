@@ -10,7 +10,7 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-
+// this activity is where happiness, productivity, and stress data is inputed and stored
 public class QuantitativeDataEntry extends AppCompatActivity {
 
     private static HappinessWrapper storeHappiness = HappinessWrapper.getInstance();

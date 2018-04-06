@@ -37,15 +37,15 @@ public class MonthMoneyChart extends AppCompatActivity {
 
         GraphView graph = (GraphView) findViewById(R.id.moneyGraphPicMonth);
         DataPoint[] dataArray = new DataPoint[monthList.size()];
-        int z = 1;
+        int incrementer = 1;
 
         for (int i = 0; i < monthList.size(); i++) {
-            String x = monthList.get(i);
-            String y = monthAmountList.get(i);
-            double numY = Double.parseDouble(y);
-            DataPoint newData = new DataPoint(z, numY);
+            String month = monthList.get(i);
+            String monthAmount= monthAmountList.get(i);
+            double numY = Double.parseDouble(monthAmount);
+            DataPoint newData = new DataPoint(incrementer, numY);
             dataArray[i] = newData;
-            z++;
+            incrementer++;
         }
 
         BarGraphSeries<DataPoint> series = new BarGraphSeries<>(dataArray);
@@ -62,12 +62,10 @@ public class MonthMoneyChart extends AppCompatActivity {
         String [] dateArray = new String [monthList.size()];
         for (int i = 0; i < monthList.size(); i++) {
             dateArray[i] = monthList.get(i);
-            //System.out.println(dateList.get(i));
         }
 
 
         //labels
-
         if (dateArray.length > 1) {
             StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
             staticLabelsFormatter.setHorizontalLabels(dateArray);
@@ -77,16 +75,9 @@ public class MonthMoneyChart extends AppCompatActivity {
 
         }
 
-
-
-
-        //set spacing
-        //series.setSpacing(200);
         // draw values on top
         series.setDrawValuesOnTop(true);
         series.setValuesOnTopColor(Color.RED);
-
-
 
     }
 }

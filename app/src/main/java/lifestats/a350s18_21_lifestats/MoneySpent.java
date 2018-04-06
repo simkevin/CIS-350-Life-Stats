@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+// this class handles all money-related user stories
 public class MoneySpent extends AppCompatActivity {
 
     private DateToMoneyWrapper moneyPerDay = DateToMoneyWrapper.getInstance();

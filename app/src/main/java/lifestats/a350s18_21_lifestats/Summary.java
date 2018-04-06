@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import java.util.HashMap;
 
+// this class displays the averages of happiness, stress, and productivity
 public class Summary extends AppCompatActivity {
     // is this class necessary?
     private class Summaries {
@@ -38,10 +39,10 @@ public class Summary extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
         // create all necessary parts
-        final TextView happiness_average = (TextView) findViewById(R.id.happiness_average);
-        final TextView productivity_average = (TextView) findViewById(R.id.productivity_average);
-        final TextView stress_average = (TextView) findViewById(R.id.stress_average);
-        //final TextView sleep_average = (TextView) findViewById(R.id.sleep_average);
+        final TextView happinessAverage = (TextView) findViewById(R.id.happiness_average);
+        final TextView productivityAverage = (TextView) findViewById(R.id.productivity_average);
+        final TextView stressAverage = (TextView) findViewById(R.id.stress_average);
+        //final TextView sleepAverage = (TextView) findViewById(R.id.sleep_average);
 
         // create spinner with appropriate options
         Spinner summarySpinner = (Spinner) findViewById(R.id.summary_spinner);
@@ -66,11 +67,11 @@ public class Summary extends AppCompatActivity {
                     stressAvg = calculateAlltimeAverage("stress");
                     sleepAvg = calculateAlltimeAverage("");
                     // change text edit string to calculation of happiness average
-                    happiness_average.setText("Happiness Average: " + happinessAvg);
+                    happinessAverage.setText("Happiness Average: " + happinessAvg);
                     // change text edit string to calculation of productivity avg
-                    productivity_average.setText("Productivity Average: " + productivityAvg);
+                    productivityAverage.setText("Productivity Average: " + productivityAvg);
                     // change text edit string to calculation of stress avg
-                    stress_average.setText("Stress Average: " + stressAvg);
+                    stressAverage.setText("Stress Average: " + stressAvg);
                     // change text edit string to calculation of sleep avg
                     //sleep_average.setText("Sleep Average: " + sleepAvg);
                     Toast.makeText(getApplicationContext(), "Now showing All-time summaries", Toast.LENGTH_SHORT).show();
@@ -82,11 +83,11 @@ public class Summary extends AppCompatActivity {
                     stressAvg = calculateYearAverage("stress");
                     sleepAvg = calculateYearAverage("");
                     // change text edit string to calculation of happiness average
-                    happiness_average.setText("Happiness Average: " + happinessAvg);
+                    happinessAverage.setText("Happiness Average: " + happinessAvg);
                     // change text edit string to calculation of productivity avg
-                    productivity_average.setText("Productivity Average: " + productivityAvg);
+                    productivityAverage.setText("Productivity Average: " + productivityAvg);
                     // change text edit string to calculation of stress avg
-                    stress_average.setText("Stress Average: " + stressAvg);
+                    stressAverage.setText("Stress Average: " + stressAvg);
                     // change text edit string to calculation of sleep avg
                     //sleep_average.setText("Sleep Average: " + sleepAvg);
                     Toast.makeText(getApplicationContext(), "Now showing Year summaries", Toast.LENGTH_SHORT).show();
@@ -98,11 +99,11 @@ public class Summary extends AppCompatActivity {
                     stressAvg = calculateMonthAverage("stress");
                     sleepAvg = calculateMonthAverage("");
                     // change text edit string to calculation of happiness average
-                    happiness_average.setText("Happiness Average: " + happinessAvg);
+                    happinessAverage.setText("Happiness Average: " + happinessAvg);
                     // change text edit string to calculation of productivity avg
-                    productivity_average.setText("Productivity Average: " + productivityAvg);
+                    productivityAverage.setText("Productivity Average: " + productivityAvg);
                     // change text edit string to calculation of stress avg
-                    stress_average.setText("Stress Average: " + stressAvg);
+                    stressAverage.setText("Stress Average: " + stressAvg);
                     // change text edit string to calculation of sleep avg
                     //sleep_average.setText("Sleep Average: " + sleepAvg);
                     Toast.makeText(getApplicationContext(), "Now showing Month summaries", Toast.LENGTH_SHORT).show();

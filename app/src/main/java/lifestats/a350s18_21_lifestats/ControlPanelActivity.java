@@ -15,7 +15,7 @@ import java.util.HashMap;
 import com.facebook.AccessToken;
 import com.facebook.login.LoginManager;
 
-
+// this class acts as the main hub, providing the user many options for what to do
 public class ControlPanelActivity extends AppCompatActivity {
 
     private DynamoDBMapper dynamoDBMapper;
@@ -60,7 +60,6 @@ public class ControlPanelActivity extends AppCompatActivity {
 
     public void logout(View view) {
         LoginManager.getInstance().logOut();
-        //AWSMobileClient.getInstance().getCredentialsProvider().
         Intent intent = new Intent(this, AuthenticatorActivity.class);
         startActivity(intent);
     }

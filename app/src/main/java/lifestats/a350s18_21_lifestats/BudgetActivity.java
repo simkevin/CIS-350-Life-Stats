@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+// this class handles the budget screen
 public class BudgetActivity extends AppCompatActivity {
 
     private BudgetWrapper budget;
@@ -20,6 +21,7 @@ public class BudgetActivity extends AppCompatActivity {
         budgetText = findViewById(R.id.budgetEntry);
     }
 
+    // this method sets the weekly budget based on user input
     public void setBudget(View view) {
         String input = budgetText.getText().toString();
         Double value = Double.parseDouble(input);

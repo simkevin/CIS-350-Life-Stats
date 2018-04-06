@@ -17,6 +17,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
 
+// this class draws the charts for Life Stats
 public class Charts extends AppCompatActivity {
 
     @Override
@@ -29,14 +30,14 @@ public class Charts extends AppCompatActivity {
         final ArrayList<String> ratingList = thisIntent.getStringArrayListExtra("ratingList");
         GraphView graph = (GraphView) findViewById(R.id.graph);
         DataPoint [] dataArray = new DataPoint[goalList.size()];
-        int z = 1;
+        int incrementer = 1;
         for (int i = 0; i < goalList.size(); i++) {
-            String x = goalList.get(i);
-            String y = ratingList.get(i);
-            double numY = Double.parseDouble(y);
-            DataPoint newData = new DataPoint(z, numY);
+            String goal = goalList.get(i);
+            String rating = ratingList.get(i);
+            double numY = Double.parseDouble(rating);
+            DataPoint newData = new DataPoint(incrementer, numY);
             dataArray[i] = newData;
-            z++;
+            incrementer++;
         }
 
         BarGraphSeries<DataPoint> series = new BarGraphSeries<>(dataArray);
@@ -52,7 +53,6 @@ public class Charts extends AppCompatActivity {
         String [] goalsArray = new String [goalList.size()];
         for (int i = 0; i < goalList.size(); i++) {
             goalsArray[i] = goalList.get(i);
-            //goalsArray[i] = Integer.toString(i + 1);
         }
 
         //labels
@@ -68,8 +68,6 @@ public class Charts extends AppCompatActivity {
         // draw values on top
         series.setDrawValuesOnTop(true);
         series.setValuesOnTopColor(Color.RED);
-
-        //series.setValuesOnTopSize(50);
 
     }
 }

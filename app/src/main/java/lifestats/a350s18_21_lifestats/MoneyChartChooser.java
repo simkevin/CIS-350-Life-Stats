@@ -9,6 +9,7 @@ import android.widget.Button;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+// this class handles choosing which money chart to display
 public class MoneyChartChooser extends AppCompatActivity {
 
     @Override
@@ -29,18 +30,10 @@ public class MoneyChartChooser extends AppCompatActivity {
             dateAndMoney.put(dateList.get(i), moneyList.get(i));
         }
 
-
-
         day.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent graphScreen = new Intent(MoneyChartChooser.this, MoneyChart.class);
-                /*dateList.add("1/12/1996");
-                dateList.add("1/22/1993");
-                dateList.add("3/22/1999");
-                moneyList.add("1.21");
-                moneyList.add("11.32");
-                moneyList.add("24.32"); */
 
                 graphScreen.putExtra("dateList", dateList);
                 graphScreen.putExtra("moneyList", moneyList);
@@ -54,15 +47,6 @@ public class MoneyChartChooser extends AppCompatActivity {
                 ArrayList<String> monthList = new ArrayList<String>();
                 ArrayList<String> monthAmountList = new ArrayList<String>();
                 HashMap<String, String> monthAndMoney = new HashMap<String, String>();
-
-                /*monthList.add("1/1996");
-                monthList.add("1/1993");
-                monthList.add("2/2000");
-                monthList.add("2/2000");
-                monthAmountList.add("1.21");
-                monthAmountList.add("11.32");
-                monthAmountList.add("24.32");
-                monthAmountList.add("24.32");*/
 
                 //getting the amount for months
                 for (String x : dateAndMoney.keySet()) {
@@ -89,12 +73,6 @@ public class MoneyChartChooser extends AppCompatActivity {
 
                 }
 
-                /*for (String s : monthAndMoney.keySet()) {
-                    Log.d(s, "Current Month");
-                    Log.d(monthAndMoney.get(s), "Current Money Amount");
-                }*/
-
-
                 Intent graphScreen = new Intent(MoneyChartChooser.this, MonthMoneyChart.class);
                 graphScreen.putExtra("monthList", monthList);
                 graphScreen.putExtra("monthAmountList", monthAmountList);
@@ -113,15 +91,6 @@ public class MoneyChartChooser extends AppCompatActivity {
                 ArrayList<String> yearAmountList = new ArrayList<String>();
                 HashMap<String, String> yearAndMoney = new HashMap<String, String>();
 
-
-                /*yearList.add("1996");
-                yearList.add("1993");
-                yearList.add("2000");
-                yearList.add("2000");
-                yearAmountList.add("1.21");
-                yearAmountList.add("11.32");
-                yearAmountList.add("24.32");
-                yearAmountList.add("24.32");*/
 
                 //getting the amount for months
                 for (String x : dateAndMoney.keySet()) {
@@ -147,9 +116,6 @@ public class MoneyChartChooser extends AppCompatActivity {
                     yearAmountList.add(yearMoney);
 
                 }
-
-
-
 
                 Intent graphScreen = new Intent(MoneyChartChooser.this, YearMoneyChart.class);
                 graphScreen.putExtra("yearList", yearList);

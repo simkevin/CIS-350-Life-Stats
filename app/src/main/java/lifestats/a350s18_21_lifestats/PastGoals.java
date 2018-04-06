@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+// this activity displays past recorded goals
 public class PastGoals extends AppCompatActivity {
 
     @Override

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import java.util.Set;
 import android.util.Log;
 
+// this class manages the LifeStats
 public class LifeStats extends AppCompatActivity {
     private Spinner spinner;
 
@@ -20,10 +21,10 @@ public class LifeStats extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.spinner);
         Set<String> goals = GoalsToDifficultyWrapper.getInstance().keySet();
         String[] goalStrings = new String[goals.size()];
-        int i = 0;
+        int incrementor = 0;
         for(String str : goals) {
-            goalStrings[i] = str;
-            i++;
+            goalStrings[incrementor] = str;
+            incrementor++;
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,

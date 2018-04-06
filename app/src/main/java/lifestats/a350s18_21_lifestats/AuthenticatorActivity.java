@@ -12,7 +12,7 @@ import com.amazonaws.mobile.auth.facebook.FacebookButton;
 
 import com.amazonaws.mobile.auth.ui.AuthUIConfiguration;
 
-
+// this class handles user login
 public class AuthenticatorActivity extends Activity {
 
     @Override
