@@ -153,10 +153,21 @@
         android:id="@+id/quoteButton"
         android:layout_width="127dp"
         android:layout_height="91dp"
-        android:layout_marginBottom="3dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginBottom="112dp"
         android:onClick="openQuote"
         android:text="Quote of the Day"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/exercise_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="openExercise"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="16dp"
+        android:text="Exercise"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
