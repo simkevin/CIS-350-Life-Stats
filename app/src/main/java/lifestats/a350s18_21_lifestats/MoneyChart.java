@@ -31,15 +31,15 @@ public class MoneyChart extends AppCompatActivity {
 
         GraphView graph = (GraphView) findViewById(R.id.moneyGraphPic);
         DataPoint[] dataArray = new DataPoint[dateList.size()];
-        int z = 1;
+        int index = 1;
 
         for (int i = 0; i < dateList.size(); i++) {
-            String x = dateList.get(i);
-            String y = moneyList.get(i);
-            double numY = Double.parseDouble(y);
-            DataPoint newData = new DataPoint(z, numY);
+            String date = dateList.get(i);
+            String money = moneyList.get(i);
+            double moneyVal = Double.parseDouble(money);
+            DataPoint newData = new DataPoint(index, moneyVal);
             dataArray[i] = newData;
-            z++;
+            index++;
         }
 
 
@@ -57,12 +57,10 @@ public class MoneyChart extends AppCompatActivity {
         String [] dateArray = new String [dateList.size()];
         for (int i = 0; i < dateList.size(); i++) {
             dateArray[i] = dateList.get(i);
-            //System.out.println(dateList.get(i));
         }
 
 
         //labels
-
         if (dateArray.length > 1) {
             StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
             staticLabelsFormatter.setHorizontalLabels(dateArray);
@@ -78,13 +76,9 @@ public class MoneyChart extends AppCompatActivity {
         graph.getViewport().setScalable(true); // enables horizontal zooming and scrolling
         graph.getViewport().setScalableY(true); // enables vertical zooming and scrolling
 
-        //set spacing
-        //series.setSpacing(0);
-        //series.setDataWidth(1d);
         // draw values on top
         series.setDrawValuesOnTop(true);
         series.setValuesOnTopColor(Color.RED);
 
-        //series.setValuesOnTopSize(50);
     }
 }

@@ -7,7 +7,7 @@
     tools:context="lifestats.a350s18_21_lifestats.LifeStats">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/graphStats_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="361dp"
@@ -18,7 +18,7 @@
         android:text="Graph Stats"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
