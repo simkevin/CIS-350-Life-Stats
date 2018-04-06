@@ -71,11 +71,12 @@
         tools:layout_editor_absoluteX="8dp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonCorrelate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
         android:text="CORRELATE"
+        android:onClick="openCorrelateGraph"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="142dp" />
 </android.support.constraint.ConstraintLayout>
