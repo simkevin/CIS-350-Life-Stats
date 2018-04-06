@@ -76,7 +76,7 @@ public class GraphStats extends AppCompatActivity {
 
     public static LineGraphSeries<DataPoint> getProductivity() {
         DataPoint[] productivity = new DataPoint[ProductivityWrapper.getInstance().size()];
-        incrementer = 0;
+        int incrementer = 0;
         for(Map.Entry<String, Float> entry : ProductivityWrapper.getInstance().entrySet()) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             try {
@@ -96,7 +96,7 @@ public class GraphStats extends AppCompatActivity {
     public static LineGraphSeries<DataPoint> getStress() {
 
         DataPoint[] stress = new DataPoint[StressWrapper.getInstance().size()];
-        incrementer = 0;
+        int incrementer = 0;
         for(Map.Entry<String, Float> entry : StressWrapper.getInstance().entrySet()) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             try {
