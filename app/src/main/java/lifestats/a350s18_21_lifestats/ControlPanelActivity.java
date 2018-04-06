@@ -126,6 +126,11 @@ public class ControlPanelActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void openExercise(View view) {
+        Intent intent = new Intent(this, Exercise.class);
+        startActivity(intent);
+    }
+
     /*
      * This method calls the single constructors which fetches the data from the database
      * premptively so that it is ready to use.

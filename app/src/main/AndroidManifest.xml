@@ -112,7 +112,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".BudgetActivity"></activity>
-        <activity android:name=".CorrelateGraph"></activity>
+
+        <activity android:name=".CorrelateGraph" />
+        <activity android:name=".Exercise" />
+        <activity android:name=".ExerciseTimeSelector"></activity>
     </application>
 
 </manifest>
