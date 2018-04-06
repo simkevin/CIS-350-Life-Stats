@@ -14,6 +14,7 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import java.util.Map;
 import java.util.HashMap;
 import com.facebook.AccessToken;
+import com.facebook.login.LoginManager;
 
 public class ControlPanelActivity extends AppCompatActivity {
 
@@ -58,6 +59,12 @@ public class ControlPanelActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public void logout(View view) {
+        LoginManager.getInstance().logOut();
+        Intent intent = new Intent(this, AuthenticatorActivity.class);
+        startActivity(intent);
     }
 
     public void openLifeStats(View view) {

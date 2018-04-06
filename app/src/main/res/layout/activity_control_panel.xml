@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CONTROL PANEL"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/lifeStats_button"
         app:layout_constraintHorizontal_bias="0.503"
@@ -21,14 +21,15 @@
 
     <Button
         android:id="@+id/lifeStats_button"
-        android:layout_width="wrap_content"
+        android:layout_width="99dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="64dp"
+        android:layout_marginStart="32dp"
         android:onClick="openLifeStats"
         android:text="Life Stats"
         app:layout_constraintBottom_toTopOf="@+id/money_button"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nutrition_button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/control_textView" />
 
     <Button
@@ -38,9 +39,8 @@
         android:onClick="openDataEntry"
         android:text="Daily Mood"
         app:layout_constraintBottom_toTopOf="@+id/records_button"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/journal_button" />
+        app:layout_constraintTop_toBottomOf="@+id/journal_button"
+        tools:layout_editor_absoluteX="32dp" />
 
     <Button
         android:id="@+id/dataAnalysis_button"
@@ -49,10 +49,8 @@
         android:onClick="openDataAnalysis"
         android:text="Data Analysis"
         app:layout_constraintBottom_toTopOf="@+id/goals_button"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/records_button" />
+        app:layout_constraintTop_toBottomOf="@+id/records_button"
+        tools:layout_editor_absoluteX="32dp" />
 
     <Button
         android:id="@+id/goals_button"
@@ -60,11 +58,9 @@
         android:layout_height="wrap_content"
         android:onClick="openGoals"
         android:text="Goals"
-        app:layout_constraintBottom_toTopOf="@+id/quickView_button"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dataAnalysis_button" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dataAnalysis_button"
+        tools:layout_editor_absoluteX="32dp" />
 
     <Button
         android:id="@+id/quickView_button"
@@ -72,11 +68,9 @@
         android:layout_height="wrap_content"
         android:onClick="openSummary"
         android:text="Summary"
-        app:layout_constraintBottom_toTopOf="@+id/sleepButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goals_button" />
+        app:layout_constraintBottom_toBottomOf="@+id/dataEntry_button"
+        app:layout_constraintStart_toStartOf="@+id/quoteButton"
+        app:layout_constraintTop_toTopOf="@+id/dataEntry_button" />
 
     <Button
         android:id="@+id/sleepButton"
@@ -84,16 +78,16 @@
         android:layout_height="wrap_content"
         android:onClick="openSleep"
         android:text="Sleep"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quickView_button" />
+        app:layout_constraintBottom_toBottomOf="@+id/money_button"
+        app:layout_constraintStart_toStartOf="@+id/exercise_button"
+        app:layout_constraintTop_toTopOf="@+id/money_button"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/about_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:minWidth="10dp"
         android:onClick="openAbout"
         android:text="About"
@@ -111,10 +105,8 @@
         android:onClick="openMoney"
         android:text="Money"
         app:layout_constraintBottom_toTopOf="@+id/journal_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lifeStats_button" />
+        app:layout_constraintTop_toBottomOf="@+id/lifeStats_button"
+        tools:layout_editor_absoluteX="32dp" />
 
     <Button
         android:id="@+id/journal_button"
@@ -123,9 +115,8 @@
         android:onClick="openJournal"
         android:text="Journal"
         app:layout_constraintBottom_toTopOf="@+id/dataEntry_button"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/money_button" />
+        app:layout_constraintTop_toBottomOf="@+id/money_button"
+        tools:layout_editor_absoluteX="32dp" />
 
     <Button
         android:id="@+id/records_button"
@@ -133,31 +124,29 @@
         android:layout_height="wrap_content"
         android:onClick="openRecords"
         android:text="Records"
-        app:layout_constraintBottom_toTopOf="@+id/dataAnalysis_button"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dataEntry_button" />
+        app:layout_constraintBottom_toBottomOf="@+id/quoteButton"
+        app:layout_constraintTop_toTopOf="@+id/quoteButton"
+        tools:layout_editor_absoluteX="32dp" />
 
     <Button
         android:id="@+id/nutrition_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="334dp"
-        android:layout_marginStart="30dp"
         android:onClick="openNutrition"
         android:text="Nutrition"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/lifeStats_button"
+        app:layout_constraintStart_toEndOf="@+id/lifeStats_button"
+        app:layout_constraintStart_toStartOf="@+id/sleepButton"
+        app:layout_constraintTop_toTopOf="@+id/lifeStats_button" />
 
     <Button
         android:id="@+id/quoteButton"
         android:layout_width="127dp"
-        android:layout_height="91dp"
-        android:layout_marginBottom="112dp"
+        android:layout_height="61dp"
         android:onClick="openQuote"
         android:text="Quote of the Day"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="195dp"
+        tools:layout_editor_absoluteY="317dp" />
 
 
     <Button
@@ -165,10 +154,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="openExercise"
-        android:layout_marginBottom="4dp"
-        android:layout_marginStart="16dp"
         android:text="Exercise"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/journal_button"
+        app:layout_constraintStart_toStartOf="@+id/quickView_button"
+        app:layout_constraintTop_toTopOf="@+id/journal_button"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="logout"
+        android:text="Logout"
+        app:layout_constraintHorizontal_bias="0.972"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
