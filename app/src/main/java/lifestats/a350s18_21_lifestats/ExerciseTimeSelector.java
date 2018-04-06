@@ -5,11 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.content.Context;
 
 import java.util.Set;
 import android.view.View;
 import java.util.Date;
 import android.util.Log;
+import android.widget.Toast;
 
 
 public class ExerciseTimeSelector extends AppCompatActivity {
@@ -44,8 +46,14 @@ public class ExerciseTimeSelector extends AppCompatActivity {
     public void submitExercise(View view) {
         int hoursValue = Integer.parseInt(hours.getSelectedItem().toString());
         int minutesValue = Integer.parseInt(minutes.getSelectedItem().toString());
-        long currentTime = (new Date()).getTime();
-        String toStore = exerciseType + "&" + hoursValue + "&" + minutesValue + "&" + currentTime;
-        Log.d("ToStore", toStore);
+        String currentTime = "" + (new Date()).getTime();
+        String toStore = exerciseType + "&" + hoursValue + "&" + minutesValue;
+        ExerciseWrapper exerciseWrapper = ExerciseWrapper.getInstance();
+        exerciseWrapper.put(currentTime, toStore);
+        CharSequence alertMessage = "Exercise Recorded!";
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_LONG;
+        Toast toast = Toast.makeText(context, alertMessage, duration);
+        toast.show();
     }
 }
