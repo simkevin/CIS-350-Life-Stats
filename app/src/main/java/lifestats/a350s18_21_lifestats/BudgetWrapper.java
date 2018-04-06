@@ -14,6 +14,7 @@ import java.util.Set;
  * Created by steph on 3/23/2018.
  */
 
+// this class acts as a wrapper to interact with budget database
 public class BudgetWrapper {
     private HashMap<String,Double> thisMapping;
     private HashSet<String> newDBValues;

@@ -139,6 +139,16 @@
         app:layout_constraintTop_toBottomOf="@+id/dataEntry_button" />
 
     <Button
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:onClick="logout"
+        android:text="Logout"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="48dp" />
+
+        <Button
         android:id="@+id/exercise_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

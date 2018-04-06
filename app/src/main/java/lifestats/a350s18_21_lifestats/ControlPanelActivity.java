@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.amazonaws.auth.CognitoCredentialsProvider;
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
@@ -14,7 +13,9 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import java.util.Map;
 import java.util.HashMap;
 import com.facebook.AccessToken;
+import com.facebook.login.LoginManager;
 
+// this class acts as the main hub, providing the user many options for what to do
 public class ControlPanelActivity extends AppCompatActivity {
 
     private DynamoDBMapper dynamoDBMapper;
@@ -46,7 +47,6 @@ public class ControlPanelActivity extends AppCompatActivity {
             }
         }).start();
 
-
         AWSMobileClient.getInstance().setCredentialsProvider(credentialsProvider);
         this.dynamoDBClient = new AmazonDynamoDBClient(AWSMobileClient.getInstance().getCredentialsProvider());
         this.dynamoDBMapper = DynamoDBMapper.builder()
@@ -55,6 +55,13 @@ public class ControlPanelActivity extends AppCompatActivity {
                 .build();
         initializeDataBase();
         setContentView(R.layout.activity_control_panel);
+
+    }
+
+    public void logout(View view) {
+        LoginManager.getInstance().logOut();
+        Intent intent = new Intent(this, AuthenticatorActivity.class);
+        startActivity(intent);
     }
 
     public void openLifeStats(View view) {

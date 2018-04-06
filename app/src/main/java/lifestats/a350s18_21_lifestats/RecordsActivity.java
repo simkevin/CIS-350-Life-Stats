@@ -16,8 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import java.util.HashMap;
-
+// this activity is where the user can see old records
 public class RecordsActivity extends AppCompatActivity {
 
     private HappinessWrapper happinessData;

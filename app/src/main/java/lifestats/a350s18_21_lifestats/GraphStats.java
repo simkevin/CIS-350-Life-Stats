@@ -5,7 +5,6 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -14,11 +13,11 @@ import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.Date;
 import android.util.Log;
 
+// this class graphs happiness, productivity, and stress
 public class GraphStats extends AppCompatActivity {
 
     @Override
@@ -56,16 +55,17 @@ public class GraphStats extends AppCompatActivity {
 
     public static LineGraphSeries<DataPoint> getHappiness() {
         DataPoint[] happiness = new DataPoint[HappinessWrapper.getInstance().size()];
-        int i = 0;
+        int incrementer = 0;
         for(Map.Entry<String, Float> entry : HappinessWrapper.getInstance().entrySet()) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             try {
-                happiness[i] = new DataPoint(dateFormat.parse(entry.getKey()).getTime()
-                        , entry.getValue());
+                happiness[incrementer] = new DataPoint(dateFormat.parse(entry.getKey()).
+                        getTime(), entry.getValue());
+
             } catch (ParseException e) {
                 System.exit(1);
             }
-            i++;
+            incrementer++;
         }
 
         LineGraphSeries<DataPoint> happinessLine = new LineGraphSeries<>(happiness);
@@ -76,16 +76,16 @@ public class GraphStats extends AppCompatActivity {
 
     public static LineGraphSeries<DataPoint> getProductivity() {
         DataPoint[] productivity = new DataPoint[ProductivityWrapper.getInstance().size()];
-        int j = 0;
+        incrementer = 0;
         for(Map.Entry<String, Float> entry : ProductivityWrapper.getInstance().entrySet()) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             try {
-                productivity[j] = new DataPoint(dateFormat.parse(entry.getKey()).
+                productivity[incrementer] = new DataPoint(dateFormat.parse(entry.getKey()).
                         getTime(), entry.getValue());
             } catch (ParseException e) {
                 System.exit(1);
             }
-            j++;
+            incrementer++;
         }
         LineGraphSeries<DataPoint> productivityLine = new LineGraphSeries<>(productivity);
         productivityLine.setColor(Color.BLUE);
@@ -96,16 +96,16 @@ public class GraphStats extends AppCompatActivity {
     public static LineGraphSeries<DataPoint> getStress() {
 
         DataPoint[] stress = new DataPoint[StressWrapper.getInstance().size()];
-        int k = 0;
+        incrementer = 0;
         for(Map.Entry<String, Float> entry : StressWrapper.getInstance().entrySet()) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             try {
-                stress[k] = new DataPoint(dateFormat.parse(entry.getKey()).
+                stress[incrementer] = new DataPoint(dateFormat.parse(entry.getKey()).
                         getTime(), entry.getValue());
             } catch (ParseException e) {
                 System.exit(1);
             }
-            k++;
+            incrementer++;
         }
         LineGraphSeries<DataPoint> stressLine = new LineGraphSeries<>(stress);
         stressLine.setColor(Color.RED);

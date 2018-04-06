@@ -14,14 +14,13 @@ import com.jjoe64.graphview.series.DataPoint;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+// this class creates the year money chart
 public class YearMoneyChart extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_year_money_chart);
-
-
 
         Intent thisIntent = getIntent();
         final ArrayList<String> dateList = thisIntent.getStringArrayListExtra("dateList");
@@ -34,20 +33,18 @@ public class YearMoneyChart extends AppCompatActivity {
             dateAndMoney.put(dateList.get(i), moneyList.get(i));
         }
 
-
         GraphView graph = (GraphView) findViewById(R.id.moneyGraphPicYear);
         DataPoint[] dataArray = new DataPoint[yearList.size()];
-        int z = 1;
+        int incrementer = 1;
 
         for (int i = 0; i < yearList.size(); i++) {
-            String x = yearList.get(i);
-            String y = yearAmountList.get(i);
-            double numY = Double.parseDouble(y);
-            DataPoint newData = new DataPoint(z, numY);
+            String year = yearList.get(i);
+            String yearAmount = yearAmountList.get(i);
+            double numY = Double.parseDouble(yearAmount);
+            DataPoint newData = new DataPoint(incrementer, numY);
             dataArray[i] = newData;
-            z++;
+            incrementer++;
         }
-
 
         BarGraphSeries<DataPoint> series = new BarGraphSeries<>(dataArray);
         graph.addSeries(series);
@@ -63,12 +60,10 @@ public class YearMoneyChart extends AppCompatActivity {
         String [] dateArray = new String [yearList.size()];
         for (int i = 0; i < yearList.size(); i++) {
             dateArray[i] = yearList.get(i);
-            //System.out.println(dateList.get(i));
         }
 
 
         //labels
-
         if (dateArray.length > 1) {
             StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
             staticLabelsFormatter.setHorizontalLabels(dateArray);
@@ -78,8 +73,6 @@ public class YearMoneyChart extends AppCompatActivity {
 
         }
 
-        //set spacing
-        //series.setSpacing(200);
         // draw values on top
         series.setDrawValuesOnTop(true);
         series.setValuesOnTopColor(Color.RED);
