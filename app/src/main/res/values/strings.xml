@@ -14,4 +14,10 @@
     <string name="about">Welcome to Life Stats! \n This app will help you improve your life one goal at a time.</string>
     <string name="facebook_app_id">162707317775518</string>
     <string name="fb_login_protocol_scheme">fb162707317775518</string>
+    <string-array name="stat_names">
+        <item>Happiness</item>
+        <item>Stress</item>
+        <item>Productivity</item>
+    </string-array>
+
 </resources>
