@@ -10,8 +10,8 @@ import android.widget.RatingBar;
 import java.util.Date;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
+// this class is the screen from where goals are managed
 public class GoalsMain extends AppCompatActivity {
     private static GoalsToDifficultyWrapper goalsToDifficulty =
             GoalsToDifficultyWrapper.getInstance();
@@ -37,8 +37,7 @@ public class GoalsMain extends AppCompatActivity {
                 if (goalText.getText().toString().matches(".*\\w.*")) {
                     String goal = goalText.getText().toString();
                     String rate = String.valueOf(difficultyBar.getRating());
-                    String time = "" + (new Date().getTime());
-                    goalsToDifficulty.put(goal, rate + ":" + time + ":0");
+                    goalsToDifficulty.put(goal, rate);
                 }
 
                 goalText.setText("");
@@ -52,11 +51,13 @@ public class GoalsMain extends AppCompatActivity {
                 ArrayList<String>  values = new ArrayList<String>();
                 ArrayList<String>  ratings = new ArrayList<String>();
                 for (String s : goalsToDifficulty.keySet()) {
-                    String difficulty = goalsToDifficulty.get(s).split(":")[0];
-                    values.add(s + ", \t\t\t\tDifficulty: " + difficulty);
-                    ratings.add(difficulty);
+                    String difficulty = goalsToDifficulty.get(s).split("&")[0];
+                    if (goalsToDifficulty.get(s).split("&")[2].equals("0")) {
+                        values.add(s + ", \t\t\t\tDifficulty: " + difficulty);
+                        ratings.add(difficulty);
+                    }
                 }
-                Intent pastScreen = new Intent(GoalsMain.this, pastGoals.class);
+                Intent pastScreen = new Intent(GoalsMain.this, PastGoals.class);
                 pastScreen.putExtra("goalList", values);
                 pastScreen.putExtra("ratingList", ratings);
                 startActivity(pastScreen);
@@ -66,12 +67,14 @@ public class GoalsMain extends AppCompatActivity {
         chartGenerator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent chartScreen = new Intent(GoalsMain.this, charts.class);
+                Intent chartScreen = new Intent(GoalsMain.this, Charts.class);
                 ArrayList<String>  goals = new ArrayList<String>();
                 ArrayList<String>  ratings = new ArrayList<String>();
                 for (String s : goalsToDifficulty.keySet()) {
-                    goals.add(s);
-                    ratings.add(goalsToDifficulty.get(s).split(":")[0]);
+                    if (goalsToDifficulty.get(s).split("&")[2].equals("0")) {
+                        goals.add(s);
+                        ratings.add(goalsToDifficulty.get(s).split("&")[0]);
+                    }
                 }
                 chartScreen.putExtra("goalList", goals);
                 chartScreen.putExtra("ratingList", ratings);

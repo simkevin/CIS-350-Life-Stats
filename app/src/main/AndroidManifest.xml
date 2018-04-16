@@ -20,7 +20,6 @@
             android:name=".MoneySpent"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".AuthenticatorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,21 +28,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".pastGoals"
+            android:name=".PastGoals"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".charts"
+            android:name=".Charts"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape" />
-        <receiver
-            android:name=".AlarmReceiver"></receiver>
+
+        <receiver android:name=".AlarmReceiver" />
+
         <activity
             android:name=".GoalsMain"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".pastMoney"
+            android:name=".PastMoney"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
@@ -51,7 +51,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".moneyChartChooser"
+            android:name=".MoneyChartChooser"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_money_chart_chooser"
             android:screenOrientation="portrait"
@@ -70,7 +70,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Summary" />
-        <activity android:name=".ControlPanelActivity" />
         <activity android:name=".AboutActivity" />
         <activity
             android:name=".QuantitativeDataEntry"
@@ -78,10 +77,49 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Journal" />
         <activity android:name=".RecordsActivity" />
-        <activity android:name=".DataAnalysisActivity"></activity>
+        <activity android:name=".DataAnalysisActivity" />
         <activity android:name=".LifeStats" />
         <activity android:name=".GraphStats" />
-        <activity android:name=".Notification"></activity>
+        <activity android:name=".Notification" />
+        <activity android:name=".ControlPanelActivity" />
+
+        <!-- ... -->
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <!-- ... -->
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".BudgetActivity"></activity>
+
+        <activity android:name=".CorrelateGraph" />
+        <activity android:name=".Exercise" />
+        <activity android:name=".ExerciseTimeSelector"></activity>
+        <activity android:name=".NutritionActivity" />
+        <activity android:name=".pastNutrition" />
+        <activity android:name=".quoteDay" />
+        <activity android:name=".pastQuotes"></activity>
     </application>
 
 </manifest>

@@ -13,13 +13,13 @@ import com.jjoe64.graphview.series.PointsGraphSeries;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
 
+// this class graphs happiness, productivity, and stress over time
 public class DataAnalysisActivity extends AppCompatActivity {
 
-    private HashMap<String, Float> happiness;
-    private HashMap<String, Float> productivity;
-    private HashMap<String, Float> stress;
+    private HappinessWrapper happinessData;
+    private ProductivityWrapper productivityData;
+    private StressWrapper stressData;
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -28,76 +28,62 @@ public class DataAnalysisActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_analysis);
 
-        happiness = new HashMap<>();
-        productivity = new HashMap<>();
-        stress = new HashMap<>();
-
-        happiness.put("2018-03-10 00:00:00", (float) 3.0);
-        happiness.put("2018-03-11 00:00:00", (float) 5.0);
-        happiness.put("2018-03-20 00:00:00", (float) 2.0);
-
-        productivity.put("2018-03-10 00:00:00", (float) 3.0);
-        productivity.put("2018-03-11 00:00:00", (float) 2.0);
-        productivity.put("2018-03-20 00:00:00", (float) 4.0);
-
-        stress.put("2018-03-10 00:00:00", (float) 3.0);
-        stress.put("2018-03-11 00:00:00", (float) 1.0);
-        stress.put("2018-03-20 00:00:00", (float) 5.0);
-
+        happinessData = HappinessWrapper.getInstance();
+        productivityData = ProductivityWrapper.getInstance();
+        stressData = StressWrapper.getInstance();
 
         GraphView tGraph = (GraphView) findViewById(R.id.trend_graph);
 
-        // need to write helper function that loads datapoints into array
-        DataPoint[] dp1 = new DataPoint[happiness.size()];
-        int i = 0;
-        for (String key: happiness.keySet()) {
+        DataPoint[] happinessArray = new DataPoint[happinessData.size()];
+        int incrementer = 0;
+        for (String key: happinessData.keySet()) {
             try {
-                dp1[i] = new DataPoint(dateFormat.parse(key).getTime(),
-                        (double) happiness.get(key));
+                happinessArray[incrementer] = new DataPoint(dateFormat.parse(key).getTime(),
+                        (double) happinessData.get(key));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            i++;
+            incrementer++;
         }
 
-        LineGraphSeries<DataPoint> happyGraph = new LineGraphSeries<>(dp1);
-        PointsGraphSeries<DataPoint> happyPoints = new PointsGraphSeries<>(dp1);
+        LineGraphSeries<DataPoint> happyGraph = new LineGraphSeries<>(happinessArray);
+        PointsGraphSeries<DataPoint> happyPoints = new PointsGraphSeries<>(happinessArray);
         happyGraph.setColor(Color.RED);
         happyPoints.setColor(Color.RED);
         happyGraph.setTitle("Happiness");
 
-        DataPoint[] dp2 = new DataPoint[productivity.size()];
-        int j = 0;
-        for (String key: productivity.keySet()) {
+        DataPoint[] productivityArray = new DataPoint[productivityData.size()];
+        incrementer = 0;
+        for (String key: productivityData.keySet()) {
             try {
-                dp2[j] = new DataPoint(dateFormat.parse(key).getTime(),
-                        (double) productivity.get(key));
+                productivityArray[incrementer] = new DataPoint(dateFormat.parse(key).getTime(),
+                        (double) productivityData.get(key));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            j++;
+            incrementer++;
         }
 
-        LineGraphSeries<DataPoint> productiveGraph = new LineGraphSeries<>(dp2);
-        PointsGraphSeries<DataPoint> productivePoints = new PointsGraphSeries<>(dp2);
+        LineGraphSeries<DataPoint> productiveGraph = new LineGraphSeries<>(productivityArray);
+        PointsGraphSeries<DataPoint> productivePoints = new PointsGraphSeries<>(productivityArray);
         productiveGraph.setColor(Color.BLUE);
         productivePoints.setColor(Color.BLUE);
         productiveGraph.setTitle("Productivity");
 
-        DataPoint[] dp3 = new DataPoint[stress.size()];
-        int k = 0;
-        for (String key: stress.keySet()) {
+        DataPoint[] stressArray = new DataPoint[stressData.size()];
+        incrementer = 0;
+        for (String key: stressData.keySet()) {
             try {
-                dp3[k] = new DataPoint(dateFormat.parse(key).getTime(),
-                        (double) stress.get(key));
+                stressArray[incrementer] = new DataPoint(dateFormat.parse(key).getTime(),
+                        (double) stressData.get(key));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            k++;
+            incrementer++;
         }
 
-        LineGraphSeries<DataPoint> stressfulGraph = new LineGraphSeries<>(dp3);
-        PointsGraphSeries<DataPoint> stressfulPoints = new PointsGraphSeries<>(dp3);
+        LineGraphSeries<DataPoint> stressfulGraph = new LineGraphSeries<>(stressArray);
+        PointsGraphSeries<DataPoint> stressfulPoints = new PointsGraphSeries<>(stressArray);
         stressfulGraph.setColor(Color.YELLOW);
         stressfulPoints.setColor(Color.YELLOW);
         stressfulGraph.setTitle("Stress");

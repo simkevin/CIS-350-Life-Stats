@@ -7,15 +7,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
 
-public class pastGoals extends AppCompatActivity {
+// this activity displays past recorded goals
+public class PastGoals extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,19 +23,20 @@ public class pastGoals extends AppCompatActivity {
 
         Intent thisIntent = getIntent();
         final ArrayList<String> goalList = thisIntent.getStringArrayListExtra("goalList");
-        final ArrayList<String> ratingList = thisIntent.getStringArrayListExtra("ratingList");
         final ArrayAdapter thisAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1,  goalList);
         archives.setAdapter(thisAdapter);
 
+        // Database singleton wrapper
+        final GoalsToDifficultyWrapper goalsDataBase = GoalsToDifficultyWrapper.getInstance();
+
 
         final Button addGoal = findViewById(R.id.goalAdd);
-        //final Button removeGoal = findViewById(R.id.goalDelete);
 
 
         addGoal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent pastScreen = new Intent(pastGoals.this, GoalsMain.class);
+                Intent pastScreen = new Intent(PastGoals.this, GoalsMain.class);
                 startActivity(pastScreen);
             }
         });
@@ -50,6 +48,7 @@ public class pastGoals extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String picked = archives.getItemAtPosition(i).toString();
                 thisAdapter.remove(picked);
+                goalsDataBase.remove(picked.split(",")[0]);
                 thisAdapter.notifyDataSetChanged();
             }
         });

@@ -12,4 +12,30 @@
     <string name="defaultSpentToday">So far you have not spent any money today!</string>
     <string name="enterCashSpent">Enter How Much You Have Spent (ex: 1.50)</string>
     <string name="about">Welcome to Life Stats! \n This app will help you improve your life one goal at a time.</string>
+    <string name="facebook_app_id">162707317775518</string>
+    <string name="fb_login_protocol_scheme">fb162707317775518</string>
+    <string-array name="stat_names">
+        <item>Happiness</item>
+        <item>Stress</item>
+        <item>Productivity</item>
+    </string-array>
+    <string-array name="hours">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="minutes">
+        <item>0</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+    </string-array>
 </resources>
