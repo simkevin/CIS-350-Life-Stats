@@ -158,5 +158,6 @@ public class ControlPanelActivity extends AppCompatActivity {
         BudgetWrapper.getInstance();
         PastQuotesWrapper.getInstance();
         PastRecipesWrapper.getInstance();
+        NutritionWrapper.getInstance();
     }
 }

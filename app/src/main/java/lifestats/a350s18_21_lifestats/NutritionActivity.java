@@ -24,10 +24,7 @@ public class NutritionActivity extends AppCompatActivity {
         final Button nutrition = findViewById(R.id.nutritionsubmit);
         final EditText nutritionText = findViewById(R.id.nutrition_edit);
         final Button archiveNutrition = findViewById(R.id.pastFood);
-        final HashMap<String, String> dateNutrition = new HashMap<String, String>();
-        dateNutrition.put("02/26/2018", "Chipotle, Jimmy John's");
-        dateNutrition.put("11/21/2003", "Homecooked meal, soda, cosi");
-        dateNutrition.put("03/10/1986", "wishbone, dining hall food, granola bar");
+        final NutritionWrapper dateNutrition = NutritionWrapper.getInstance();
 
         nutrition.setOnClickListener(new View.OnClickListener() {
             @Override
