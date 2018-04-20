@@ -111,18 +111,20 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".BudgetActivity"></activity>
-
+        <activity android:name=".BudgetActivity" />
         <activity android:name=".CorrelateGraph" />
         <activity android:name=".Exercise" />
-        <activity android:name=".ExerciseTimeSelector"></activity>
+        <activity android:name=".ExerciseTimeSelector" />
         <activity android:name=".NutritionActivity" />
         <activity android:name=".PastNutrition" />
         <activity android:name=".QuoteDay" />
-        <activity android:name=".PastQuotes"></activity>
+        <activity android:name=".PastQuotes" />
         <activity android:name=".BudgetActivity" />
         <activity android:name=".CorrelateGraph" />
-        <activity android:name=".RecommendationsActivity"></activity>
+        <activity android:name=".RecommendationsActivity" />
+        <activity android:name=".StressRecommendationsActivity" />
+        <activity android:name=".ProductivityRecommendationsActivity" />
+        <activity android:name=".HappinessRecommendationsActivity"></activity>
     </application>
 
 </manifest>
