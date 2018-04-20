@@ -111,8 +111,9 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".BudgetActivity"></activity>
-        <activity android:name=".CorrelateGraph"></activity>
+        <activity android:name=".BudgetActivity" />
+        <activity android:name=".CorrelateGraph" />
+        <activity android:name=".RecommendationsActivity"></activity>
     </application>
 
 </manifest>
