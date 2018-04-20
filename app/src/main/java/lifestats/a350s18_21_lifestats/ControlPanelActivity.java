@@ -154,5 +154,10 @@ public class ControlPanelActivity extends AppCompatActivity {
         HappinessWrapper.getInstance();
         StressWrapper.getInstance();
         ProductivityWrapper.getInstance();
+        BudgetWrapper.getInstance();
+        PastQuotesWrapper.getInstance();
+        PastRecipesWrapper.getInstance();
+        NutritionWrapper.getInstance();
+        WeightWrapper.getInstance();
     }
 }
