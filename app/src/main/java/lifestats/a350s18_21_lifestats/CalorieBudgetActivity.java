@@ -154,10 +154,15 @@ public class CalorieBudgetActivity extends AppCompatActivity {
 
         // A deficit of 3500 calories a week will burn off one pound
         int calorieBudget = (int) (caloriesBurnedPerDay - ((3500 * poundsPerWeek) / 7));
+
+        // Displays the newly calculated budget
         displayBudgetToast(calorieBudget);
-        // Todo, upload to data base
+
+        // Stores the new calorie budget in the database
+        CalorieBudgetWrapper.getInstance().set(calorieBudget);
     }
 
+    // Displays a toast message that notifies the user of the new calorieBudget value
     private void displayBudgetToast(int calorieBudget) {
         Context context = getApplicationContext();
         CharSequence text = "Your daily calorie budget is " + calorieBudget + " calories.";
