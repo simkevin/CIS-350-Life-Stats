@@ -124,7 +124,7 @@
         <activity android:name=".StressRecommendationsActivity" />
         <activity android:name=".ProductivityRecommendationsActivity" />
         <activity android:name=".HappinessRecommendationsActivity" />
-        <activity android:name=".Recommendations_Activity"></activity>
+        <activity android:name=".RecommendationsActivity"></activity>
     </application>
 
 </manifest>
