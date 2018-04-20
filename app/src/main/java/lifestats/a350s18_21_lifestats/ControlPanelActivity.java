@@ -144,7 +144,7 @@ public class ControlPanelActivity extends AppCompatActivity {
     }
 
     public void openRecommendations(View view) {
-        Intent intent = new Intent(this, RecommendationsActivity.class);
+        Intent intent = new Intent(this, Recommendations_Activity.class);
         startActivity(intent);
     }
 

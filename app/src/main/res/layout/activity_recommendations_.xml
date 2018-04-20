@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="lifestats.a350s18_21_lifestats.RecommendationsActivity">
+    tools:context="lifestats.a350s18_21_lifestats.Recommendations_Activity">
 
     <Button
         android:id="@+id/stressButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="openStress"
         android:text="Stress"
         app:layout_constraintBottom_toTopOf="@+id/happinessButton"
         app:layout_constraintHorizontal_bias="0.5"
@@ -21,6 +22,7 @@
         android:id="@+id/productivityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="openProductivity"
         android:text="Productivity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -32,6 +34,7 @@
         android:id="@+id/happinessButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="openHappiness"
         android:text="Happiness"
         app:layout_constraintBottom_toTopOf="@+id/productivityButton"
         app:layout_constraintHorizontal_bias="0.5"
@@ -45,9 +48,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Recommendations"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

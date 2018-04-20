@@ -19,6 +19,13 @@
         \n6. Eat your favorite dessert \n7. Get a hug \n8. Take a break \n9. Listen to music
         \n10. Put things into perspective
     </string>
+    <string name="happinessRecommendations">
+        1. Get a hug \n2. Listen to music \n3. Remember what you are good at
+        \n4. Put things into perspective
+    </string>
+    <string name="productivityRecommendations">
+        1. Take breaks \n2. Exercise in the morning \n3. Wake up early \n4. Eat healthy \n5. Write out a to-do list
+    </string>
     <string-array name="stat_names">
         <item>Happiness</item>
         <item>Stress</item>
