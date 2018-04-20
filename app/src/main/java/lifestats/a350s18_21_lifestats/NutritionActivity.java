@@ -71,4 +71,10 @@ public class NutritionActivity extends AppCompatActivity {
             }
         });
     }
+
+    // Redirects to the calorie budget activity
+    public void openCalorieBudget(View view) {
+        Intent intent = new Intent(this, CalorieBudgetActivity.class);
+        startActivity(intent);
+    }
 }
