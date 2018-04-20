@@ -15,7 +15,6 @@ import java.util.HashMap;
 import com.facebook.AccessToken;
 import com.facebook.login.LoginManager;
 
-// this class acts as the main hub, providing the user many options for what to do
 public class ControlPanelActivity extends AppCompatActivity {
 
     private DynamoDBMapper dynamoDBMapper;
@@ -47,6 +46,7 @@ public class ControlPanelActivity extends AppCompatActivity {
             }
         }).start();
 
+
         AWSMobileClient.getInstance().setCredentialsProvider(credentialsProvider);
         this.dynamoDBClient = new AmazonDynamoDBClient(AWSMobileClient.getInstance().getCredentialsProvider());
         this.dynamoDBMapper = DynamoDBMapper.builder()
@@ -55,6 +55,8 @@ public class ControlPanelActivity extends AppCompatActivity {
                 .build();
         initializeDataBase();
         setContentView(R.layout.activity_control_panel);
+
+
 
     }
 
@@ -66,6 +68,16 @@ public class ControlPanelActivity extends AppCompatActivity {
 
     public void openLifeStats(View view) {
         Intent intent = new Intent(this, LifeStats.class);
+        startActivity(intent);
+    }
+
+    public void openQuote(View view) {
+        Intent intent = new Intent(this, QuoteDay.class);
+        startActivity(intent);
+    }
+
+    public void openNutrition(View view) {
+        Intent intent = new Intent(this, NutritionActivity.class);
         startActivity(intent);
     }
 
@@ -126,6 +138,12 @@ public class ControlPanelActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void openExercise(View view) {
+        Intent intent = new Intent(this, Exercise.class);
+        startActivity(intent);
+    }
+
+
     /*
      * This method calls the single constructors which fetches the data from the database
      * premptively so that it is ready to use.
@@ -136,5 +154,10 @@ public class ControlPanelActivity extends AppCompatActivity {
         HappinessWrapper.getInstance();
         StressWrapper.getInstance();
         ProductivityWrapper.getInstance();
+        BudgetWrapper.getInstance();
+        PastQuotesWrapper.getInstance();
+        PastRecipesWrapper.getInstance();
+        NutritionWrapper.getInstance();
+        WeightWrapper.getInstance();
     }
 }

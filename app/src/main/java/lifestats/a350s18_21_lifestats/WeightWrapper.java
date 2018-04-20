@@ -14,23 +14,23 @@ import java.util.Set;
  * Created by steph on 3/23/2018.
  */
 
-public class HappinessWrapper {
-    private HashMap<String,Float> thisMapping;
+public class WeightWrapper {
+    private HashMap<String,Integer> thisMapping;
     private HashSet<String> newDBValues;
     private DynamoDBMapper dynamoDBMapper;
     private AmazonDynamoDBClient dynamoDBClient;
-    private static HappinessWrapper thisInstance;
+    private static WeightWrapper thisInstance;
 
 
-    public static HappinessWrapper getInstance() {
+    public static WeightWrapper getInstance() {
         if (thisInstance == null) {
-            thisInstance = new HappinessWrapper();
+            thisInstance = new WeightWrapper();
         }
         return thisInstance;
     }
 
-    private HappinessWrapper () {
-        thisMapping = new HashMap<String, Float>();
+    private WeightWrapper () {
+        thisMapping = new HashMap<String, Integer>();
         this.dynamoDBClient = new AmazonDynamoDBClient(AWSMobileClient.getInstance().getCredentialsProvider());
         this.dynamoDBMapper = DynamoDBMapper.builder()
                 .dynamoDBClient(dynamoDBClient)
@@ -41,7 +41,7 @@ public class HappinessWrapper {
 
 
 
-    public void put(String key, Float value) {
+    public void put(String key, Integer value) {
         thisMapping.put(key, value);
         updateDataBase();
     }
@@ -65,13 +65,13 @@ public class HappinessWrapper {
         return thisMapping.containsKey(key);
     }
 
-    public Set<Map.Entry<String,Float>> entrySet() {
+    public Set<Map.Entry<String,Integer>> entrySet() {
         return thisMapping.entrySet();
     }
 
     public Set<String> keySet() {return thisMapping.keySet();}
 
-    public Float get(String s) {
+    public Integer get(String s) {
         return thisMapping.get(s);
     }
 
@@ -85,20 +85,19 @@ public class HappinessWrapper {
                 // We set the userID, as it is the key
                 CognitoCachingCredentialsProvider provider =
                         (CognitoCachingCredentialsProvider) AWSMobileClient.getInstance().getCredentialsProvider();
-                HappinessDO happinessDO = dynamoDBMapper.load(
-                        HappinessDO.class,
+                WeightDO weightDO = dynamoDBMapper.load(
+                        WeightDO.class,
                         provider.getIdentityId());
-
                 // If this user table hasn't been made yet, we need to create it
-                if (happinessDO == null) {
+                if (weightDO == null) {
                     updateDataBase();
                 } else {
-                    Set<String> entries = happinessDO.getHapiness();
+                    Set<String> entries = weightDO.getWeight();
 
                     if (entries != null) {
                         for (String entry : entries) {
                             String[] keyValue = entry.split("&");
-                            thisMapping.put(keyValue[0], Float.parseFloat(keyValue[1]));
+                            thisMapping.put(keyValue[0], Integer.parseInt(keyValue[1]));
                         }
                     }
                 }
@@ -114,12 +113,12 @@ public class HappinessWrapper {
             return;
         }
         newDBValues = new HashSet<String>();
-        final HappinessDO happinessDO = new HappinessDO();
+        final WeightDO weightDO = new WeightDO();
 
 
-        for (Map.Entry<String, Float> entry : thisMapping.entrySet()) {
+        for (Map.Entry<String, Integer> entry : thisMapping.entrySet()) {
             String key = entry.getKey();
-            String value = Float.toString(entry.getValue());
+            String value = Integer.toString(entry.getValue());
             String toAdd = key + "&" + value;
             newDBValues.add(toAdd);
         }
@@ -131,11 +130,13 @@ public class HappinessWrapper {
                 // We set the userID, as it is the key
                 CognitoCachingCredentialsProvider provider =
                         (CognitoCachingCredentialsProvider) AWSMobileClient.getInstance().getCredentialsProvider();
-                happinessDO.setUserId(provider.getIdentityId());
-                happinessDO.setHapiness(newDBValues);
-                dynamoDBMapper.save(happinessDO);
+                weightDO.setUserId(provider.getIdentityId());
+                weightDO.setWeight(newDBValues);
+                dynamoDBMapper.save(weightDO);
             }
         }).start();
+
+
     }
 
 }
