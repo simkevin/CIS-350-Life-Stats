@@ -22,7 +22,8 @@ public class NutritionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_nutrition);
 
         final Button nutrition = findViewById(R.id.nutritionsubmit);
-        final EditText nutritionText = findViewById(R.id.nutrition_edit);
+        final EditText nutritionTextField = findViewById(R.id.nutrition_edit);
+        final EditText calorieTextField = findViewById(R.id.caloriesValue);
         final Button archiveNutrition = findViewById(R.id.pastFood);
         final NutritionWrapper dateNutrition = NutritionWrapper.getInstance();
 
@@ -33,21 +34,22 @@ public class NutritionActivity extends AppCompatActivity {
                 DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
                 Date date = new Date();
                 String currDate = dateFormat.format(date);
-                String text = nutritionText.getText().toString();
+                String foodText = nutritionTextField.getText().toString();
+                String calorieText = calorieTextField.getText().toString();
+
 
                 //if more is being added to a current day
                 if (dateNutrition.containsKey(currDate)) {
-                    String foodText = dateNutrition.get(currDate);
-                    foodText = foodText + ", " + text;
-                    dateNutrition.put(currDate, foodText);
-                    nutritionText.setText("");
+                    String text = dateNutrition.get(currDate);
+                    text = text + ", " + foodText + " (calories: "+ calorieText + ")";
+                    dateNutrition.put(currDate, text);
                 }
-
                 //if its a new day
                 else {
-                    dateNutrition.put(currDate, text);
-                    nutritionText.setText("");
+                    dateNutrition.put(currDate, foodText +  " (calories: "+ calorieText + ")");
                 }
+                nutritionTextField.setText("");
+                calorieTextField.setText("");
             }
         });
 
