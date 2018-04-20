@@ -1,5 +1,6 @@
 package lifestats.a350s18_21_lifestats;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -84,5 +85,10 @@ public class SleepScreen extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void openMusic(View view) {
+        Intent intent = new Intent(this, SleepMusicActivity.class);
+        startActivity(intent);
     }
 }
