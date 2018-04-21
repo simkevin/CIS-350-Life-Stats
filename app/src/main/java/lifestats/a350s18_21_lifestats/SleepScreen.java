@@ -16,16 +16,7 @@ import java.util.LinkedList;
 
 // this activity handles sleep
 public class SleepScreen extends AppCompatActivity {
-    // make SleepElement data type to put in LinkedList
-    class SleepElement {
-        String date;
-        Boolean sleepStatus;
-        public SleepElement(String date, Boolean sleepStatus) {
-            this.date = date;
-            this.sleepStatus = sleepStatus;
-        }
-    }
-    static LinkedList<SleepElement> sleepTrack = new LinkedList<SleepElement>();
+    SleepStatusWrapper sleepTrack = SleepStatusWrapper.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

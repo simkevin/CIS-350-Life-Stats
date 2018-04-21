@@ -11,14 +11,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
+import java.util.Iterator;
 
 public class SleepAnalysis extends AppCompatActivity {
 
     LineGraphSeries<DataPoint> series;
     LineGraphSeries<DataPoint> seriesGarbage;
 
-    int numDataPoints = SleepScreen.sleepTrack.size();
+    int numDataPoints = SleepStatusWrapper.getInstance().size();
     long[] sleepRecord = new long[numDataPoints];
+    private SleepStatusWrapper sleepStatus = SleepStatusWrapper.getInstance();
 
     // get the date difference in hours from simpleDateFormat
     public static long getDateDiff(SimpleDateFormat format, String oldDate, String newDate) {
@@ -46,8 +48,9 @@ public class SleepAnalysis extends AppCompatActivity {
         // store the dates in the sleepTrack into a dates array
         int i = 0;
         // pull data from sleepTrack
-        while (SleepScreen.sleepTrack.iterator().hasNext() && i < numDataPoints) {
-            dates[i] = SleepScreen.sleepTrack.iterator().next().date;
+        Iterator<SleepElement> iter = sleepStatus.iterator();
+        while (iter.hasNext() && i < numDataPoints) {
+            dates[i] = iter.next().date;
             i++;
         }
 
@@ -56,7 +59,7 @@ public class SleepAnalysis extends AppCompatActivity {
 
         // know where to begin keeping track of sleep
         int j = 0;
-        if(SleepScreen.sleepTrack.peekFirst().sleepStatus == false) {
+        if(sleepStatus.peekFirst().sleepStatus == false) {
             j = 1;
         } else {
             j = 0;
