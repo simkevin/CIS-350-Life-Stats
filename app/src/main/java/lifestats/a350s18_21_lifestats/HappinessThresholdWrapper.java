@@ -14,21 +14,21 @@ import java.util.Set;
  * Created by steph on 3/23/2018.
  */
 
-public class CalorieBudgetWrapper {
-    private int budget = 2000; // The default calorie budget
+public class HappinessThresholdWrapper {
+    private double threshold = 0;
     private DynamoDBMapper dynamoDBMapper;
     private AmazonDynamoDBClient dynamoDBClient;
-    private static CalorieBudgetWrapper thisInstance;
+    private static HappinessThresholdWrapper thisInstance;
 
 
-    public static CalorieBudgetWrapper getInstance() {
+    public static HappinessThresholdWrapper getInstance() {
         if (thisInstance == null) {
-            thisInstance = new CalorieBudgetWrapper();
+            thisInstance = new HappinessThresholdWrapper();
         }
         return thisInstance;
     }
 
-    private CalorieBudgetWrapper () {
+    private HappinessThresholdWrapper () {
         this.dynamoDBClient = new AmazonDynamoDBClient(AWSMobileClient.getInstance().getCredentialsProvider());
         this.dynamoDBMapper = DynamoDBMapper.builder()
                 .dynamoDBClient(dynamoDBClient)
@@ -38,13 +38,13 @@ public class CalorieBudgetWrapper {
     }
 
 
-    public void setBudget(int budget) {
-        this.budget = budget;
+    public void setThreshold(double threshold) {
+        this.threshold = threshold;
         updateDataBase();
     }
 
-    public int getBudget() {
-        return budget;
+    public double getThreshold() {
+        return threshold;
     }
 
     private void getDataBase() {
@@ -56,17 +56,17 @@ public class CalorieBudgetWrapper {
                 // We set the userID, as it is the key
                 CognitoCachingCredentialsProvider provider =
                         (CognitoCachingCredentialsProvider) AWSMobileClient.getInstance().getCredentialsProvider();
-                CalorieBudgetDO calorieBudgetDO = dynamoDBMapper.load(
-                        CalorieBudgetDO.class,
+                HappinessThresholdDO happinessThresholdDO = dynamoDBMapper.load(
+                        HappinessThresholdDO.class,
                         provider.getIdentityId());
 
                 // If this user table hasn't been made yet, we need to create it
-                if (calorieBudgetDO == null) {
+                if (happinessThresholdDO == null) {
                     updateDataBase();
                 } else {
-                    String budgetFromDB = calorieBudgetDO.getCalorieBudget();
-                    if (budgetFromDB != null) {
-                        budget = Integer.parseInt(budgetFromDB);
+                    String thresholdFromDB = happinessThresholdDO.getHappinessThreshold();
+                    if (thresholdFromDB != null) {
+                        threshold = Double.parseDouble(thresholdFromDB);
                     }
                 }
             }
@@ -75,7 +75,7 @@ public class CalorieBudgetWrapper {
 
 
     private void updateDataBase() {
-        final CalorieBudgetDO calorieBudgetDO = new CalorieBudgetDO();
+        final HappinessThresholdDO happinessThresholdDO = new HappinessThresholdDO();
 
         new Thread(new Runnable() {
             @Override
@@ -83,9 +83,9 @@ public class CalorieBudgetWrapper {
                 // We set the userID, as it is the key
                 CognitoCachingCredentialsProvider provider =
                         (CognitoCachingCredentialsProvider) AWSMobileClient.getInstance().getCredentialsProvider();
-                calorieBudgetDO.setUserId(provider.getIdentityId());
-                calorieBudgetDO.setCalorieBudget(String.valueOf(budget));
-                dynamoDBMapper.save(calorieBudgetDO);
+                happinessThresholdDO.setUserId(provider.getIdentityId());
+                happinessThresholdDO.setHappinessThreshold(String.valueOf(threshold));
+                dynamoDBMapper.save(happinessThresholdDO);
             }
         }).start();
     }
