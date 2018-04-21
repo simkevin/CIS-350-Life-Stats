@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="lifestats.a350s18_21_lifestats.pastQuotes">
+    tools:context="lifestats.a350s18_21_lifestats.PastQuotes">
 
     <ListView
         android:id="@+id/quoteView"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="lifestats.a350s18_21_lifestats.quoteDay">
+    tools:context="lifestats.a350s18_21_lifestats.QuoteDay">
 
     <TextView
         android:id="@+id/todayQuote"

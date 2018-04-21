@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.amazonaws.auth.CognitoCredentialsProvider;
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
@@ -73,7 +72,7 @@ public class ControlPanelActivity extends AppCompatActivity {
     }
 
     public void openQuote(View view) {
-        Intent intent = new Intent(this, quoteDay.class);
+        Intent intent = new Intent(this, QuoteDay.class);
         startActivity(intent);
     }
 

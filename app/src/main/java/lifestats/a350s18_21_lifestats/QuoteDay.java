@@ -1,16 +1,9 @@
 package lifestats.a350s18_21_lifestats;
 
 import android.annotation.TargetApi;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,7 +20,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Random;
 
-public class quoteDay extends AppCompatActivity {
+public class QuoteDay extends AppCompatActivity {
 
     private static final String uniqueID = "33523";
     @Override
@@ -190,7 +183,7 @@ public class quoteDay extends AppCompatActivity {
                     String input = s + ": " + dateQuote.get(s);
                     dates.add(input);
                 }
-                Intent graphScreen = new Intent(quoteDay.this, pastQuotes.class);
+                Intent graphScreen = new Intent(QuoteDay.this, PastQuotes.class);
                 graphScreen.putExtra("dates", dates);
                 startActivity(graphScreen);
             }

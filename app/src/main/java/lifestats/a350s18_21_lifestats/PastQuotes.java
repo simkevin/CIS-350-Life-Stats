@@ -8,7 +8,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class pastQuotes extends AppCompatActivity {
+public class PastQuotes extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

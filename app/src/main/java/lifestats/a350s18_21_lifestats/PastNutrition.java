@@ -8,7 +8,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class pastNutrition extends AppCompatActivity {
+public class PastNutrition extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

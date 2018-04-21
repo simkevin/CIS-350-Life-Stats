@@ -11,7 +11,6 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.text.DateFormat;
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -75,7 +74,7 @@ public class NutritionActivity extends AppCompatActivity {
                     dateList.add(text);
                     foodList.add(dateNutrition.get(s));
                 }
-                Intent archives = new Intent(NutritionActivity.this, pastNutrition.class);
+                Intent archives = new Intent(NutritionActivity.this, PastNutrition.class);
                 archives.putExtra("dateList", dateList);
                 archives.putExtra("foodList", foodList);
                 startActivity(archives);
