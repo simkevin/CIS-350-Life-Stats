@@ -49,4 +49,14 @@ public class Exercise extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void openGraph(View view) {
+        Intent intent = new Intent(this, ExerciseGraph.class);
+        startActivity(intent);
+    }
+
+    public void openExerciseRating(View view) {
+        Intent intent = new Intent(this, ExerciseRating.class);
+        startActivity(intent);
+    }
+
 }
