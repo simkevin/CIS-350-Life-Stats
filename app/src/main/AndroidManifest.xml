@@ -117,9 +117,12 @@
         <activity android:name=".Exercise" />
         <activity android:name=".ExerciseTimeSelector"></activity>
         <activity android:name=".NutritionActivity" />
-        <activity android:name=".pastNutrition" />
-        <activity android:name=".quoteDay" />
-        <activity android:name=".pastQuotes"></activity>
+        <activity android:name=".PastNutrition" />
+        <activity android:name=".QuoteDay" />
+        <activity android:name=".PastQuotes"></activity>
+        <activity android:name=".BudgetActivity" />
+        <activity android:name=".CorrelateGraph" />
+        <activity android:name=".RecommendationsActivity"></activity>
     </application>
 
 </manifest>

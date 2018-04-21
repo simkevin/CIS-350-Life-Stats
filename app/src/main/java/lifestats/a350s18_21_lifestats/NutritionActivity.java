@@ -8,9 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.text.DateFormat;
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -22,12 +22,10 @@ public class NutritionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_nutrition);
 
         final Button nutrition = findViewById(R.id.nutritionsubmit);
-        final EditText nutritionText = findViewById(R.id.nutrition_edit);
+        final EditText nutritionTextField = findViewById(R.id.nutrition_edit);
+        final EditText calorieTextField = findViewById(R.id.caloriesValue);
         final Button archiveNutrition = findViewById(R.id.pastFood);
-        final HashMap<String, String> dateNutrition = new HashMap<String, String>();
-        dateNutrition.put("02/26/2018", "Chipotle, Jimmy John's");
-        dateNutrition.put("11/21/2003", "Homecooked meal, soda, cosi");
-        dateNutrition.put("03/10/1986", "wishbone, dining hall food, granola bar");
+        final NutritionWrapper dateNutrition = NutritionWrapper.getInstance();
 
         nutrition.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,21 +34,22 @@ public class NutritionActivity extends AppCompatActivity {
                 DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
                 Date date = new Date();
                 String currDate = dateFormat.format(date);
-                String text = nutritionText.getText().toString();
+                String foodText = nutritionTextField.getText().toString();
+                String calorieText = calorieTextField.getText().toString();
+
 
                 //if more is being added to a current day
                 if (dateNutrition.containsKey(currDate)) {
-                    String foodText = dateNutrition.get(currDate);
-                    foodText = foodText + ", " + text;
-                    dateNutrition.put(currDate, foodText);
-                    nutritionText.setText("");
+                    String text = dateNutrition.get(currDate);
+                    text = text + ", " + foodText + " (calories: "+ calorieText + ")";
+                    dateNutrition.put(currDate, text);
                 }
-
                 //if its a new day
                 else {
-                    dateNutrition.put(currDate, text);
-                    nutritionText.setText("");
+                    dateNutrition.put(currDate, foodText +  " (calories: "+ calorieText + ")");
                 }
+                nutritionTextField.setText("");
+                calorieTextField.setText("");
             }
         });
 
@@ -64,7 +63,7 @@ public class NutritionActivity extends AppCompatActivity {
                     dateList.add(text);
                     foodList.add(dateNutrition.get(s));
                 }
-                Intent archives = new Intent(NutritionActivity.this, pastNutrition.class);
+                Intent archives = new Intent(NutritionActivity.this, PastNutrition.class);
                 archives.putExtra("dateList", dateList);
                 archives.putExtra("foodList", foodList);
                 startActivity(archives);
