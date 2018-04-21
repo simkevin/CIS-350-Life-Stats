@@ -49,4 +49,7 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+
+    <!-- Strings related to Happiness -->
+    <string name="set_min_happiness_threshold">Set Happiness Threshold</string>
 </resources>
