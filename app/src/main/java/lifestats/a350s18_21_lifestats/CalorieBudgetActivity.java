@@ -159,7 +159,7 @@ public class CalorieBudgetActivity extends AppCompatActivity {
         displayBudgetToast(calorieBudget);
 
         // Stores the new calorie budget in the database
-        CalorieBudgetWrapper.getInstance().set(calorieBudget);
+        CalorieBudgetWrapper.getInstance().setBudget(calorieBudget);
     }
 
     // Displays a toast message that notifies the user of the new calorieBudget value
