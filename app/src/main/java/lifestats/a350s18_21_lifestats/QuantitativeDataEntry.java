@@ -52,10 +52,12 @@ public class QuantitativeDataEntry extends AppCompatActivity {
                 productivityBar.setRating(0F);
                 stressBar.setRating(0F);
 
-                if (globalAverage < SetHappiness.happinessLowerBound) {
+                double happinessLowerBound = HappinessThresholdWrapper.getInstance().getThreshold();
+
+                if (globalAverage < happinessLowerBound) {
                     Toast.makeText(getApplicationContext()
                             , "Warning: Happiness level is too low. Your min threshold is " +
-                                    SetHappiness.happinessLowerBound + " your average is " + globalAverage
+                                    happinessLowerBound + " your average is " + globalAverage
                             , Toast.LENGTH_LONG).show();
                 }
             }

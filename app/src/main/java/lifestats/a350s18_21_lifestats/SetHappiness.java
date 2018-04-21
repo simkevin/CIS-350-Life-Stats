@@ -14,7 +14,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class SetHappiness extends AppCompatActivity {
-    public static double happinessLowerBound = 5.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,8 @@ public class SetHappiness extends AppCompatActivity {
                                 "Happiness Threshold: " + setThreshold.getRating()
                         , Toast.LENGTH_LONG).show();
 
-                happinessLowerBound = setThreshold.getRating();
+                double threshold = setThreshold.getRating();
+                HappinessThresholdWrapper.getInstance().setThreshold(threshold);
 
                 // reset all bars
                 setThreshold.setRating(0F);
