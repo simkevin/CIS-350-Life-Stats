@@ -120,15 +120,18 @@
         <activity android:name=".PastNutrition" />
         <activity android:name=".QuoteDay" />
         <activity android:name=".PastQuotes" />
-        <activity android:name=".BudgetActivity" />
-        <activity android:name=".CorrelateGraph" />
         <activity android:name=".StressRecommendationsActivity" />
         <activity android:name=".ProductivityRecommendationsActivity" />
         <activity android:name=".HappinessRecommendationsActivity" />
         <activity android:name=".RecommendationsActivity" />
         <activity android:name=".SleepMusicActivity"></activity>
-        <activity android:name=".RecommendationsActivity" />
         <activity android:name=".SetHappiness" />
+        <activity android:name=".ExerciseRating"/>
+        <activity android:name=".RecipeOfDay" />
+        <activity android:name=".ExerciseGraph" />
+        <activity android:name=".DayRating" />
+        <activity android:name=".MonthRating" />
+        <activity android:name=".YearRating" />
         <activity android:name=".SleepAnalysis"></activity>
     </application>
 

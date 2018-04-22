@@ -27,6 +27,7 @@ public class NutritionActivity extends AppCompatActivity {
 
         // Get the buttons
         final Button nutrition = findViewById(R.id.nutritionsubmit);
+        final Button recipeButton = findViewById(R.id.recipe);
         final EditText nutritionTextField = findViewById(R.id.nutrition_edit);
         final EditText calorieTextField = findViewById(R.id.caloriesValue);
         final Button archiveNutrition = findViewById(R.id.pastFood);
@@ -35,6 +36,14 @@ public class NutritionActivity extends AppCompatActivity {
 
         int budget = getRemainingCalorieBalance();
         calorieBudgetText.setText("Calories Remaining: " + budget);
+
+        recipeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                Intent recipeIntent = new Intent (NutritionActivity.this, RecipeOfDay.class);
+                startActivity(recipeIntent);
+            }
+        });
 
         nutrition.setOnClickListener(new View.OnClickListener() {
             @Override
