@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import android.util.Log;
 
 public class NutritionActivity extends AppCompatActivity {
 
@@ -111,6 +112,23 @@ public class NutritionActivity extends AppCompatActivity {
             }
             budget = budget - calorieSum;
         }
+
+        // Now we see if there is exercise to take away from it
+        String todaysDate = getTodaysDate();
+        String todaysExercise = ExerciseWrapper.getInstance().get(todaysDate);
+        String[] exerciseArr = todaysExercise.split("&");
+
+        for (int i = 0; i < exerciseArr.length; i+= 3) {
+
+            // Every second item is the hours and every third is the time.
+            String activity = exerciseArr[i];
+            int hours = Integer.parseInt(exerciseArr[i + 1]);
+            int minutes = Integer.parseInt(exerciseArr[i + 2]);
+            int totalBurned = getCaloriesBurned(activity, 60 * hours + minutes);
+            budget = budget + totalBurned;
+        }
+
+
         return budget;
     }
 
@@ -119,6 +137,26 @@ public class NutritionActivity extends AppCompatActivity {
         Date date = new Date();
         String currDate = dateFormat.format(date);
         return currDate;
+    }
+
+    // Returns the calories burned for the given activity and number of minutes
+    private int getCaloriesBurned(String activity, int minutes) {
+
+        if (activity.equals("Running")) {
+            return 15 * minutes;
+        } else if (activity.equals("Walking")) {
+            return 4 * minutes;
+        } else if (activity.equals("Aerobics")) {
+            return 7 * minutes;
+        } else if (activity.equals("Swimming")) {
+            return 10 * minutes;
+        } else if (activity.equals("Lifting")) {
+            return 6 * minutes;
+        } else if (activity.equals("Cycling")){
+            return 9 * minutes;
+        } else {
+            throw new IllegalArgumentException("Bad activity input");
+        }
     }
 
 }
