@@ -155,13 +155,14 @@
         android:layout_width="127dp"
         android:layout_height="61dp"
         android:layout_marginBottom="64dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="36dp"
         android:layout_marginTop="16dp"
         android:onClick="openQuote"
         android:text="Quote of the Day"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quickView_button" />
+        app:layout_constraintTop_toBottomOf="@+id/quickView_button"
+        app:layout_constraintVertical_bias="0.86" />
 
 
     <Button
@@ -187,5 +188,16 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="24dp"
+        android:onClick="openRecommendations"
+        android:text="Recommendations"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quickView_button" />
 
 </android.support.constraint.ConstraintLayout>

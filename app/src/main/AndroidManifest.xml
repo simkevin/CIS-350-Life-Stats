@@ -122,6 +122,11 @@
         <activity android:name=".PastQuotes" />
         <activity android:name=".BudgetActivity" />
         <activity android:name=".CorrelateGraph" />
+        <activity android:name=".StressRecommendationsActivity" />
+        <activity android:name=".ProductivityRecommendationsActivity" />
+        <activity android:name=".HappinessRecommendationsActivity" />
+        <activity android:name=".RecommendationsActivity" />
+        <activity android:name=".SleepMusicActivity"></activity>
         <activity android:name=".RecommendationsActivity" />
         <activity android:name=".SetHappiness" />
         <activity android:name=".SleepAnalysis"></activity>

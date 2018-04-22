@@ -143,6 +143,11 @@ public class ControlPanelActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void openRecommendations(View view) {
+        Intent intent = new Intent(this, RecommendationsActivity.class);
+        startActivity(intent);
+    }
+
 
     /*
      * This method calls the single constructors which fetches the data from the database

@@ -89,4 +89,9 @@ public class SleepScreen extends AppCompatActivity {
         });
 
     }
+
+    public void openMusic(View view) {
+        Intent intent = new Intent(this, SleepMusicActivity.class);
+        startActivity(intent);
+    }
 }
