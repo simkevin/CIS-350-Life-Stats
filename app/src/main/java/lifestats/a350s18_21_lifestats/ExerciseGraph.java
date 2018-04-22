@@ -24,7 +24,7 @@ public class ExerciseGraph extends AppCompatActivity {
         String [] dateArray = new String[exerciseWrapper.size()];
 
         //dummy data
-        exerciseWrapper.put("01/31/1997", "8&14");
+        exerciseWrapper.put("01/31/1997", "cycling&8&14&");
 
         int z = 0;
         for (String date : exerciseWrapper.keySet()) {

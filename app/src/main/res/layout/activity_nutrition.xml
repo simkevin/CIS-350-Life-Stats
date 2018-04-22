@@ -40,7 +40,7 @@
         android:id="@+id/pastFood"
         android:layout_width="175dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="60dp"
         android:layout_marginStart="24dp"
         android:text="Nutrition Archive"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -73,7 +73,7 @@
         android:id="@+id/calorieBudget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="68dp"
         android:layout_marginStart="32dp"
         android:onClick="openCalorieBudget"
         android:text="Calorie Budget"
@@ -89,4 +89,14 @@
         android:text="Current Budget"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Button
+        android:id="@+id/recipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="28dp"
+        android:text="Recipe of the day"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -1,9 +1,16 @@
 package lifestats.a350s18_21_lifestats;
 
 import android.annotation.TargetApi;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -50,7 +57,7 @@ public class QuoteDay extends AppCompatActivity {
                 ,"Every child is an artist.  The problem is how to remain an artist once he grows up. –Pablo Picasso\n"
                 ,"You can never cross the ocean until you have the courage to lose sight of the shore. –Christopher Columbus",
                 " I’ve learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel. –Maya Angelou\n",
-                 "Either you run the day, or the day runs you. –Jim Rohn\n",
+                "Either you run the day, or the day runs you. –Jim Rohn\n",
                 "Whether you think you can or you think you can’t, you’re right. –Henry Ford\n",
                 "The two most important days in your life are the day you are born and the day you find out why. –Mark Twain\n",
                 "Whatever you can do, or dream you can, begin it.  Boldness has genius, power and magic in it. –Johann Wolfgang von Goethe\n",
@@ -127,7 +134,7 @@ public class QuoteDay extends AppCompatActivity {
 
 
         //database of quotes
-        final HashMap<String, String> dateQuote = new HashMap<>();
+        final PastQuotesWrapper dateQuote = PastQuotesWrapper.getInstance();
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         Date date = new Date();
         String currDate = dateFormat.format(date);
@@ -188,7 +195,6 @@ public class QuoteDay extends AppCompatActivity {
                 startActivity(graphScreen);
             }
         });
-
     }
 
     /*
