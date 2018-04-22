@@ -164,5 +164,7 @@ public class ControlPanelActivity extends AppCompatActivity {
         PastRecipesWrapper.getInstance();
         NutritionWrapper.getInstance();
         WeightWrapper.getInstance();
+        CalorieBudgetWrapper.getInstance();
+        SleepStatusWrapper.getInstance();
     }
 }

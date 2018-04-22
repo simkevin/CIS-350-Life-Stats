@@ -116,6 +116,7 @@
         <activity android:name=".Exercise" />
         <activity android:name=".ExerciseTimeSelector" />
         <activity android:name=".NutritionActivity" />
+        <activity android:name=".CalorieBudgetActivity" />
         <activity android:name=".PastNutrition" />
         <activity android:name=".QuoteDay" />
         <activity android:name=".PastQuotes" />
@@ -126,6 +127,9 @@
         <activity android:name=".HappinessRecommendationsActivity" />
         <activity android:name=".RecommendationsActivity" />
         <activity android:name=".SleepMusicActivity"></activity>
+        <activity android:name=".RecommendationsActivity" />
+        <activity android:name=".SetHappiness" />
+        <activity android:name=".SleepAnalysis"></activity>
     </application>
 
 </manifest>
