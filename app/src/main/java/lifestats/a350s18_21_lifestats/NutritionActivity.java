@@ -116,6 +116,9 @@ public class NutritionActivity extends AppCompatActivity {
         // Now we see if there is exercise to take away from it
         String todaysDate = getTodaysDate();
         String todaysExercise = ExerciseWrapper.getInstance().get(todaysDate);
+        if (todaysExercise == null || todaysExercise.equals("")) {
+            return budget;
+        }
         String[] exerciseArr = todaysExercise.split("&");
 
         for (int i = 0; i < exerciseArr.length; i+= 3) {

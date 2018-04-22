@@ -84,6 +84,9 @@ public class SleepStatusWrapper {
                     updateDataBase();
                 } else {
                     String sleepStatus = sleepStatusDO.getSleepStatus();
+                    if (sleepStatus == null) {
+                        return;
+                    }
                     String[] entries = sleepStatus.split("&");
                     for (int i = 0; i < entries.length; i++) {
                         String[] thisEntry = entries[i].split("!");
