@@ -119,7 +119,9 @@ public class SleepStatusWrapper {
 
                 }
                 String toUploadString = toUpload.toString();
-                toUploadString = toUploadString.substring(0, toUploadString.length() - 1);
+                if(!toUploadString.equals("")) {
+                    toUploadString = toUploadString.substring(0, toUploadString.length() - 1);
+                }
 
                 sleepStatusDO.setSleepStatus(toUploadString);
                 dynamoDBMapper.save(sleepStatusDO);
