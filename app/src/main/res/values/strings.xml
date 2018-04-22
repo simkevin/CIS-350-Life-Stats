@@ -50,4 +50,18 @@
         <item>30</item>
         <item>45</item>
     </string-array>
+    <string-array name="weight_loss_goals">
+        <item>Lose 2 pounds a week</item>
+        <item>Lose 1.5 pounds a week</item>
+        <item>Lose 1 pound a week</item>
+        <item>Lose 0.5 pounds a week</item>
+        <item>Maintain current weight</item>
+    </string-array>
+    <string-array name="genders">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <!-- Strings related to Happiness -->
+    <string name="set_min_happiness_threshold">Set Happiness Threshold</string>
 </resources>
