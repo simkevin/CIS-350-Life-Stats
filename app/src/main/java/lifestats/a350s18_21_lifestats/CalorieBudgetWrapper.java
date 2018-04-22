@@ -38,7 +38,7 @@ public class CalorieBudgetWrapper {
     }
 
 
-    public void setBudget(Integer budget) {
+    public void setBudget(int budget) {
         this.budget = budget;
         updateDataBase();
     }

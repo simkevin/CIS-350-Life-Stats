@@ -46,6 +46,15 @@ public class HappinessWrapper {
         updateDataBase();
     }
 
+    public double averageAll() {
+        Float average = 0F;
+        for (String key : thisMapping.keySet()) {
+            Float value =  thisMapping.get(key);
+            average = average + value;
+        }
+        return average / thisMapping.size();
+    }
+
     public int size() {
         return thisMapping.size();
     }

@@ -14,6 +14,18 @@
     <string name="about">Welcome to Life Stats! \n This app will help you improve your life one goal at a time.</string>
     <string name="facebook_app_id">162707317775518</string>
     <string name="fb_login_protocol_scheme">fb162707317775518</string>
+    <string name="stressRecommendations">
+        1. Meditate \n2. Exercise \n3. Stretch \n4. Take a nap \n5. Talk to a friend or family member
+        \n6. Eat your favorite dessert \n7. Get a hug \n8. Take a break \n9. Listen to music
+        \n10. Put things into perspective
+    </string>
+    <string name="happinessRecommendations">
+        1. Get a hug \n2. Listen to music \n3. Remember what you are good at
+        \n4. Put things into perspective
+    </string>
+    <string name="productivityRecommendations">
+        1. Take breaks \n2. Exercise in the morning \n3. Wake up early \n4. Eat healthy \n5. Write out a to-do list
+    </string>
     <string-array name="stat_names">
         <item>Happiness</item>
         <item>Stress</item>
@@ -49,4 +61,7 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+
+    <!-- Strings related to Happiness -->
+    <string name="set_min_happiness_threshold">Set Happiness Threshold</string>
 </resources>

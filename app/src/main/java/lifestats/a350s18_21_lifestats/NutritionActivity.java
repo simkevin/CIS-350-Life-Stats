@@ -11,7 +11,6 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.text.DateFormat;
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -29,6 +28,7 @@ public class NutritionActivity extends AppCompatActivity {
 
         // Get the buttons
         final Button nutrition = findViewById(R.id.nutritionsubmit);
+        final Button recipeButton = findViewById(R.id.recipe);
         final EditText nutritionTextField = findViewById(R.id.nutrition_edit);
         final EditText calorieTextField = findViewById(R.id.caloriesValue);
         final Button archiveNutrition = findViewById(R.id.pastFood);
@@ -37,6 +37,14 @@ public class NutritionActivity extends AppCompatActivity {
 
         int budget = getRemainingCalorieBalance();
         calorieBudgetText.setText("Calories Remaining: " + budget);
+
+        recipeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                Intent recipeIntent = new Intent (NutritionActivity.this, RecipeOfDay.class);
+                startActivity(recipeIntent);
+            }
+        });
 
         nutrition.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +84,7 @@ public class NutritionActivity extends AppCompatActivity {
                     dateList.add(text);
                     foodList.add(dateNutrition.get(s));
                 }
-                Intent archives = new Intent(NutritionActivity.this, pastNutrition.class);
+                Intent archives = new Intent(NutritionActivity.this, PastNutrition.class);
                 archives.putExtra("dateList", dateList);
                 archives.putExtra("foodList", foodList);
                 startActivity(archives);
