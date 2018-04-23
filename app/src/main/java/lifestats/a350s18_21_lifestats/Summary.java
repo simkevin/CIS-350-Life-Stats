@@ -1,5 +1,6 @@
 package lifestats.a350s18_21_lifestats;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -74,7 +75,20 @@ public class Summary extends AppCompatActivity {
                     stressAverage.setText("Stress Average: " + stressAvg);
                     // change text edit string to calculation of sleep avg
                     //sleep_average.setText("Sleep Average: " + sleepAvg);
-                    Toast.makeText(getApplicationContext(), "Now showing All-time summaries", Toast.LENGTH_SHORT).show();
+
+                    if (stressAvg > 4) {
+                        Toast.makeText(getApplicationContext(), "Your average stress is too high!", Toast.LENGTH_SHORT).show();
+                        openStressRec();
+                    } else if (happinessAvg < 2.5) {
+                        Toast.makeText(getApplicationContext(), "Your average happiness is too low!", Toast.LENGTH_SHORT).show();
+                        openHappinessRec();
+                    } else if (productivityAvg < 2.5) {
+                        Toast.makeText(getApplicationContext(), "Your average productivity is too low!", Toast.LENGTH_SHORT).show();
+                        openProductivityRec();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Now showing All-time summaries", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
 
                 if (summaryStr.equals("Year")) {
@@ -115,6 +129,21 @@ public class Summary extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void openHappinessRec() {
+        Intent intent = new Intent(this, HappinessRecommendationsActivity.class);
+        startActivity(intent);
+    }
+
+    private void openStressRec() {
+        Intent intent = new Intent(this, StressRecommendationsActivity.class);
+        startActivity(intent);
+    }
+
+    private void openProductivityRec() {
+        Intent intent = new Intent(this, ProductivityRecommendationsActivity.class);
+        startActivity(intent);
     }
 
     private double calculateAlltimeAverage(String stat) {
