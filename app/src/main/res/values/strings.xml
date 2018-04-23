@@ -74,5 +74,7 @@
     <string name="sleep_music">Sleep Music</string>
     <string name="back_to_music_center">Back to Music Center</string>
 
+    <!-- Goal Features -->
+    <string name="days_num_goal">Number of Days for Goal</string>
 
 </resources>

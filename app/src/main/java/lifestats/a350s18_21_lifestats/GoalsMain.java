@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
-import java.util.Date;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -15,6 +15,8 @@ import java.util.ArrayList;
 public class GoalsMain extends AppCompatActivity {
     private static GoalsToDifficultyWrapper goalsToDifficulty =
             GoalsToDifficultyWrapper.getInstance();
+    private static GoalToDeadlineWrapper goalsToDeadline =
+            GoalToDeadlineWrapper.getInstance();
 
 
     @Override
@@ -28,6 +30,7 @@ public class GoalsMain extends AppCompatActivity {
 
         final EditText goalText = findViewById(R.id.goalText);
         final RatingBar difficultyBar = findViewById(R.id.difficultyRating);
+        final EditText goalNumberEditText = findViewById(R.id.goalNumberEditText);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,10 +40,13 @@ public class GoalsMain extends AppCompatActivity {
                 if (goalText.getText().toString().matches(".*\\w.*")) {
                     String goal = goalText.getText().toString();
                     String rate = String.valueOf(difficultyBar.getRating());
+                    Double days = Double.parseDouble(goalNumberEditText.getText().toString());
                     goalsToDifficulty.put(goal, rate);
+                    goalsToDeadline.put(goal, days);
                 }
 
                 goalText.setText("");
+                goalNumberEditText.setText("");
                 difficultyBar.setRating(0F);
             }
         });
@@ -52,8 +58,12 @@ public class GoalsMain extends AppCompatActivity {
                 ArrayList<String>  ratings = new ArrayList<String>();
                 for (String s : goalsToDifficulty.keySet()) {
                     String difficulty = goalsToDifficulty.get(s).split("&")[0];
+                    Double numDaysLeft = goalsToDeadline.get(s);
+
+
                     if (goalsToDifficulty.get(s).split("&")[2].equals("0")) {
-                        values.add(s + ", \t\t\t\tDifficulty: " + difficulty);
+                        values.add(s + ": \t\tDifficulty: " + difficulty + "\t\tNo. Days left: "
+                                + numDaysLeft);
                         ratings.add(difficulty);
                     }
                 }
