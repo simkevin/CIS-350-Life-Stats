@@ -148,6 +148,15 @@ public class ControlPanelActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /*
+     * This is the method called when the about button is called. It takes the user to the
+     * about page.
+     */
+    public void openMusicCenter(View view) {
+        Intent intent = new Intent(this, MusicCenter.class);
+        startActivity(intent);
+    }
+
 
     /*
      * This method calls the single constructors which fetches the data from the database

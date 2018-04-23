@@ -124,15 +124,19 @@
         <activity android:name=".ProductivityRecommendationsActivity" />
         <activity android:name=".HappinessRecommendationsActivity" />
         <activity android:name=".RecommendationsActivity" />
-        <activity android:name=".SleepMusicActivity"></activity>
+        <activity android:name=".SleepMusicActivity" />
         <activity android:name=".SetHappiness" />
-        <activity android:name=".ExerciseRating"/>
+        <activity android:name=".ExerciseRating" />
         <activity android:name=".RecipeOfDay" />
         <activity android:name=".ExerciseGraph" />
         <activity android:name=".DayRating" />
         <activity android:name=".MonthRating" />
         <activity android:name=".YearRating" />
-        <activity android:name=".SleepAnalysis"></activity>
+        <activity android:name=".SleepAnalysis" />
+        <activity android:name=".MusicCenter" />
+        <activity android:name=".ProductiveMusicActivity" />
+        <activity android:name=".HappyMusicActivity" />
+        <activity android:name=".DestressMusicActivity"></activity>
     </application>
 
 </manifest>

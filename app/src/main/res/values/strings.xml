@@ -65,4 +65,14 @@
 
     <!-- Strings related to Happiness -->
     <string name="set_min_happiness_threshold">Set Happiness Threshold</string>
+
+    <!-- Strings related to music -->
+    <string name="music_center">Music Center</string>
+    <string name="productivity_music">Productive Music</string>
+    <string name="happiness_music">Happy Music</string>
+    <string name="destress_music">De-Stress Music</string>
+    <string name="sleep_music">Sleep Music</string>
+    <string name="back_to_music_center">Back to Music Center</string>
+
+
 </resources>
